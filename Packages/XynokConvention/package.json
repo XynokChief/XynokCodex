@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.convention",
+  "version": "1.0.0",
+  "displayName": "Xynok Convention",
+  "description": "Bao gồm những quy ước chung về data và patterns.",
+  "unity": "2022.3",
+  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Convention-36bb8272ec814e3c846ee589d3822d5b",
+  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Convention-36bb8272ec814e3c846ee589d3822d5b",
+  "licensesUrl": "",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}
