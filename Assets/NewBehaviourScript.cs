@@ -2,22 +2,39 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using XynokConvention.Data.Saver;
+using XynokEntity.Core;
 
-[Serializable]
-public class Inventory : ADataSaver<Inventory>
+public interface IMove<T>
 {
-    public string name = "Inventory";
-    public List<string> xx;
-    public override string SaveKey { get; }
+    T Data { get; }
 }
 
 [Serializable]
-public class Shop : ADataSaver<Inventory>
+public class Hero : IMove<string>
 {
-    public string name = "Shop";
-    public override string SaveKey { get; }
+    public string data;
+    public string Data => data;
 }
 
-public class NewBehaviourScript : MonoBehaviour
+[Serializable]
+public class Superman : Hero
 {
+}
+
+[Serializable]
+public class Batman : Hero
+{
+}
+public class NewBehaviourScript : AMonoEntity
+{
+
+  protected override void Init()
+  {
+      throw new NotImplementedException();
+  }
+
+  protected override void OnDispose()
+  {
+      throw new NotImplementedException();
+  }
 }

@@ -441,6 +441,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ccd037935e89a346a02f4f083c7dac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heroX:
+    rid: 6700482495915753482
+  references:
+    version: 2
+    RefIds:
+    - rid: 6700482495915753482
+      type: {class: Superman, ns: , asm: Assembly-CSharp}
+      data:
+        data: 
 --- !u!114 &832575521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,28 +469,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   savers:
-  - rid: 6700482495915753480
-  - rid: 6700482495915753481
+  - rid: -2
+  - rid: -2
   references:
     version: 2
     RefIds:
-    - rid: 6700482495915753480
-      type: {class: Inventory, ns: , asm: Assembly-CSharp}
-      data:
-        log: 0
-        name: Inventory+!@#!@
-        xx:
-        - qweqwewwq
-        - qweqweqweqw
-        - qweqweqwewqe
-        - 
-        - 
-        - 
-    - rid: 6700482495915753481
-      type: {class: Shop, ns: , asm: Assembly-CSharp}
-      data:
-        log: 0
-        name: Shopdddd
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
