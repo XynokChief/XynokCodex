@@ -441,15 +441,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ccd037935e89a346a02f4f083c7dac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroX:
-    rid: 6700482495915753482
+  listData:
+  - rid: 6700482512384688129
   references:
     version: 2
     RefIds:
-    - rid: 6700482495915753482
-      type: {class: Superman, ns: , asm: Assembly-CSharp}
-      data:
-        data: 
+    - rid: 6700482512384688129
+      type: {class: Test, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!114 &832575521
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 ﻿using System;
-using XynokConvention.Data.Binding.APIs;
 
 namespace XynokConvention.Data.Binding
 {
@@ -8,7 +7,7 @@ namespace XynokConvention.Data.Binding
     /// </summary>
     /// <typeparam name="T">trigger param of animator</typeparam>
     [Serializable]
-    public class ATriggerData<T> : APairData<T, bool>, ITriggerData
+    public class ATriggerData<T> : APairData<T, bool>
         where T : Enum
     {
         public Func<bool> canTrigger;

@@ -1,0 +1,6 @@
+[Bb]in/
+
+!**/*.csproj
+!**/*.sln
+.idea
+.vs
