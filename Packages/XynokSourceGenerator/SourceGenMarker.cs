@@ -1,0 +1,42 @@
+
+using System;
+
+namespace XynokSourceGen
+{
+    public class SourceGenMarker
+    {
+    }
+
+    /// <summary>
+    /// use this attribute to mark an enum as a factory for a group of entities (e.g. HeroA, HeroB, etc.)
+    /// suffix the enum name with "Id" or "Ids" or "ID" or "IDs"(e.g. EffectIDs, HeroIds, etc.)
+    /// </summary>
+    /// <typeparam name="abilityGroup">`abilityGroup` must be an enum.
+    ///abilityGroup is the group of abilities that this entity has (e.g. attack, defend, etc.)
+    /// </typeparam>
+    /// <typeparam name="statGroup">`statGroup` must be an enum.
+    ///statGroup is the group of stats that this entity has (e.g. health, mana, etc.)
+    /// </typeparam>
+    /// <typeparam name="stateGroup">`stateGroup` must be an enum.
+    ///stateGroup is the group of states that this entity has (e.g. stunned, poisoned, etc.)
+    /// </typeparam>
+    /// <typeparam name="triggerGroup">`triggerGroup` must be an enum.
+    ///triggerGroup is the group of triggers that this entity has be (e.g. forceAttack, forceJump, etc.)
+    /// </typeparam>
+    [AttributeUsage(AttributeTargets.Enum)]
+    public class EntityMakerAttribute : Attribute
+    {
+        public Type abilityGroup;
+        public Type statGroup;
+        public Type stateGroup;
+        public Type triggerGroup;
+
+        public EntityMakerAttribute(Type abilityGroup, Type statGroup, Type stateGroup, Type triggerGroup)
+        {
+            this.abilityGroup = abilityGroup;
+            this.statGroup = statGroup;
+            this.stateGroup = stateGroup;
+            this.triggerGroup = triggerGroup;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokConvention.Data.Binding;
+using XynokConvention.APIs;
+
+namespace XynokSourceGenerator.Entities
+{
+
+#region Interface
+        public interface I{EntityName}
+        {
+            {EntityName}Resource Resource { get; }
+        }
+        
+        public interface I{EntityName}Ability
+        {
+        }
+#endregion
+
+#region Data
+        [Serializable]
+        public class {EntityName}Resource
+        {
+            public {EntityName}Stat[] Stats;
+            public {EntityName}State[] States;
+            public {EntityName}Trigger[] Triggers;
+            [SerializeReference] public I{EntityName}Ability[] Abilities;
+        }
+        
+        [Serializable]
+        public class {EntityName}Stat: APairData<{StatName},float>{}
+        
+        [Serializable]
+        public class {EntityName}State: APairData<{StatName},bool>{}
+        
+        [Serializable]
+        public class {EntityName}Trigger: ATriggerData<{StatName}>{}
+        
+#endregion
+
+
+    public abstract class A{EntityName}: MonoBehaviour, IInjectable<{EntityName}Resource>
+    {
+        [SerializeField] private {EntityName}Resource resource;
+        public {EntityName}Resource Resource => resource;
+        
+        public void SetDependency({EntityName}Resource dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{name} - {GetType().Name}]: dependency is null");
+             return;
+            }
+            resource = dependency;
+            Init();
+        }
+        
+        protected abstract void Init();
+        protected abstract void OnDispose();
+        
+        public void Dispose()
+        {
+           OnDispose();
+        }
+    }
+}
+
+{Body}
