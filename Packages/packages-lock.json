@@ -166,7 +166,7 @@
       "source": "embedded",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "3.2.1",
-        "com.xynok.plugin": "https://github.com/XynokChief/XynokCodex/tree/develop/Packages/XynokPlugin"
+        "com.xynok.plugin": "1.0.0"
       }
     },
     "com.xynok.entity": {
@@ -174,7 +174,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.xynok.convention": "https://github.com/XynokChief/XynokCodex/tree/develop/Packages/XynokConvention"
+        "com.xynok.convention": "git+https://x-oauth-basic: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@github.com/XynokChief/XynokCodex?path=Packages/XynokConvention"
       }
     },
     "com.xynok.plugin": {
