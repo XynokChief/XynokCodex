@@ -8,7 +8,7 @@
   "changelogUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
   "licensesUrl": "",
   "dependencies": {
-    "com.xynok.convention": "git+https://x-oauth-basic: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@github.com/XynokChief/XynokCodex?path=Packages/XynokConvention"
+    "com.xynok.convention": "1.0.0"
   },
   "author": {
     "name": "HoangCuongZk1",
