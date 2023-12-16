@@ -165,7 +165,16 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1"
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.xynok.plugin": "https://github.com/XynokChief/XynokCodex/tree/develop/Packages/XynokPlugin"
+      }
+    },
+    "com.xynok.entity": {
+      "version": "file:XynokEntity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.xynok.convention": "https://github.com/XynokChief/XynokCodex/tree/develop/Packages/XynokConvention"
       }
     },
     "com.xynok.plugin": {

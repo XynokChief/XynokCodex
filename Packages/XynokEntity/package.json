@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.entity",
+  "version": "1.0.0",
+  "displayName": "Xynok Entity",
+  "description": "Bao gồm những qui ước cho việc triển khai một đối tượng, thực thể.",
+  "unity": "2022.3",
+  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
+  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
+  "licensesUrl": "",
+  "dependencies": {
+    "com.xynok.convention": "git+https://x-oauth-basic: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@github.com/XynokChief/XynokCodex?path=Packages/XynokConvention#develop"
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}
