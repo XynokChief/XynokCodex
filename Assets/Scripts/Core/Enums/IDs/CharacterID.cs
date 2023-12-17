@@ -1,6 +1,7 @@
-﻿using XynokSourceGen;
+﻿using Core.Enums.Data;
+using XynokSourceGen;
 
-namespace Core
+namespace Core.Enums.IDs
 {
     [EntityMaker(typeof(CharacterAbilityType), typeof(CharacterStatType), typeof(CharacterStateType),
         typeof(CharacterTriggerType))]
@@ -13,9 +14,7 @@ namespace Core
     {
     }
 
-    public enum CharacterStatType
-    {
-    }
+ 
 
     public enum CharacterStateType
     {

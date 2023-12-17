@@ -12,6 +12,7 @@ namespace XynokConvention.Data.Binding
         private T1 key;
 
         private int _hashKey;
+        public T1 Key => key;
 
         public int HashKey
         {
@@ -35,7 +36,5 @@ namespace XynokConvention.Data.Binding
         protected APairData(T2 baseValue) : base(baseValue)
         {
         }
-
-       
     }
 }

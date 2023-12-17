@@ -13,6 +13,7 @@ namespace XynokSourceGenerator.Runtime.Entity
 
         // replacements
         public string EntityName = "";
+        public string EntityEnumName = "";
         public string AbilityName = "";
         public string StatName = "";
         public string StateName = "";
@@ -28,6 +29,7 @@ namespace XynokSourceGenerator.Runtime.Entity
         protected override void OnInit()
         {
             EntityName = FilterName(EntitySymbol.Name);
+            EntityEnumName = EntitySymbol.Name;
             AbilityName = AbilitySymbol.Name;
             StatName = StatSymbol.Name;
             StateName = StateSymbol.Name;

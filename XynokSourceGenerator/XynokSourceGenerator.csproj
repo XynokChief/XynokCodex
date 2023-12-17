@@ -41,7 +41,7 @@
       <CSFile Include="*.cs" Exclude="XynokSourceGenerator\**\*.cs" />
       <DataFiles Include="$(ProjectDir)$(OutDir)*.dll" />
     </ItemGroup>
-    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)../Packages/XynokSourceGenerator/" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(DataFiles)" DestinationFolder="../Packages/XynokSourceGenerator/" SkipUnchangedFiles="true" />
   </Target>
 
 </Project>

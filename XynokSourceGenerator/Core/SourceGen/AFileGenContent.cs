@@ -11,7 +11,7 @@ namespace XynokSourceGenerator.Core.SourceGen
         protected abstract void OnInit();
         public string HintName(bool hasHash = true) => GetHintName(hasHash);
 
-        private bool _isInited = false;
+        private bool _isInited;
 
         /// <summary>
         /// must use generic because of the template cannot be cast to printer
@@ -42,8 +42,7 @@ namespace XynokSourceGenerator.Core.SourceGen
             if (!hasHash) return $"{source}{suffix}";
 
             var hash = $"{source.GetHashCode():X}";
-            ;
-
+            
             return $"{source}_{hash}{suffix}";
         }
 
