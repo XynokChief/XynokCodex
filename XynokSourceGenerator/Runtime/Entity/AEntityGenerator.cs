@@ -6,7 +6,7 @@ using XynokSourceGenerator.Utils.Extensions;
 namespace XynokSourceGenerator.Runtime.Entity
 {
     [Generator]
-    public class AEntityMonoGenerator : ASourceGen<EntityMakerAttribute, AEntityMonoFileGen>
+    public class AEntityGenerator : ASourceGen<EntityMakerAttribute, AEntityFileGen>
     {
         protected override void Execute(GeneratorExecutionContext context,
             AttributeSyntaxReceiver<EntityMakerAttribute> syntaxReceiver)
@@ -27,7 +27,7 @@ namespace XynokSourceGenerator.Runtime.Entity
                 var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
                 var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
 
-                var fileGen = new AEntityMonoFileGen
+                var fileGen = new AEntityFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,

@@ -2,7 +2,7 @@
 
 namespace Runtime
 {
-    public class Batman: ACharacter
+    public class Batman: ACharacterMono
     {
         protected override void Init()
         {

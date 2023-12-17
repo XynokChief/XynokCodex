@@ -4,9 +4,12 @@ using XynokSourceGenerator.Core.SourceGen;
 
 namespace XynokSourceGenerator.Runtime.Entity
 {
-    public class AEntityMonoFileGen : AFileGenContent
+    /// <summary>
+    /// tạo ra entity mono và class thuần
+    /// </summary>
+    public class AEntityFileGen : AFileGenContent
     {
-        protected override string FileName => $"{EntityName}_EntityMono";
+        protected override string FileName => $"{EntityName}_Entity";
         protected override string TemplatePath => TxtPath.AENTITY_MONO;
 
         private readonly string[] _suffixs = new[] { "ID", "IDs", "Id", "Ids", "Type", "Group", "Collection" };
