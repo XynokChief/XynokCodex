@@ -5,6 +5,15 @@ using System.Linq;
 using XynokConvention.APIs;
 using XynokConvention.Data.Binding;
 
+/*
+------------------------------------ KEYWORDS ------------------------------------
+EntityName: {EntityName}
+EntityEnumName: {EntityEnumName}
+StatName: {StatName}
+StateName: {StateName}
+TriggerName: {TriggerName}
+*/
+
 namespace XynokSourceGenerator.Entities
 {
 

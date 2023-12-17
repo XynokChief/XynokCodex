@@ -14,14 +14,12 @@ namespace XynokSourceGenerator.Runtime.Entity
         // replacements
         public string EntityName = "";
         public string EntityEnumName = "";
-        public string AbilityName = "";
         public string StatName = "";
         public string StateName = "";
         public string TriggerName = "";
 
         // data
         public ISymbol EntitySymbol;
-        public ISymbol AbilitySymbol;
         public ISymbol StatSymbol;
         public ISymbol StateSymbol;
         public ISymbol TriggerSymbol;
@@ -30,7 +28,6 @@ namespace XynokSourceGenerator.Runtime.Entity
         {
             EntityName = FilterName(EntitySymbol.Name);
             EntityEnumName = EntitySymbol.Name;
-            AbilityName = AbilitySymbol.Name;
             StatName = StatSymbol.Name;
             StateName = StateSymbol.Name;
             TriggerName = TriggerSymbol.Name;
@@ -41,7 +38,6 @@ namespace XynokSourceGenerator.Runtime.Entity
         void Scopes()
         {
             AppendScope(EntitySymbol.ContainingNamespace.ToString());
-            AppendScope(AbilitySymbol.ContainingNamespace.ToString());
             AppendScope(StatSymbol.ContainingNamespace.ToString());
             AppendScope(StateSymbol.ContainingNamespace.ToString());
             AppendScope(TriggerSymbol.ContainingNamespace.ToString());

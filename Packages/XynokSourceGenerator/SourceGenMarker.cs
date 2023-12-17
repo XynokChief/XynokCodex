@@ -1,7 +1,7 @@
 
 using System;
 
-namespace XynokSourceGen
+namespace XynokSourceGenerator
 {
     public class SourceGenMarker
     {
@@ -26,14 +26,12 @@ namespace XynokSourceGen
     [AttributeUsage(AttributeTargets.Enum)]
     public class EntityMakerAttribute : Attribute
     {
-        public Type abilityGroup;
         public Type statGroup;
         public Type stateGroup;
         public Type triggerGroup;
 
-        public EntityMakerAttribute(Type abilityGroup, Type statGroup, Type stateGroup, Type triggerGroup)
+        public EntityMakerAttribute( Type statGroup, Type stateGroup, Type triggerGroup)
         {
-            this.abilityGroup = abilityGroup;
             this.statGroup = statGroup;
             this.stateGroup = stateGroup;
             this.triggerGroup = triggerGroup;

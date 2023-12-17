@@ -1,4 +1,5 @@
 ﻿using XynokSourceGenerator.Utils;
+using XynokSourceGenerator.Utils.Extensions;
 
 namespace XynokSourceGenerator.Core.SourceGen
 {
@@ -41,7 +42,7 @@ namespace XynokSourceGenerator.Core.SourceGen
 
             if (!hasHash) return $"{source}{suffix}";
 
-            var hash = $"{source.GetHashCode():X}";
+            var hash = $"{source.GetPersistentHashString()}";
             
             return $"{source}_{hash}{suffix}";
         }

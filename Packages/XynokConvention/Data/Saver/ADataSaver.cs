@@ -12,7 +12,7 @@ namespace XynokConvention.Data.Saver
     /// <typeparam name="T">data for saving</typeparam>
     public abstract class ADataSaver<T> : ISaveAble
     {
-        [SerializeField] protected bool enableLogTest;
+        [SerializeField] private bool enableLogTest;
         [NonSerialized] protected T data;
         public abstract string SaveKey { get; }
         protected virtual JsonSerializerSettings JsonSerializerSettings => null;

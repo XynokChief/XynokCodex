@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Microsoft.CodeAnalysis;
-using XynokSourceGen;
 using XynokSourceGenerator.Core.SourceGen;
 using XynokSourceGenerator.Utils.Extensions;
 
@@ -24,15 +23,13 @@ namespace XynokSourceGenerator.Runtime.Entity
 
                 // get args from attribute
                 var entitySymbol = context.Compilation.GetSymbolsWithName(symbol.Name).First();
-                var abilitySymbol = context.Compilation.GetSymbolsWithName(argumentTypes[0]).First();
-                var statSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
-                var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
-                var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[3]).First();
+                var statSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[0]).First();
+                var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
+                var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
 
                 var fileGen = new AEntityMonoFileGen
                 {
                     EntitySymbol = entitySymbol,
-                    AbilitySymbol = abilitySymbol,
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol

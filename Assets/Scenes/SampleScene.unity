@@ -168,10 +168,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resource:
+    ResourceId: 0
     Stats:
     - key: 0
-    States: []
-    Triggers: []
+    States:
+    - key: 0
+    Triggers:
+    - key: 0
     Abilities: []
   references:
     version: 2
