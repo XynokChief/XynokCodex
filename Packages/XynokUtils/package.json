@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.utils",
+  "version": "1.0.0",
+  "displayName": "Xynok Utils",
+  "description": "Bao gồm những hàm, phương thức tiện ích.",
+  "unity": "2022.3",
+  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Utils-275ddac9f04c444aa8bde33903485c82",
+  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Utils-275ddac9f04c444aa8bde33903485c82",
+  "licensesUrl": "",
+  "dependencies": {
+   
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}

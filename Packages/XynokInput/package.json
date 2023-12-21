@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.input",
+  "version": "1.0.0",
+  "displayName": "Xynok Input",
+  "description": "Chịu trách nhiệm quản lý API gọi tới các Input.",
+  "unity": "2022.3",
+  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Input-61b8bf8393f24fd5a761e562e6501f8c",
+  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Input-61b8bf8393f24fd5a761e562e6501f8c",
+  "licensesUrl": "",
+  "dependencies": {
+    "com.unity.inputsystem": "1.6.3"
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}

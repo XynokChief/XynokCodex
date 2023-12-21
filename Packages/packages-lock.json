@@ -48,6 +48,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -180,8 +189,28 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.xynok.input": {
+      "version": "file:XynokInput",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.inputsystem": "1.6.3"
+      }
+    },
     "com.xynok.plugin": {
       "version": "file:XynokPlugin",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.t4": {
+      "version": "file:T4Template",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.utils": {
+      "version": "file:XynokUtils",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
