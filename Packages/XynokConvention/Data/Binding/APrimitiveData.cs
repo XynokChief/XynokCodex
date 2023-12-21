@@ -1,5 +1,6 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using XynokConvention.APIs;
 
 namespace XynokConvention.Data.Binding
@@ -11,16 +12,15 @@ namespace XynokConvention.Data.Binding
     [Serializable]
     public class APrimitiveData<T> : IBindableDeeper<T>
     {
-        private T _baseValue;
-        protected T lastValue;
-        protected T currentValue;
+     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T baseValue;
+     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T lastValue;
+     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T currentValue;
 
-        [ShowInInspector] [HorizontalGroup] public T BaseValue => _baseValue;
+         public T BaseValue => baseValue;
 
-        [ShowInInspector] [HorizontalGroup] public T LastValue => lastValue;
+         public T LastValue => lastValue;
 
-        [ShowInInspector]
-        [HorizontalGroup]
+        [ShowInInspector][HorizontalGroup][HideLabel]
         public virtual T Value
         {
             get => currentValue;
@@ -35,21 +35,21 @@ namespace XynokConvention.Data.Binding
 
         public APrimitiveData()
         {
-            _baseValue = default;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            baseValue = default;
+            lastValue = baseValue;
+            currentValue = baseValue;
         }
 
         public APrimitiveData(T baseValue)
         {
-            _baseValue = baseValue;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            this.baseValue = baseValue;
+            lastValue = this.baseValue;
+            currentValue = this.baseValue;
         }
 
         public APrimitiveData(T baseValue, T lastValue, T currentValue)
         {
-            _baseValue = baseValue;
+            this.baseValue = baseValue;
             this.lastValue = lastValue;
             this.currentValue = currentValue;
         }
@@ -58,12 +58,12 @@ namespace XynokConvention.Data.Binding
         public event Action<T, T, T> OnDeepChanged;
 
 
-        [Button]
+        [FoldoutGroup(ConventionKey.SourceBase)][Button]
         public void SetBaseValue(T value, bool emmitEvent = true)
         {
-            _baseValue = value;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            baseValue = value;
+            lastValue = baseValue;
+            currentValue = baseValue;
             if (emmitEvent) EmitEventDeepChanged();
             if (emmitEvent) EmitEventChanged();
         }
@@ -85,7 +85,7 @@ namespace XynokConvention.Data.Binding
 
         protected virtual void EmitEventDeepChanged()
         {
-            OnDeepChanged?.Invoke(_baseValue, lastValue, currentValue);
+            OnDeepChanged?.Invoke(baseValue, lastValue, currentValue);
         }
     }
 
@@ -236,57 +236,57 @@ namespace XynokConvention.Data.Binding
     }
 
     [Serializable]
-    public class Vector2Data : APrimitiveData<UnityEngine.Vector2>
+    public class Vector2Data : APrimitiveData<Vector2>
     {
-        public Vector2Data(UnityEngine.Vector2 baseValue) : base(baseValue)
+        public Vector2Data(Vector2 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class Vector3Data : APrimitiveData<UnityEngine.Vector3>
+    public class Vector3Data : APrimitiveData<Vector3>
     {
-        public Vector3Data(UnityEngine.Vector3 baseValue) : base(baseValue)
+        public Vector3Data(Vector3 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class Vector4Data : APrimitiveData<UnityEngine.Vector4>
+    public class Vector4Data : APrimitiveData<Vector4>
     {
-        public Vector4Data(UnityEngine.Vector4 baseValue) : base(baseValue)
+        public Vector4Data(Vector4 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class QuaternionData : APrimitiveData<UnityEngine.Quaternion>
+    public class QuaternionData : APrimitiveData<Quaternion>
     {
-        public QuaternionData(UnityEngine.Quaternion baseValue) : base(baseValue)
+        public QuaternionData(Quaternion baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class ColorData : APrimitiveData<UnityEngine.Color>
+    public class ColorData : APrimitiveData<Color>
     {
-        public ColorData(UnityEngine.Color baseValue) : base(baseValue)
+        public ColorData(Color baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class BoundsData : APrimitiveData<UnityEngine.Bounds>
+    public class BoundsData : APrimitiveData<Bounds>
     {
-        public BoundsData(UnityEngine.Bounds baseValue) : base(baseValue)
+        public BoundsData(Bounds baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class RectData : APrimitiveData<UnityEngine.Rect>
+    public class RectData : APrimitiveData<Rect>
     {
-        public RectData(UnityEngine.Rect baseValue) : base(baseValue)
+        public RectData(Rect baseValue) : base(baseValue)
         {
         }
     }

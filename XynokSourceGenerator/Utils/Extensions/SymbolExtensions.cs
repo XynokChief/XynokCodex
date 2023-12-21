@@ -1,19 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 
 namespace XynokSourceGenerator.Utils.Extensions
 {
     public static class SymbolExtensions
     {
-        public static string GetScope( ISymbol symbol)
-        {
-            string typeScope = symbol.ContainingType?.ToString();
-            string namespaceScope = symbol.ContainingNamespace?.ToString();
-            string result = typeScope ?? (namespaceScope ?? "");
+     
 
-            return result;
+       public static bool IsEnum(this ISymbol symbol)
+        {
+            return symbol.Kind == SymbolKind.NamedType && ((INamedTypeSymbol)symbol).TypeKind == TypeKind.Enum;
         }
 
+        public static IEnumerable<string> GetEnumMembers(this INamedTypeSymbol enumSymbol)
+        {
+            return enumSymbol.GetMembers().Where(member => member.Kind == SymbolKind.Field)
+                .Select(member => member.Name);
+        }
+        
         public static string[] GetAttributeArgumentTypes(this ISymbol symbol, string attributeName)
         {
             string compare = attributeName;

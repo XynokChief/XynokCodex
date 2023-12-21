@@ -1,0 +1,69 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.APIs;
+
+/*
+------------------------------------ KEYWORDS ------------------------------------
+EntityName: {EntityName}
+EntityEnumName: {EntityEnumName}
+StatName: {StatName}
+StateName: {StateName}
+TriggerName: {TriggerName}
+*/
+
+namespace XynokSourceGenerator.Entities
+{
+    /// <summary>
+    /// {EntityName} base class ability
+    /// </summary>
+    [Serializable]
+    public abstract class A{EntityName}Ability: I{EntityName}Ability
+    {
+        protected I{EntityName} owner;
+        [SerializeReference] protected IValidate[] validations = Array.Empty<IValidate>();
+        
+    
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            owner = dependency;
+            Init();
+        }
+        
+        public void Execute()
+        {
+            if(!IsValidated()) return;
+            OnExecute();
+        }
+        
+        bool IsValidated()
+        {
+            if(validations == null) return true;
+            bool isValidated = true;
+            
+            foreach (var validation in validations)
+            {
+                if(validation == null) continue;
+                if(!validation.IsValid()) isValidated = false;
+            }
+            
+            return isValidated;
+        }
+        
+        protected abstract void Init();
+        protected abstract void OnExecute();
+        public abstract void Reset();
+        public abstract void Dispose();
+      
+    }
+
+}
+
+{Body}

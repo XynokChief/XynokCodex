@@ -12,7 +12,6 @@ namespace XynokSourceGenerator.Runtime.Entity
         protected override string FileName => $"{EntityName}_Entity";
         protected override string TemplatePath => TxtPath.AENTITY;
 
-        private readonly string[] _suffixs = new[] { "ID", "IDs", "Id", "Ids", "Type", "Group", "Collection" };
 
         // replacements
         public string EntityName = "";
@@ -41,20 +40,7 @@ namespace XynokSourceGenerator.Runtime.Entity
 
         protected virtual void Scopes()
         {
-            AppendScope(EntitySymbol.ContainingNamespace.ToString());
-            AppendScope(StatSymbol.ContainingNamespace.ToString());
-            AppendScope(StateSymbol.ContainingNamespace.ToString());
-            AppendScope(TriggerSymbol.ContainingNamespace.ToString());
-        }
-
-        string FilterName(string name)
-        {
-            foreach (var suffix in _suffixs)
-            {
-                name = name.Replace(suffix, "");
-            }
-
-            return name;
+           
         }
     }
 }

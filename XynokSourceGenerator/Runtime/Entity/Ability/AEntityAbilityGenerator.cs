@@ -3,22 +3,21 @@ using Microsoft.CodeAnalysis;
 using XynokSourceGenerator.Core.SourceGen;
 using XynokSourceGenerator.Utils.Extensions;
 
-namespace XynokSourceGenerator.Runtime.Entity
+namespace XynokSourceGenerator.Runtime.Entity.Ability
 {
     [Generator]
-    public class AEntityGenerator : ASourceGen<EntityMakerAttribute, AEntityFileGen>
+    public class AEntityAbilityGenerator : ASourceGen<EntityAbilityMakerAttribute, AEntityAbilityFileGen>
     {
         protected override void Execute(GeneratorExecutionContext context,
-            AttributeSyntaxReceiver<EntityMakerAttribute> syntaxReceiver)
+            AttributeSyntaxReceiver<EntityAbilityMakerAttribute> syntaxReceiver)
         {
             foreach (var enumDeclarationSyntax in syntaxReceiver.Enums)
             {
                 var model = context.Compilation.GetSemanticModel(enumDeclarationSyntax.SyntaxTree);
                 var symbol = model.GetDeclaredSymbol(enumDeclarationSyntax);
-
                 if (symbol == null) continue;
 
-                var argumentTypes = symbol.GetAttributeArgumentTypes(nameof(EntityMakerAttribute));
+                var argumentTypes = symbol.GetAttributeArgumentTypes(nameof(EntityAbilityMakerAttribute));
                 if (argumentTypes.Length < 1) continue;
 
                 // get args from attribute
@@ -26,10 +25,16 @@ namespace XynokSourceGenerator.Runtime.Entity
                 var statSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[0]).First();
                 var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
                 var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
-                
-                
 
-                var entityFileGen = new AEntityFileGen
+
+                var abilityFileGen = new AEntityAbilityFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                var stateFileGen = new EntityStateFlagFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,
@@ -37,27 +42,18 @@ namespace XynokSourceGenerator.Runtime.Entity
                     TriggerSymbol = triggerSymbol
                 };
                 
-                var dataFileGen = new EntityDataFileGen
+                var animatorBinderFileGen = new EntityAnimatorBinderFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+            
+                GenCode(context, abilityFileGen);
+                GenCode(context, stateFileGen);
+                GenCode(context, animatorBinderFileGen);
                 
-                var apiFileGen = new EntityApiFileGen
-                {
-                    EntitySymbol = entitySymbol,
-                    StatSymbol = statSymbol,
-                    StateSymbol = stateSymbol,
-                    TriggerSymbol = triggerSymbol
-                };
-                
-              
-                
-                GenCode(context, entityFileGen);
-                GenCode(context, dataFileGen);
-                GenCode(context, apiFileGen);
             }
         }
     }

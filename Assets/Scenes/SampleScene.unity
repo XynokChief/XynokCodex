@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 296017944}
   - component: {fileID: 296017945}
+  - component: {fileID: 296017946}
   m_Layer: 0
   m_Name: batman
   m_TagString: Untagged
@@ -167,21 +168,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61851dd55dba4529a55bd1196de922b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState:
+    baseValue: 0
+    lastValue: 0
+    currentValue: 0
   resource:
     ResourceId: 0
     Stats:
-    - key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      key: 2
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 3
+      key: 3
     States:
-    - key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 1
+      key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      key: 1
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      key: 2
     Triggers:
-    - key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      key: 1
     Abilities:
-    - rid: -2
+    - rid: 6700482620004237318
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 6700482620004237318
+      type: {class: CharacterAnimatorBinder, ns: XynokSourceGenerator.Entities, asm: Core}
+      data:
+        ownerObj: {fileID: 296017942}
+        animator: {fileID: 296017946}
+--- !u!95 &296017946
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296017942}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bff20bc346193d48a0bd52992e69f03, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0

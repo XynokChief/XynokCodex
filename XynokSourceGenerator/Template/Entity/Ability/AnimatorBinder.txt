@@ -1,0 +1,188 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokUtils;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.Data;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities
+{
+    
+    /// <summary>
+    /// Animator binder for {EntityName}. Tự động Execute khi {EntityName} được khởi tạo.
+    /// </summary>
+    [Serializable]
+    public class {EntityName}AnimatorBinder: I{EntityName}Ability
+    {
+        protected I{EntityName} owner;
+        [SerializeField] private GameObject ownerObj;
+        [SerializeField] private Animator animator;
+
+        private {EntityName}Stat[] Stats => owner.Resource.Stats;
+        private {EntityName}State[] States => owner.Resource.States;
+        private {EntityName}Trigger[] Triggers => owner.Resource.Triggers;
+
+        private Action _onDispose;
+
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        public void Execute()
+        {
+            if(_onDispose!= default)  Dispose();
+             Bind();
+        }
+
+        public void Reset()
+        {
+            Dispose();
+        }     
+        
+        
+        void Init()
+        {
+            bool isParamValid = CheckParamIsTheSameAsData();
+            if(!isParamValid)
+            {
+                Debug.LogError($"[{GetType().Name} - {owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
+                return;
+            }
+            Execute();
+        }
+        
+        
+        void Bind()
+        {
+            // stats
+            for (int i = 0; i < Stats.Length; i++)
+            {
+                int index = i;
+                var statData = Stats[index];
+                void UpdateAnimParam(float value)
+                {
+                    animator.SetFloat(statData.HashKey, value);
+                }
+
+                UpdateAnimParam(statData.Value);
+                statData.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    statData.OnChanged -= UpdateAnimParam;
+                };
+            }
+
+            // states
+            for (int i = 0; i < States.Length; i++)
+            {
+                int index = i;
+                var stateData = States[index];
+                var stateFlag = Enum.Parse<{EntityName}StateFlag>(stateData.Key.ToString());
+                void UpdateAnimParam(bool value)
+                {
+                    animator.SetBool(stateData.HashKey, value);
+                   if(value) owner.CurrentState.Value |= stateFlag;
+                   else owner.CurrentState.Value &= ~stateFlag;
+                }
+
+                UpdateAnimParam(stateData.Value);
+                stateData.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    stateData.OnChanged -= UpdateAnimParam;
+                };
+            }
+
+            // triggers
+            for (int i = 0; i < Triggers.Length; i++)
+            {
+                int index = i;
+                var data = Triggers[index];
+                void UpdateAnimParam(bool value)
+                {
+                    if (value)
+                        animator.SetTrigger(data.HashKey);
+                }
+
+                UpdateAnimParam(data.Value);
+                data.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    data.OnChanged -= UpdateAnimParam;
+                };
+            } 
+        }
+        
+        [Button, GUIColor(179 / 255f, 66 / 255f, 245 / 255f)]
+        void InitParamsForAnimator()
+        {
+        #if !UNITY_EDITOR
+            Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: this method only works in editor mode!");
+        #endif
+
+        #if UNITY_EDITOR
+            if(!ownerObj)
+            {
+                Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: ownerObj is not null, this method only works when ownerObj is not null!");
+                return;
+            }
+            if(owner == null) owner = ownerObj.GetComponent<I{EntityName}>();
+            XynokUtility.AnimatorUtils.ClearAllParams(animator);
+            
+            var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+            
+            for (int i = 0; i < Stats.Length; i++)
+                animatorController.AddParameter(Stats[i].Key.ToString(),
+                    AnimatorControllerParameterType.Float);
+
+            for (int i = 0; i < States.Length; i++)
+                animatorController.AddParameter(States[i].Key.ToString(),
+                    AnimatorControllerParameterType.Bool);
+
+            for (int i = 0; i < Triggers.Length; i++)
+                animatorController.AddParameter(Triggers[i].Key.ToString(),
+                    AnimatorControllerParameterType.Trigger);
+        #endif
+        }
+        
+        bool CheckParamIsTheSameAsData()
+        {
+            foreach(var stat in Stats)
+            {
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, stat.Key.ToString(), AnimatorControllerParameterType.Float);
+                if(!exist) return false;
+            }
+            
+            foreach(var state in States)
+            {
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, state.Key.ToString(), AnimatorControllerParameterType.Bool);
+                if(!exist) return false;
+            }
+            
+            foreach(var trigger in Triggers)
+            {
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, trigger.Key.ToString(), AnimatorControllerParameterType.Trigger);
+                if(!exist) return false;
+            }
+            
+            return true;
+        }
+    }
+    {Body}
+}
+

@@ -1,0 +1,15 @@
+{Scope}
+using System;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+
+        [Flags]
+        public enum {EntityName}StateFlag
+        {
+        {Body}
+        }
+        
+
+}
+

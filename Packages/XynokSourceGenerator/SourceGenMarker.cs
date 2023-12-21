@@ -42,6 +42,16 @@ namespace XynokSourceGenerator
     [AttributeUsage(AttributeTargets.Enum)]
     public class EntityAbilityMakerAttribute : Attribute
     {
+        public Type statGroup;
+        public Type stateGroup;
+        public Type triggerGroup;
+
+        public EntityAbilityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup)
+        {
+            this.statGroup = statGroup;
+            this.stateGroup = stateGroup;
+            this.triggerGroup = triggerGroup;
+        }
     }
 
 

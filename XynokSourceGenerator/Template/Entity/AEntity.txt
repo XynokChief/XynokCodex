@@ -1,7 +1,6 @@
 {Scope}
 using System;
 using UnityEngine;
-using System.Linq;
 using XynokSourceGenerator.Entities.Data;
 using XynokSourceGenerator.Entities.APIs;
 
@@ -23,7 +22,10 @@ namespace XynokSourceGenerator.Entities
     /// </summary>
     public abstract class A{EntityName}Mono: MonoBehaviour, I{EntityName}
     {
+        [SerializeField] private {EntityName}CurrentState currentState;
         [SerializeField] private {EntityName}Resource resource;
+        
+        public {EntityName}CurrentState CurrentState => currentState;
         public {EntityName}Resource Resource => resource;
         private Action _disposeAbilities;
         
@@ -69,8 +71,12 @@ namespace XynokSourceGenerator.Entities
     [Serializable]
     public abstract class A{EntityName}: I{EntityName}
     {
+        [SerializeField] private {EntityName}CurrentState currentState;
         [SerializeField] private {EntityName}Resource resource;
+        
+        public {EntityName}CurrentState CurrentState => currentState;
         public {EntityName}Resource Resource => resource;
+        
         private Action _disposeAbilities;
         
         public void SetDependency({EntityName}Resource dependency)

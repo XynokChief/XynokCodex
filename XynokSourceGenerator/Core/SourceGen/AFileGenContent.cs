@@ -1,4 +1,5 @@
-﻿using XynokSourceGenerator.Utils;
+﻿using XynokSourceGenerator.Core.Const;
+using XynokSourceGenerator.Utils;
 using XynokSourceGenerator.Utils.Extensions;
 
 namespace XynokSourceGenerator.Core.SourceGen
@@ -26,6 +27,15 @@ namespace XynokSourceGenerator.Core.SourceGen
             return content;
         }
 
+        protected  string FilterName(string name)
+        {
+            foreach (var suffix in Keyword.groupSuffixs)
+            {
+                name = name.Replace(suffix, "");
+            }
+
+            return name;
+        }
         void Init()
         {
             if (_isInited) return;

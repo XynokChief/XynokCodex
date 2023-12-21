@@ -1,9 +1,10 @@
-﻿
-namespace Core.Enums.Data
+﻿namespace Core.Enums.Data
 {
-    
-public enum CharacterStatType
-{
-    None=0,
-}
+    public enum CharacterStatType
+    {
+        None = 0,
+        Hp,
+        MaxHp,
+        Mana
+    }
 }
