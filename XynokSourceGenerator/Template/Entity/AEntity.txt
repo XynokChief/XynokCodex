@@ -2,8 +2,8 @@
 using System;
 using UnityEngine;
 using System.Linq;
-using XynokConvention.APIs;
-using XynokConvention.Data.Binding;
+using XynokSourceGenerator.Entities.Data;
+using XynokSourceGenerator.Entities.APIs;
 
 /*
 ------------------------------------ KEYWORDS ------------------------------------
@@ -17,65 +17,6 @@ TriggerName: {TriggerName}
 namespace XynokSourceGenerator.Entities
 {
 
-#region Interface
-        public interface I{EntityName}: IInjectable<{EntityName}Resource>
-        {
-            {EntityName}Resource Resource { get; }
-        }
-        
-        public interface I{EntityName}Ability: IInjectable<I{EntityName}>
-        {
-        }
-#endregion
-
-#region Data
-
-
-        [Serializable]
-        public class {EntityName}Stat: APairData<{StatName}, float>{}
-        
-        [Serializable]
-        public class {EntityName}State: APairData<{StateName}, bool>{}
-        
-        [Serializable]
-        public class {EntityName}Trigger: ATriggerData<{TriggerName}>{}
-        
-
-        /// <summary>
-        /// {EntityName}Resource is a serializable class that contains all the data of {EntityName}.
-        /// <b>Important Note:</b> Use for Runtime only.
-        /// </summary>
-        [Serializable]
-        public class {EntityName}Resource
-        {
-            public {EntityEnumName} ResourceId;
-            public {EntityName}Stat[] Stats;
-            public {EntityName}State[] States;
-            public {EntityName}Trigger[] Triggers;
-            [SerializeReference] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
-            
-            
-            public {EntityName}Stat GetStat({StatName} statType) => Stats.FirstOrDefault(s => s.Key == statType);
-            public {EntityName}State GetState({StateName} stateType) => States.FirstOrDefault(s => s.Key == stateType);
-            public {EntityName}Trigger GetTrigger({TriggerName} triggerType) => Triggers.FirstOrDefault(s => s.Key == triggerType);
-            
-            public T GetAbility<T>() where T: I{EntityName}Ability
-            {
-                foreach (var ability in Abilities)
-                {
-                    if(ability is T t) return t;
-                }
-                Debug.LogError($"[{nameof({EntityName}Resource)}]: Ability {typeof(T).Name} not found");
-                return default;
-            }
-        }
-        
-
-        
-#endregion
-
-
-#region {EntityName} class base
 
     /// <summary>
     /// {EntityName} Gameobject
@@ -166,7 +107,6 @@ namespace XynokSourceGenerator.Entities
         }
     }
 
-#endregion
 }
 
 {Body}

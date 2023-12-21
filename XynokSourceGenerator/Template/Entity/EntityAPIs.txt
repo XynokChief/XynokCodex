@@ -1,0 +1,21 @@
+{Scope}
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+
+namespace XynokSourceGenerator.Entities.APIs
+{
+
+
+        public interface I{EntityName}: IInjectable<{EntityName}Resource>
+        {
+            {EntityName}Resource Resource { get; }
+        }
+        
+        public interface I{EntityName}Ability: IInjectable<I{EntityName}>
+        {
+        }
+
+}
+
+{Body}

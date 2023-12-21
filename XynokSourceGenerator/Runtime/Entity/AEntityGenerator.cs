@@ -27,7 +27,23 @@ namespace XynokSourceGenerator.Runtime.Entity
                 var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
                 var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
 
-                var fileGen = new AEntityFileGen
+                var entityFileGen = new AEntityFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                
+                var dataFileGen = new EntityDataFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                
+                var apiFileGen = new EntityApiFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,
@@ -35,7 +51,9 @@ namespace XynokSourceGenerator.Runtime.Entity
                     TriggerSymbol = triggerSymbol
                 };
 
-                GenCode(context, fileGen);
+                GenCode(context, entityFileGen);
+                GenCode(context, dataFileGen);
+                GenCode(context, apiFileGen);
             }
         }
     }

@@ -10,7 +10,7 @@ namespace XynokSourceGenerator.Runtime.Entity
     public class AEntityFileGen : AFileGenContent
     {
         protected override string FileName => $"{EntityName}_Entity";
-        protected override string TemplatePath => TxtPath.AENTITY_MONO;
+        protected override string TemplatePath => TxtPath.AENTITY;
 
         private readonly string[] _suffixs = new[] { "ID", "IDs", "Id", "Ids", "Type", "Group", "Collection" };
 
@@ -38,7 +38,8 @@ namespace XynokSourceGenerator.Runtime.Entity
             Scopes();
         }
 
-        void Scopes()
+
+        protected virtual void Scopes()
         {
             AppendScope(EntitySymbol.ContainingNamespace.ToString());
             AppendScope(StatSymbol.ContainingNamespace.ToString());

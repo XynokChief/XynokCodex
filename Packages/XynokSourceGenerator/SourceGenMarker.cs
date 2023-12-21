@@ -1,4 +1,3 @@
-
 using System;
 
 namespace XynokSourceGenerator
@@ -7,13 +6,12 @@ namespace XynokSourceGenerator
     {
     }
 
+    #region Entity
+
     /// <summary>
     /// use this attribute to mark an enum as a factory for a group of entities (e.g. HeroA, HeroB, etc.)
     /// suffix the enum name with "Id" or "Ids" or "ID" or "IDs"(e.g. EffectIDs, HeroIds, etc.)
     /// </summary>
-    /// <typeparam name="abilityGroup">`abilityGroup` must be an enum.
-    ///abilityGroup is the group of abilities that this entity has (e.g. attack, defend, etc.)
-    /// </typeparam>
     /// <typeparam name="statGroup">`statGroup` must be an enum.
     ///statGroup is the group of stats that this entity has (e.g. health, mana, etc.)
     /// </typeparam>
@@ -30,11 +28,30 @@ namespace XynokSourceGenerator
         public Type stateGroup;
         public Type triggerGroup;
 
-        public EntityMakerAttribute( Type statGroup, Type stateGroup, Type triggerGroup)
+        public EntityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup)
         {
             this.statGroup = statGroup;
             this.stateGroup = stateGroup;
             this.triggerGroup = triggerGroup;
         }
     }
+
+    /// <summary>
+    /// gen sẵn abstract ability cho thực thể
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Enum)]
+    public class EntityAbilityMakerAttribute : Attribute
+    {
+    }
+
+
+    /// <summary>
+    /// sử dụng cho các thực thể nào muốn ability của chúng là dạng Goap
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Enum)]
+    public class EntityAbilityGoapMakerAttribute : Attribute
+    {
+    }
+
+    #endregion
 }
