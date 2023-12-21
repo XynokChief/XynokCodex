@@ -1,17 +1,15 @@
 {Scope}
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using XynokConvention;
+using XynokConvention.Procedural;
+using XynokConvention.Enums;
+using XynokEntity.Enums;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
 
-/*
------------------------------------- KEYWORDS ------------------------------------
-EntityName: {EntityName}
-EntityEnumName: {EntityEnumName}
-StatName: {StatName}
-StateName: {StateName}
-TriggerName: {TriggerName}
-*/
 
 namespace XynokSourceGenerator.Entities
 {
@@ -22,8 +20,10 @@ namespace XynokSourceGenerator.Entities
     public abstract class A{EntityName}Ability: I{EntityName}Ability
     {
         protected I{EntityName} owner;
-        [SerializeReference] protected IValidate[] validations = Array.Empty<IValidate>();
-        
+        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenStateOwnerChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeReference] protected I{EntityName}CurrentStateValidator[] validators = Array.Empty<I{EntityName}CurrentStateValidator>();
+        private bool _canExecute;
+        private Action _onDispose;
     
         public void SetDependency(I{EntityName} dependency)
         {
@@ -34,7 +34,20 @@ namespace XynokSourceGenerator.Entities
              return;
             }
             owner = dependency;
+            InitVaidators();
+            OnStateOwnerChanged(owner.CurrentState.Value);
+            owner.CurrentState.OnChanged += OnStateOwnerChanged;
             Init();
+            TimeCycle.Instance.AddInvoker(Execute);
+        }
+        
+        public void Dispose()
+        {
+            if(owner != null) owner.CurrentState.OnChanged -= OnStateOwnerChanged;
+            TimeCycle.Instance.RemoveInvoker(Execute);
+            _onDispose?.Invoke();
+            _onDispose = default;
+            OnDispose();
         }
         
         public void Execute()
@@ -43,24 +56,46 @@ namespace XynokSourceGenerator.Entities
             OnExecute();
         }
         
+        void InitVaidators()
+        {
+            if(validators == null || validators.Length < 1) return;
+            foreach (var validator in validators)
+            {
+                if(validator == null) continue;
+                validator.SetDependency(owner);
+                _onDispose += validator.Dispose;
+            }
+        }
+
+        void OnStateOwnerChanged({EntityName}StateFlag state)
+        {
+            _canExecute = IsValidatorsValidated();
+        }
+        
         bool IsValidated()
         {
-            if(validations == null) return true;
+            if(executeValidator == AbilityExecuteValidatorType.WhenStateOwnerChanged) return _canExecute;
+            if(executeValidator == AbilityExecuteValidatorType.Always) return IsValidatorsValidated();
+            return true;
+        }
+
+        bool IsValidatorsValidated()
+        {
+            if(validators == null || validators.Length < 1) return true;
             bool isValidated = true;
             
-            foreach (var validation in validations)
+            foreach (var validator in validators)
             {
-                if(validation == null) continue;
-                if(!validation.IsValid()) isValidated = false;
+                if(validator == null) continue;
+                if(!validator.IsValid()) isValidated = false;
             }
-            
             return isValidated;
         }
         
         protected abstract void Init();
         protected abstract void OnExecute();
+        protected abstract void OnDispose();
         public abstract void Reset();
-        public abstract void Dispose();
       
     }
 

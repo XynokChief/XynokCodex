@@ -8,7 +8,7 @@ namespace XynokConvention.Data.Binding
     public class APairData<T1, T2> : APrimitiveData<T2>
         where T1 : Enum
     {
-        [SerializeField] [HorizontalGroup] [HideLabel]
+        [SerializeField] [TableColumnWidth(150, Resizable = false)] [HorizontalGroup(ConventionKey.Key)] [HideLabel]
         private T1 key;
 
         private int _hashKey;

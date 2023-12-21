@@ -1,5 +1,7 @@
 {Scope}
 using System;
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using XynokConvention.Data.Binding;
@@ -18,9 +20,6 @@ namespace XynokSourceGenerator.Entities.Data
         [Serializable]
         public class {EntityName}Trigger: ATriggerData<{TriggerName}>{}
         
-        [Serializable]
-        public class {EntityName}CurrentState: APrimitiveData<{EntityName}StateFlag>{}
-        
 
         /// <summary>
         /// {EntityName}Resource is a serializable class that contains all the data of {EntityName}.
@@ -30,10 +29,11 @@ namespace XynokSourceGenerator.Entities.Data
         public class {EntityName}Resource
         {
             public {EntityEnumName} ResourceId;
-            public {EntityName}Stat[] Stats;
-            public {EntityName}State[] States;
-            public {EntityName}Trigger[] Triggers;
-            [SerializeReference] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
+           [TableList] public {EntityName}Stat[] Stats;
+           [TableList] public {EntityName}State[] States;
+           [TableList] public {EntityName}Trigger[] Triggers;
+           
+           [SerializeReference] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
             
             
             public {EntityName}Stat GetStat({StatName} statType) => Stats.FirstOrDefault(s => s.Key == statType);
@@ -48,6 +48,42 @@ namespace XynokSourceGenerator.Entities.Data
                 }
                 Debug.LogError($"[{nameof({EntityName}Resource)}]: Ability {typeof(T).Name} not found");
                 return default;
+            }
+        }
+        
+        
+        [Serializable]
+        public class {EntityName}CurrentState: APrimitiveData<{EntityName}StateFlag>
+        {
+            private Dictionary<{StateName}, {EntityName}StateFlag> _stateCacheDict = new ();
+            
+            
+            public bool Has({EntityName}StateFlag state) => Value.HasFlag(state);
+            
+            public bool Has({StateName} state)
+            {   
+                Cache(state);
+                return Value.HasFlag(_stateCacheDict[state]);
+            }
+            
+            public void Add({StateName} state)
+            {
+                Cache(state);
+                Value |= _stateCacheDict[state];
+            }
+            
+            public void Remove({StateName} state)
+            {
+                Cache(state);
+                Value &= ~_stateCacheDict[state];
+            }
+            
+            
+            void Cache({StateName} state)
+            {
+                if(_stateCacheDict.ContainsKey(state)) return;
+                
+                _stateCacheDict.Add(state, Enum.Parse<{EntityName}StateFlag>(state.ToString()));
             }
         }
 }

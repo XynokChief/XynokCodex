@@ -1,6 +1,6 @@
 ﻿namespace XynokConvention.APIs
 {
-    public interface IValidate
+    public interface IValidator
     {
         bool IsValid();
     }

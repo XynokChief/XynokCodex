@@ -1,6 +1,6 @@
 ﻿namespace XynokEntity.APIs
 {
-    public interface IEntityAbilityControlAble
+    public interface IControlAble
     {
         /// <summary>
         /// Execute the ability (logic only)

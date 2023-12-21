@@ -49,10 +49,19 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+                
+                var stateValidationFileGen = new EntityCurrentStateValidatorFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
                 GenCode(context, animatorBinderFileGen);
+                GenCode(context, stateValidationFileGen);
                 
             }
         }

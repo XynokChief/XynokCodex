@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using XynokConvention.APIs;
+using XynokConvention.Data.Binding;
+using XynokConvention.Procedural;
 using XynokSourceGenerator.Entities;
+using XynokSourceGenerator.Entities.Data;
 
 namespace Runtime
 {
     [Serializable]
-    public class CanRun : IValidate
+    public class CanRun : IValidator
     {
         public bool biggerThanZero;
 
@@ -19,29 +23,34 @@ namespace Runtime
     [Serializable]
     public class Run : ACharacterAbility
     {
-        public float speed;
-
         protected override void Init()
         {
         }
 
         protected override void OnExecute()
         {
+            Debug.Log($"{owner.Resource.ResourceId} is running");
         }
 
-        public override void Reset()
+        protected override void OnDispose()
         {
         }
 
-        public override void Dispose()
+        public override void Reset()
         {
         }
     }
 
     public class Batman : ACharacterMono
     {
+        private Dictionary<CharacterStateFlag, bool> _stateFlags = new Dictionary<CharacterStateFlag, bool>();
+
+        public BoolData x;
+        public BoolData y;
+
         private void Start()
         {
+            var x = CurrentState.Value.HasFlag(CharacterStateFlag.Idling);
             SetDependency(Resource);
         }
     }

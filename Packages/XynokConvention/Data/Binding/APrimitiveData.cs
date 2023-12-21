@@ -12,20 +12,27 @@ namespace XynokConvention.Data.Binding
     [Serializable]
     public class APrimitiveData<T> : IBindableDeeper<T>
     {
-     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T baseValue;
-     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T lastValue;
-     [FoldoutGroup(ConventionKey.SourceBase)] [SerializeField]  protected T currentValue;
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T baseValue;
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T lastValue;
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T currentValue;
+        [Tooltip("if true, the value will not be set if it is equal to the current value")]
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]protected bool duplicateCheck = true;
 
-         public T BaseValue => baseValue;
 
-         public T LastValue => lastValue;
+        public T BaseValue => baseValue;
 
-        [ShowInInspector][HorizontalGroup][HideLabel]
+        public T LastValue => lastValue;
+
+        [TableColumnWidth(90, Resizable = false)]
+        [ShowInInspector]
+        [HorizontalGroup(ConventionKey.CurrentValue)]
+        [HideLabel]
         public virtual T Value
         {
             get => currentValue;
             set
             {
+                if (duplicateCheck && currentValue.Equals(value)) return;
                 lastValue = currentValue;
                 currentValue = value;
                 EmitEventDeepChanged();
@@ -58,7 +65,9 @@ namespace XynokConvention.Data.Binding
         public event Action<T, T, T> OnDeepChanged;
 
 
-        [FoldoutGroup(ConventionKey.SourceBase)][Button]
+        [TableColumnWidth(60)]
+        [FoldoutGroup(ConventionKey.Settings)]
+        [Button]
         public void SetBaseValue(T value, bool emmitEvent = true)
         {
             baseValue = value;

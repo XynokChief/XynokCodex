@@ -14,6 +14,7 @@ namespace XynokConvention.Data.Binding
 
         public ATriggerData()
         {
+            duplicateCheck = false;
         }
 
         protected ATriggerData(T key, bool baseValue) : base(key, baseValue)

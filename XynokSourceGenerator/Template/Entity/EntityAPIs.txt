@@ -14,9 +14,12 @@ namespace XynokSourceGenerator.Entities.APIs
             {EntityName}Resource Resource { get; }
         }
         
-        public interface I{EntityName}Ability: IInjectable<I{EntityName}>, IEntityAbilityControlAble
+        public interface I{EntityName}Ability: IInjectable<I{EntityName}>, IControlAble
         {
-          
+        }
+
+        public interface I{EntityName}CurrentStateValidator: IValidator, IInjectable<I{EntityName}>
+        {
         }
 
 }

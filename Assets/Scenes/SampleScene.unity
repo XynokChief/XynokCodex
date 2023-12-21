@@ -172,49 +172,80 @@ MonoBehaviour:
     baseValue: 0
     lastValue: 0
     currentValue: 0
+    duplicateCheck: 1
   resource:
     ResourceId: 0
     Stats:
     - baseValue: 0
       lastValue: 0
       currentValue: 0
+      duplicateCheck: 1
       key: 2
     - baseValue: 0
       lastValue: 0
       currentValue: 3
+      duplicateCheck: 1
       key: 3
     States:
     - baseValue: 0
-      lastValue: 0
-      currentValue: 1
+      lastValue: 1
+      currentValue: 0
+      duplicateCheck: 1
       key: 0
     - baseValue: 0
       lastValue: 0
       currentValue: 0
+      duplicateCheck: 1
       key: 1
     - baseValue: 0
       lastValue: 0
       currentValue: 0
+      duplicateCheck: 1
       key: 2
     Triggers:
     - baseValue: 0
       lastValue: 0
       currentValue: 0
+      duplicateCheck: 0
       key: 0
     - baseValue: 0
       lastValue: 0
       currentValue: 0
+      duplicateCheck: 0
       key: 1
     Abilities:
-    - rid: 6700482620004237318
+    - rid: 6700482624031817730
+    - rid: 6700482624031817731
+  x:
+    baseValue: 0
+    lastValue: 1
+    currentValue: 0
+    duplicateCheck: 0
+  y:
+    baseValue: 0
+    lastValue: 0
+    currentValue: 0
+    duplicateCheck: 0
   references:
     version: 2
     RefIds:
-    - rid: 6700482620004237318
+    - rid: 6700482624031817730
       type: {class: CharacterAnimatorBinder, ns: XynokSourceGenerator.Entities, asm: Core}
       data:
         ownerObj: {fileID: 296017942}
         animator: {fileID: 296017946}
+    - rid: 6700482624031817731
+      type: {class: Run, ns: Runtime, asm: Core}
+      data:
+        executeValidator: 1
+        validators:
+        - rid: 6700482624031817732
+    - rid: 6700482624031817732
+      type: {class: CharacterStateValidator, ns: XynokSourceGenerator.Entities, asm: Core}
+      data:
+        validator: 0
+        condition: 1
+        conditions: 
 --- !u!95 &296017946
 Animator:
   serializedVersion: 5
@@ -550,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1789635361}
   - component: {fileID: 1789635360}
+  - component: {fileID: 1789635362}
   m_Layer: 0
   m_Name: --- managers ---
   m_TagString: Untagged
@@ -597,6 +629,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1789635362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789635359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6011f5a663ab4ebbb673d51ce60ba6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeScaler:
+    baseValue: 0
+    lastValue: 0
+    currentValue: 0
+    duplicateCheck: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
