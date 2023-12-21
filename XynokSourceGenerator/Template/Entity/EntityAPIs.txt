@@ -7,20 +7,21 @@ using XynokSourceGenerator.Entities.Data;
 namespace XynokSourceGenerator.Entities.APIs
 {
 
+    public interface I{EntityName}: IInjectable<{EntityName}Resource>
+    {
+        {EntityName}CurrentState CurrentState { get; }
+        {EntityName}Resource Resource { get; }
+    }
+    
+    public interface I{EntityName}Ability: IControlAble, IInjectable<I{EntityName}>
+    {
+    }
 
-        public interface I{EntityName}: IInjectable<{EntityName}Resource>
-        {
-            {EntityName}CurrentState CurrentState { get; }
-            {EntityName}Resource Resource { get; }
-        }
+    public interface I{EntityName}DataValidator: IValidator, IInjectable<I{EntityName}>
+    {
+    }
         
-        public interface I{EntityName}Ability: IInjectable<I{EntityName}>, IControlAble
-        {
-        }
 
-        public interface I{EntityName}CurrentStateValidator: IValidator, IInjectable<I{EntityName}>
-        {
-        }
 
 }
 

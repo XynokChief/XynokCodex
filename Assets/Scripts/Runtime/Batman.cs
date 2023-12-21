@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
 using XynokConvention.Data.Binding;
-using XynokConvention.Procedural;
 using XynokSourceGenerator.Entities;
 using XynokSourceGenerator.Entities.Data;
 
@@ -45,12 +45,14 @@ namespace Runtime
     {
         private Dictionary<CharacterStateFlag, bool> _stateFlags = new Dictionary<CharacterStateFlag, bool>();
 
-        public BoolData x;
         public BoolData y;
 
         private void Start()
         {
-            var x = CurrentState.Value.HasFlag(CharacterStateFlag.Idling);
+           float a = 0;
+           float b = 1;
+           var x = Math.Abs(b - a) < Mathf.Epsilon;
+           
             SetDependency(Resource);
         }
     }

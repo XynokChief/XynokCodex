@@ -3,26 +3,12 @@ using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.Data.Binding;
+using XynokConvention.Enums;
 using XynokConvention.Patterns;
 
 namespace XynokConvention.Procedural
 {
-    public enum UpdateMode
-    {
-        Update = 0,
-        FixedUpdate = 1,
-        LateUpdate = 2,
-        RealtimeUpdate = 3,
-        Custom = 4,
-    }
-
-    public enum MonoUpdateMode
-    {
-        Update = 0,
-        FixedUpdate = 1,
-        LateUpdate = 2,
-    }
-
+ 
     [Serializable]
     public class TimeScaleData
     {
@@ -56,7 +42,7 @@ namespace XynokConvention.Procedural
 
         public void AddInvoker(Action action, UpdateMode updateMode = UpdateMode.Update)
         {
-            if (updateMode is UpdateMode.Update or UpdateMode.Custom)
+            if (updateMode == UpdateMode.Update )
             {
                 _onUpdate -= action;
                 _onUpdate += action;
@@ -74,7 +60,6 @@ namespace XynokConvention.Procedural
             {
                 _onLateUpdate -= action;
                 _onLateUpdate += action;
-                return;
             }
         }
 
@@ -95,7 +80,6 @@ namespace XynokConvention.Procedural
             if (updateMode == UpdateMode.LateUpdate)
             {
                 _onLateUpdate -= action;
-                return;
             }
         }
 

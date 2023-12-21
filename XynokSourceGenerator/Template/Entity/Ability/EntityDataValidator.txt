@@ -1,0 +1,96 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention;
+using XynokConvention.APIs;
+using XynokConvention.Enums;
+using XynokEntity.Enums;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+namespace XynokSourceGenerator.Entities.Data
+{ 
+
+    [Serializable]
+    public class {EntityName}DataValidator: I{EntityName}DataValidator
+    {
+        protected I{EntityName} owner;
+        [HorizontalGroup(ConventionKey.Conditions)] [HideLabel] [SerializeField] private EntityDataRelationshipType conditionType;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private EntityStateStatus stateStatus;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private {EntityName}StateFlag state;
+        
+        private {EntityName}Stat _targetStat;
+
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            owner = dependency;
+           
+        }
+        
+        public void Dispose(){}
+        
+        public bool IsValid()
+        {
+            if(owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: owner is null");
+                return false;
+            }
+            if(conditionType == EntityDataRelationshipType.SelfStat) return IsSelfStatValid();
+            if(conditionType == EntityDataRelationshipType.SelfState) return IsSelfStateValid();
+            return false;
+        }
+        
+        bool IsSelfStatValid()
+        {
+            _targetStat ??= owner.Resource.GetStat(stat);
+            if(_targetStat == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
+                return false;
+            }
+            switch (statComparison)
+            {
+                case OperatorComparison.Equal:
+                    return Math.Abs(_targetStat.Value - statComparisonValue) < Mathf.Epsilon;
+                case OperatorComparison.NotEqual:
+                    return _targetStat.Value != statComparisonValue;
+                case OperatorComparison.GreaterThan:
+                    return _targetStat.Value > statComparisonValue;
+                case OperatorComparison.GreaterOrEqual:
+                    return _targetStat.Value >= statComparisonValue;
+                case OperatorComparison.LessThan:
+                    return _targetStat.Value < statComparisonValue;
+                case OperatorComparison.LessOrEqual:
+                    return _targetStat.Value <= statComparisonValue;
+                default:
+                    Debug.LogError($"[{GetType().Name}]: statComparison {statComparison} is not supported !");
+                    return false;
+            }
+        }
+        
+        bool IsSelfStateValid()
+        {
+            if(stateStatus == EntityStateStatus.Exist) return owner.CurrentState.Has(state);
+            if(stateStatus == EntityStateStatus.NoExist) return !owner.CurrentState.Has(state);
+            
+            Debug.LogError($"[{GetType().Name}]: stateStatus {stateStatus} is not supported !");
+            return false;
+        }
+        
+    }
+        
+        {Body}
+
+}
+

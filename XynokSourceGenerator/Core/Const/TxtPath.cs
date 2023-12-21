@@ -12,6 +12,7 @@
        public const string AENTITY_ABILITY = Prefix + ".Entity.Ability.AEntityAbility" + Suffix;
        public const string ENTITY_STATE_FLAG = Prefix + ".Entity.Ability.EntityStateFlag" + Suffix;
        public const string ENTITY_ANIMATOR_BINDER = Prefix + ".Entity.Ability.AnimatorBinder" + Suffix;
-       public const string ENTITY_STATE_VALIDATOR = Prefix + ".Entity.Ability.EntityStateValidator" + Suffix;
+       public const string ENTITY_DATA_VALIDATOR = Prefix + ".Entity.Ability.EntityDataValidator" + Suffix;
+       public const string ENTITY_DATA_RELATIONSHIP = Prefix + ".Entity.Ability.EntityDataRelationship" + Suffix;
     }
 }

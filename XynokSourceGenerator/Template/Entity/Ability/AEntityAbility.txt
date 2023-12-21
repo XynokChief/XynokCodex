@@ -11,7 +11,7 @@ using XynokSourceGenerator.Entities.APIs;
 using XynokSourceGenerator.Entities.Data;
 
 
-namespace XynokSourceGenerator.Entities
+namespace XynokSourceGenerator.Entities 
 {
     /// <summary>
     /// {EntityName} base class ability
@@ -20,8 +20,13 @@ namespace XynokSourceGenerator.Entities
     public abstract class A{EntityName}Ability: I{EntityName}Ability
     {
         protected I{EntityName} owner;
-        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenStateOwnerChanged;
-        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeReference] protected I{EntityName}CurrentStateValidator[] validators = Array.Empty<I{EntityName}CurrentStateValidator>();
+        
+        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenOwnerStateChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected UpdateMode updateMode = UpdateMode.Update;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected OperatorRelationship validatorRelationship = OperatorRelationship.And;
+        
+        [FoldoutGroup(ConventionKey.Settings)] [TableList] [Space(10)] [SerializeReference] protected I{EntityName}DataValidator[] validators = Array.Empty<I{EntityName}DataValidator>();
+        
         private bool _canExecute;
         private Action _onDispose;
     
@@ -38,13 +43,13 @@ namespace XynokSourceGenerator.Entities
             OnStateOwnerChanged(owner.CurrentState.Value);
             owner.CurrentState.OnChanged += OnStateOwnerChanged;
             Init();
-            TimeCycle.Instance.AddInvoker(Execute);
+            TimeCycle.Instance.AddInvoker(Execute, updateMode);
         }
         
         public void Dispose()
         {
             if(owner != null) owner.CurrentState.OnChanged -= OnStateOwnerChanged;
-            TimeCycle.Instance.RemoveInvoker(Execute);
+            TimeCycle.Instance.RemoveInvoker(Execute, updateMode);
             _onDispose?.Invoke();
             _onDispose = default;
             OnDispose();
@@ -74,7 +79,7 @@ namespace XynokSourceGenerator.Entities
         
         bool IsValidated()
         {
-            if(executeValidator == AbilityExecuteValidatorType.WhenStateOwnerChanged) return _canExecute;
+            if(executeValidator == AbilityExecuteValidatorType.WhenOwnerStateChanged) return _canExecute;
             if(executeValidator == AbilityExecuteValidatorType.Always) return IsValidatorsValidated();
             return true;
         }
@@ -82,12 +87,22 @@ namespace XynokSourceGenerator.Entities
         bool IsValidatorsValidated()
         {
             if(validators == null || validators.Length < 1) return true;
-            bool isValidated = true;
+            bool isValidated = false;
             
             foreach (var validator in validators)
             {
                 if(validator == null) continue;
-                if(!validator.IsValid()) isValidated = false;
+                bool valid = validator.IsValid();
+                
+                if(valid) isValidated = true;
+                
+                if(validatorRelationship == OperatorRelationship.And && !valid)
+                {
+                    isValidated = false;
+                    break;
+                }
+                
+                if(validatorRelationship == OperatorRelationship.Or && valid) break;
             }
             return isValidated;
         }

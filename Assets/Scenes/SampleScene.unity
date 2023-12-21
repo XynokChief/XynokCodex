@@ -216,11 +216,6 @@ MonoBehaviour:
     Abilities:
     - rid: 6700482624031817730
     - rid: 6700482624031817731
-  x:
-    baseValue: 0
-    lastValue: 1
-    currentValue: 0
-    duplicateCheck: 0
   y:
     baseValue: 0
     lastValue: 0
@@ -237,15 +232,32 @@ MonoBehaviour:
     - rid: 6700482624031817731
       type: {class: Run, ns: Runtime, asm: Core}
       data:
-        executeValidator: 1
+        executeValidator: 0
+        updateMode: 0
+        validatorRelationship: 0
         validators:
-        - rid: 6700482624031817732
-    - rid: 6700482624031817732
-      type: {class: CharacterStateValidator, ns: XynokSourceGenerator.Entities, asm: Core}
+        - rid: 6700482629780111364
+        - rid: 6700482629780111367
+    - rid: 6700482629780111364
+      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
       data:
-        validator: 0
-        condition: 1
-        conditions: 
+        conditionType: 1
+        stat: 0
+        statComparison: 0
+        statComparisonValue: 0
+        stateStatus: 0
+        state: 1
+    - rid: 6700482629780111367
+      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        conditionType: 1
+        stat: 0
+        statComparison: 0
+        statComparisonValue: 0
+        stateStatus: 0
+        state: 4
 --- !u!95 &296017946
 Animator:
   serializedVersion: 5
