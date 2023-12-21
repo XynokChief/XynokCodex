@@ -269,7 +269,7 @@ MonoBehaviour:
         asm: Core}
       data:
         trackMode: 0
-        executeValidator: 0
+        executeValidator: 1
         relationships:
         - setter:
             dataType: 1

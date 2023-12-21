@@ -60,9 +60,9 @@ namespace XynokSourceGenerator.Entities.Data
     {
         private I{EntityName} _owner;
         
-        [SerializeField] private UpdateMode trackMode;
-        [SerializeField] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;
-        [SerializeField] [HideLabel] [TableList] private {EntityName}DataRelationship[] relationships;
+        [SerializeField] [LabelWidth(130)] private UpdateMode trackMode;
+        [SerializeField] [LabelWidth(130)] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;
+        [SerializeField] [HideLabel] [Space(10)] [TableList] private {EntityName}DataRelationship[] relationships;
 
 
         private Action _onDispose;

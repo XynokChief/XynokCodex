@@ -21,8 +21,8 @@ namespace XynokSourceGenerator.Entities
     {
         protected I{EntityName} owner;
         
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [Space(10)] protected UpdateMode updateMode = UpdateMode.Update;
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenOwnerStateChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [LabelWidth(130)] [Space(10)] protected UpdateMode updateMode = UpdateMode.Update;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [LabelWidth(130)] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenOwnerStateChanged;
         [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [HideLabel] protected CharacterDataValidatorContainer validator;
         
         private bool _canExecute;
