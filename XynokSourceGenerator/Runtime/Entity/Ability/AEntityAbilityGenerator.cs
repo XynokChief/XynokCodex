@@ -50,7 +50,7 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     TriggerSymbol = triggerSymbol
                 };
                 
-                var stateValidationFileGen = new EntityDataValidatorFileGen
+                var dataValidatorFileGen = new EntityDataValidatorFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,
@@ -65,12 +65,30 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+                
+                var dataSetterFileGen = new EntityDataSetterFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                
+                var validatorContainerFileGen = new EntityDataValidatorContainerFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
                 GenCode(context, animatorBinderFileGen);
-                GenCode(context, stateValidationFileGen);
+                GenCode(context, dataValidatorFileGen);
                 GenCode(context, dataRelationshipFileGen);
+                GenCode(context, dataSetterFileGen);
+                GenCode(context, validatorContainerFileGen);
                 
             }
         }

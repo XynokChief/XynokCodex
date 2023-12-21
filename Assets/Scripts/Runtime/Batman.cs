@@ -43,9 +43,9 @@ namespace Runtime
 
     public class Batman : ACharacterMono
     {
-        private Dictionary<CharacterStateFlag, bool> _stateFlags = new Dictionary<CharacterStateFlag, bool>();
+        [Header("Batman")]
+        public CharacterDataRelationshipContainer xx;
 
-        public BoolData y;
 
         private void Start()
         {

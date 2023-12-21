@@ -21,11 +21,9 @@ namespace XynokSourceGenerator.Entities
     {
         protected I{EntityName} owner;
         
-        [FoldoutGroup(ConventionKey.Settings)] [Space(10)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenOwnerStateChanged;
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected UpdateMode updateMode = UpdateMode.Update;
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected OperatorRelationship validatorRelationship = OperatorRelationship.And;
-        
-        [FoldoutGroup(ConventionKey.Settings)] [TableList] [Space(10)] [SerializeReference] protected I{EntityName}DataValidator[] validators = Array.Empty<I{EntityName}DataValidator>();
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [Space(10)] protected UpdateMode updateMode = UpdateMode.Update;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.WhenOwnerStateChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [HideLabel] protected CharacterDataValidatorContainer validator;
         
         private bool _canExecute;
         private Action _onDispose;
@@ -39,7 +37,7 @@ namespace XynokSourceGenerator.Entities
              return;
             }
             owner = dependency;
-            InitVaidators();
+            InitValidators();
             OnStateOwnerChanged(owner.CurrentState.Value);
             owner.CurrentState.OnChanged += OnStateOwnerChanged;
             Init();
@@ -61,50 +59,22 @@ namespace XynokSourceGenerator.Entities
             OnExecute();
         }
         
-        void InitVaidators()
+        void InitValidators()
         {
-            if(validators == null || validators.Length < 1) return;
-            foreach (var validator in validators)
-            {
-                if(validator == null) continue;
-                validator.SetDependency(owner);
-                _onDispose += validator.Dispose;
-            }
+            validator.SetDependency(owner);
+            _onDispose += validator.Dispose;
         }
 
         void OnStateOwnerChanged({EntityName}StateFlag state)
         {
-            _canExecute = IsValidatorsValidated();
+            _canExecute = validator.IsValid();
         }
         
         bool IsValidated()
         {
             if(executeValidator == AbilityExecuteValidatorType.WhenOwnerStateChanged) return _canExecute;
-            if(executeValidator == AbilityExecuteValidatorType.Always) return IsValidatorsValidated();
+            if(executeValidator == AbilityExecuteValidatorType.Always) return validator.IsValid();
             return true;
-        }
-
-        bool IsValidatorsValidated()
-        {
-            if(validators == null || validators.Length < 1) return true;
-            bool isValidated = false;
-            
-            foreach (var validator in validators)
-            {
-                if(validator == null) continue;
-                bool valid = validator.IsValid();
-                
-                if(valid) isValidated = true;
-                
-                if(validatorRelationship == OperatorRelationship.And && !valid)
-                {
-                    isValidated = false;
-                    break;
-                }
-                
-                if(validatorRelationship == OperatorRelationship.Or && valid) break;
-            }
-            return isValidated;
         }
         
         protected abstract void Init();
