@@ -12,13 +12,23 @@ namespace XynokConvention.Data.Binding
     [Serializable]
     public class APrimitiveData<T> : IBindableDeeper<T>
     {
-        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T baseValue;
-        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T lastValue;
-        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField] protected T currentValue;
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
+        protected T baseValue;
+
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
+        protected T lastValue;
+
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
+        protected T currentValue;
+
         [Tooltip("if true, the value will not be set if it is equal to the current value")]
-        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]protected bool duplicateCheck = true;
+        [TableColumnWidth(60)]
+        [LabelWidth(120)]
+        [FoldoutGroup(ConventionKey.Settings)]
+        [SerializeField]
+        protected bool duplicateCheck = true;
 
-
+        public event Func<T, bool> CanChangeValue;
         public T BaseValue => baseValue;
 
         public T LastValue => lastValue;
@@ -32,6 +42,11 @@ namespace XynokConvention.Data.Binding
             get => currentValue;
             set
             {
+                if (!CanChangeValueTo(value))
+                {
+                    return;
+                }
+
                 if (duplicateCheck && currentValue.Equals(value)) return;
                 lastValue = currentValue;
                 currentValue = value;
@@ -86,6 +101,12 @@ namespace XynokConvention.Data.Binding
             if (emmitEvent) EmitEventChanged();
         }
 
+        protected virtual bool CanChangeValueTo(T value)
+        {
+            if (CanChangeValue == default) return true;
+            var canChange = CanChangeValue.Invoke(value);
+            return canChange;
+        }
 
         protected virtual void EmitEventChanged()
         {

@@ -1,0 +1,123 @@
+
+{Scope}
+using System;
+using UnityEngine;
+using XynokUtils;
+using XynokConvention.Enums;
+using XynokConvention.APIs;
+using XynokConvention;
+using XynokEntity.Enums;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+    
+    
+    /// <summary>
+    /// This class is used to validate if the value of a {EntityName} is being set new value.
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValueSetterValidator : IInjectable<I{EntityName}>
+    {   
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] private EntityDataType dataType;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private {StateName} state;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private bool stateValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Trigger)] private {TriggerName} trigger;
+        [SerializeField] [HideLabel] private CharacterDataValidatorContainer validatorBeforeSet;
+        
+        private I{EntityName} _owner;
+        private {EntityName}Stat _stat;
+        private {EntityName}State _state;
+        private {EntityName}Trigger _trigger;
+        
+        private Action _onDispose;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if (dependency == null)
+            {
+                Debug.LogError($"{GetType().Name}: Dependency is null");
+                return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        void Init()
+        {
+            if (dataType == EntityDataType.Stat)
+            {
+                _stat ??= _owner.Resource.GetStat(stat);
+                if (_stat == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
+                    return;
+                }
+                _stat.CanChangeValue += IsStatValidToChange;
+                _onDispose += () => _stat.CanChangeValue -= IsStatValidToChange;
+            }
+            else if (dataType == EntityDataType.State)
+            {
+                _state ??= _owner.Resource.GetState(state);
+                if (_state == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: state {state} is null");
+                    return;
+                }
+                _state.CanChangeValue += IsStateValidToChange;
+                _onDispose += () => _state.CanChangeValue -= IsStateValidToChange;
+            }
+            else if (dataType == EntityDataType.Trigger)
+            {
+                _trigger ??= _owner.Resource.GetTrigger(trigger);
+                if (_trigger == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: trigger {trigger} is null");
+                    return;
+                }
+                _trigger.CanChangeValue += IsTriggerValidToChange;
+                _onDispose += () => _trigger.CanChangeValue -= IsTriggerValidToChange;
+            }
+            
+            validatorBeforeSet.SetDependency(_owner);
+            _onDispose += validatorBeforeSet.Dispose;
+        }
+       
+
+        bool IsTriggerValidToChange(bool value)
+        {
+            return validatorBeforeSet.IsValid();
+        }
+
+        bool IsStateValidToChange(bool value)
+        {
+            bool sameAsComparisonValue = value == stateValue;
+            
+            if(!sameAsComparisonValue) return true;
+            
+            return validatorBeforeSet.IsValid();
+        }
+        
+        bool IsStatValidToChange(float value)
+        {
+            
+            bool sameAsComparisonValue = XynokUtility.DataUtils.IsValid(value, statComparisonValue, statComparison);
+            
+            if(!sameAsComparisonValue) return true;
+            
+            return !validatorBeforeSet.IsValid();
+        }
+      
+    }
+}

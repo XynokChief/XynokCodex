@@ -11,5 +11,6 @@
         public const string Conditions = "Conditions";
         public const string Value = "value";
         public const string Validator = "Validator";
+        public const string SetDataValue = "set value for";
     }
 }

@@ -2,6 +2,8 @@
 
 namespace XynokConvention.Data.Binding
 {
+  
+
     /// <summary>
     /// use for animation trigger
     /// </summary>
@@ -10,7 +12,6 @@ namespace XynokConvention.Data.Binding
     public class ATriggerData<T> : APairData<T, bool>
         where T : Enum
     {
-        public Func<bool> canTrigger;
 
         public ATriggerData()
         {
@@ -25,22 +26,22 @@ namespace XynokConvention.Data.Binding
         {
         }
 
-        public override bool Value
-        {
-            get => currentValue;
-            set
-            {
-                if (!canTrigger?.Invoke() ?? false)
-                {
-                    currentValue = false;
-                    return;
-                }
-
-                lastValue = currentValue;
-                currentValue = value;
-                EmitEventChanged();
-            }
-        }
+        // public override bool Value
+        // {
+        //     get => currentValue;
+        //     set
+        //     {
+        //         if (!CanChangeValueTo(value))
+        //         {
+        //             currentValue = false;
+        //             return;
+        //         }
+        //
+        //         lastValue = currentValue;
+        //         currentValue = value;
+        //         EmitEventChanged();
+        //     }
+        // }
 
         public bool SetTrigger()
         {

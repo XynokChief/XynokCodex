@@ -12,16 +12,19 @@ using XynokSourceGenerator.Entities.Data;
 namespace XynokSourceGenerator.Entities.Data
 { 
 
+    /// <summary>
+    /// Xác định xem giá trị data "hiện thời - hiện tai" của Entity có thỏa mãn điều kiện hay không
+    /// </summary>
     [Serializable]
     public class {EntityName}DataValidator: I{EntityName}DataValidator
     {
         protected I{EntityName} owner;
         [HorizontalGroup(ConventionKey.Conditions)] [HideLabel] [SerializeField] private EntityDataRelationshipType conditionType;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private float statComparisonValue;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private EntityStateStatus stateStatus;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType),EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private {EntityName}StateFlag state;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataRelationshipType.SelfStat)] [HideLabel] [SerializeField] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private EntityStateStatus stateStatus;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataRelationshipType.SelfState)] [HideLabel] [SerializeField] private {EntityName}StateFlag state;
         
         private {EntityName}Stat _targetStat;
 
@@ -63,14 +66,19 @@ namespace XynokSourceGenerator.Entities.Data
             {
                 case OperatorComparison.Equal:
                     return Math.Abs(_targetStat.Value - statComparisonValue) < Mathf.Epsilon;
+                
                 case OperatorComparison.NotEqual:
                     return _targetStat.Value != statComparisonValue;
+                
                 case OperatorComparison.GreaterThan:
                     return _targetStat.Value > statComparisonValue;
+                
                 case OperatorComparison.GreaterOrEqual:
                     return _targetStat.Value >= statComparisonValue;
+                
                 case OperatorComparison.LessThan:
                     return _targetStat.Value < statComparisonValue;
+                    
                 case OperatorComparison.LessOrEqual:
                     return _targetStat.Value <= statComparisonValue;
                 default:

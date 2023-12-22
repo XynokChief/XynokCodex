@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
-using XynokConvention.Data.Binding;
 using XynokSourceGenerator.Entities;
 using XynokSourceGenerator.Entities.Data;
 

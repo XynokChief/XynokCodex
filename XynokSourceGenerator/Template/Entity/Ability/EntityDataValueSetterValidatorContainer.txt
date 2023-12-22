@@ -1,0 +1,71 @@
+
+{Scope}
+using System;
+using UnityEngine;
+using XynokUtils;
+using XynokConvention.Enums;
+using XynokConvention.APIs;
+using XynokEntity.Enums;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+    
+    /// <summary>
+    /// Container of value setters conditions for {EntityName}
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValueSetterValidatorContainer : I{EntityName}Ability
+    {   
+        
+        private I{EntityName} _owner;
+        [Title("Data Setter Conditions", "các condition cần pass trước khi set value cho data", TitleAlignments.Centered)]
+        [SerializeField] [TableList] private {EntityName}DataValueSetterValidator[] setterValidators;
+        
+        
+        private Action _onDispose;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if (dependency == null)
+            {
+                Debug.LogError($"{GetType().Name}: Dependency is null");
+                return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        public void Execute()
+        {
+            if(_onDispose != default) Dispose();
+            Init();
+        }
+        
+        public void Reset()
+        {
+            Dispose();
+        }
+        
+        void Init()
+        {
+            foreach (var setterValidator in setterValidators)
+            {
+                if (setterValidator == null) continue;
+                setterValidator.SetDependency(_owner);
+                _onDispose += setterValidator.Dispose;
+            }
+        }
+       
+
+      
+    }
+}

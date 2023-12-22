@@ -1,0 +1,104 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokEntity.Enums;
+using XynokConvention.Enums;
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.APIs;
+using XynokConvention.Procedural;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+
+    /// <summary>
+    /// Luôn chạy khi owner thay đổi trạng thái hoặc theo trackMode. Cách hoạt động: State thay đổi State
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataRelationshipContainer: I{EntityName}Ability
+    {
+        private I{EntityName} _owner;
+        
+        [SerializeField] [LabelWidth(130)] private UpdateMode trackMode;
+        [SerializeField] [LabelWidth(130)] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;
+        
+        [Title("State Impacts Another", "khi các validators thỏa mãn thì setter sẽ dc thực thi", TitleAlignments.Centered)]
+        [SerializeField] [HideLabel] [Space(10)] [TableList] private {EntityName}DataRelationship[] relationships;
+
+
+        private Action _onDispose;
+        private bool _canExecute;
+        private bool _isInitialized;
+
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Execute();
+
+        }
+        
+        public void Dispose()
+        {
+            TimeCycle.Instance.RemoveInvoker(Execute, trackMode);
+            if(_owner != null) _owner.CurrentState.OnChanged -= OnStateOwnerChanged;
+            _onDispose?.Invoke();
+            _onDispose = default;
+            _canExecute = default;
+            _isInitialized = false;
+        }
+        
+        public void Execute()
+        {
+            if(!_isInitialized)
+            {
+                _isInitialized = true;
+                Init();
+                return;
+            }
+            
+            if(executeValidator == AbilityExecuteValidatorType.WhenOwnerStateChanged)
+            {
+                if(!_canExecute) return;
+                _canExecute = false;
+            }
+            
+            foreach (var relationship in relationships)
+            {
+                relationship?.Execute();
+            }
+        }
+
+        public void Reset()
+        {
+            Dispose();
+        }
+
+        void OnStateOwnerChanged({EntityName}StateFlag state)
+        {
+            _canExecute = true;
+        }
+        
+        void Init()
+        {
+        
+            foreach (var relationship in relationships)
+            {
+                relationship.SetDependency(_owner);
+                _onDispose+= relationship.Dispose;
+            }
+            
+            OnStateOwnerChanged(_owner.CurrentState.Value);
+            _owner.CurrentState.OnChanged += OnStateOwnerChanged;
+            TimeCycle.Instance.AddInvoker(Execute, trackMode);
+        }
+    }
+        
+
+}
+

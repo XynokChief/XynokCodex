@@ -81,6 +81,30 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+                
+                var dataRelationshipContainerFileGen = new EntityDataRelationshipContainerFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                
+                var valueSetterValidatorFileGen = new EntityDataValueSetterValidatorFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
+                
+                var valueSetterValidatorContainerFileGen = new EntityDataValueSetterValidatorContainerFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
@@ -89,6 +113,9 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                 GenCode(context, dataRelationshipFileGen);
                 GenCode(context, dataSetterFileGen);
                 GenCode(context, validatorContainerFileGen);
+                GenCode(context, dataRelationshipContainerFileGen);
+                GenCode(context, valueSetterValidatorFileGen);
+                GenCode(context, valueSetterValidatorContainerFileGen);
                 
             }
         }

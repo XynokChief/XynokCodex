@@ -16,5 +16,9 @@
        public const string ENTITY_DATA_VALIDATOR_CONTAINER = Prefix + ".Entity.Ability.EntityDataValidatorContainer" + Suffix;
        public const string ENTITY_DATA_RELATIONSHIP = Prefix + ".Entity.Ability.EntityDataRelationship" + Suffix;
        public const string ENTITY_DATA_SETTER = Prefix + ".Entity.Ability.EntityDataSetter" + Suffix;
+       public const string ENTITY_DATA_RELATIONSHIP_CONTAINER = Prefix + ".Entity.Ability.EntityDataRelationshipContainer" + Suffix;
+       public const string ENTITY_DATA_SETTER_VALIDATOR = Prefix + ".Entity.Ability.EntityDataSetterValidator" + Suffix; // có thay đổi thì set 
+       public const string ENTITY_DATA_VALUE_SETTER_VALIDATOR = Prefix + ".Entity.Ability.EntityDataValueSetterValidator" + Suffix; // check điều kiện trước khi set
+       public const string ENTITY_DATA_VALUE_SETTER_VALIDATOR_CONTAINER = Prefix + ".Entity.Ability.EntityDataValueSetterValidatorContainer" + Suffix; // check điều kiện trước khi set
     }
 }

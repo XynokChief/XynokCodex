@@ -2,12 +2,9 @@
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using XynokEntity.Enums;
 using XynokEntity.APIs;
-using XynokConvention.Enums;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities.APIs;
-using XynokConvention.Procedural;
 
 namespace XynokSourceGenerator.Entities.Data
 {
@@ -15,8 +12,8 @@ namespace XynokSourceGenerator.Entities.Data
     [Serializable]
     public class {EntityName}DataRelationship: IExecute, IInjectable<I{EntityName}>
     {
-        [SerializeField] [HideLabel] private {EntityName}DataSetter setter;
         [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validator;
+        [SerializeField] [HideLabel] private {EntityName}DataSetter setter;
         
         private I{EntityName} _owner;
         private Action _onDispose;
@@ -41,6 +38,11 @@ namespace XynokSourceGenerator.Entities.Data
         
         public void Execute()
         {
+            if(_owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: dependency is null");
+                return;
+            }
             if(validator.IsValid()) setter.Execute();
         }
         
@@ -53,79 +55,6 @@ namespace XynokSourceGenerator.Entities.Data
             _onDispose+= validator.Dispose;
         }
     }
-
-
-    [Serializable]
-    public class {EntityName}DataRelationshipContainer: I{EntityName}Ability
-    {
-        private I{EntityName} _owner;
-        
-        [SerializeField] [LabelWidth(130)] private UpdateMode trackMode;
-        [SerializeField] [LabelWidth(130)] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;
-        [SerializeField] [HideLabel] [Space(10)] [TableList] private {EntityName}DataRelationship[] relationships;
-
-
-        private Action _onDispose;
-        private bool _canExecute;
-
-        public void SetDependency(I{EntityName} dependency)
-        {
-            Dispose();
-            if(dependency == null)
-            {
-             Debug.LogError($"[{GetType().Name}]: dependency is null");
-             return;
-            }
-            _owner = dependency;
-            Init();
-            OnStateOwnerChanged(_owner.CurrentState.Value);
-            _owner.CurrentState.OnChanged += OnStateOwnerChanged;
-            TimeCycle.Instance.AddInvoker(Execute, trackMode);
-        }
-        
-        public void Dispose()
-        {
-            TimeCycle.Instance.RemoveInvoker(Execute, trackMode);
-            if(_owner != null) _owner.CurrentState.OnChanged -= OnStateOwnerChanged;
-            _onDispose?.Invoke();
-            _onDispose = default;
-            _canExecute = default;
-        }
-        
-        public void Execute()
-        {
-            if(executeValidator == AbilityExecuteValidatorType.WhenOwnerStateChanged)
-            {
-                if(!_canExecute) return;
-                _canExecute = false;
-            }
-            
-            foreach (var relationship in relationships)
-            {
-                relationship?.Execute();
-            }
-        }
-
-        public void Reset()
-        {
-            Dispose();
-        }
-
-        void OnStateOwnerChanged({EntityName}StateFlag state)
-        {
-            _canExecute = true;
-        }
-        
-        void Init()
-        {
-            foreach (var relationship in relationships)
-            {
-                relationship.SetDependency(_owner);
-                _onDispose+= relationship.Dispose;
-            }
-        }
-    }
-        
 
 }
 
