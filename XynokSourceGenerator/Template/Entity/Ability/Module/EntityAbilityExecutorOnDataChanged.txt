@@ -56,7 +56,7 @@ namespace XynokSourceGenerator.Entities
         {
             foreach (var dataPiece in dataPieces)
             {
-                if(dataPiece.dataType == EntityDataType.Stat)
+                if(dataPiece.dataType == EntityDataType.SelfStat)
                 {
                     var stat = _ownerOfAbility.Resource.GetStat(dataPiece.stat);
                     stat.OnChanged += OnStatHasChanged;
@@ -64,7 +64,7 @@ namespace XynokSourceGenerator.Entities
                     return;
                 }
                 
-                if(dataPiece.dataType == EntityDataType.State)
+                if(dataPiece.dataType == EntityDataType.SelfState)
                 {
                     var state = _ownerOfAbility.Resource.GetState(dataPiece.state);
                     state.OnChanged += OnStateHasChanged;
@@ -72,7 +72,7 @@ namespace XynokSourceGenerator.Entities
                     return;
                 }
                 
-                if(dataPiece.dataType == EntityDataType.Trigger)
+                if(dataPiece.dataType == EntityDataType.SelfTrigger)
                 {
                     var trigger = _ownerOfAbility.Resource.GetTrigger(dataPiece.trigger);
                     trigger.OnChanged += OnTriggerHasChanged;

@@ -6,7 +6,6 @@ using XynokConvention;
 using XynokConvention.APIs;
 using XynokConvention.Enums;
 using XynokEntity.Enums;
-using XynokUtils;
 using XynokSourceGenerator.Entities.APIs;
 using XynokSourceGenerator.Entities.Data;
 
@@ -17,7 +16,7 @@ namespace XynokSourceGenerator.Entities.Data
     /// Xác định xem giá trị data "hiện thời - hiện tai" của Entity có thỏa mãn điều kiện hay không
     /// </summary>
     [Serializable]
-    public class {EntityName}DataValidator: I{EntityName}DataValidator
+    public class {EntityName}DataValidatorListener: I{EntityName}DataValidator
     {
         protected I{EntityName} owner;
         [HorizontalGroup(ConventionKey.Conditions)] [HideLabel] [SerializeField] private EntityDataType conditionType;
@@ -63,10 +62,29 @@ namespace XynokSourceGenerator.Entities.Data
                 Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
                 return false;
             }
-            
-            bool result = XynokUtility.DataUtils.IsValid(_targetStat.Value, statComparisonValue, statComparison);
-            
-            return result;
+            switch (statComparison)
+            {
+                case OperatorComparison.Equal:
+                    return Math.Abs(_targetStat.Value - statComparisonValue) < Mathf.Epsilon;
+                
+                case OperatorComparison.NotEqual:
+                    return _targetStat.Value != statComparisonValue;
+                
+                case OperatorComparison.GreaterThan:
+                    return _targetStat.Value > statComparisonValue;
+                
+                case OperatorComparison.GreaterOrEqual:
+                    return _targetStat.Value >= statComparisonValue;
+                
+                case OperatorComparison.LessThan:
+                    return _targetStat.Value < statComparisonValue;
+                    
+                case OperatorComparison.LessOrEqual:
+                    return _targetStat.Value <= statComparisonValue;
+                default:
+                    Debug.LogError($"[{GetType().Name}]: statComparison {statComparison} is not supported !");
+                    return false;
+            }
         }
         
         bool IsSelfStateValid()

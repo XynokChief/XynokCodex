@@ -2,8 +2,12 @@
 {
     public enum EntityDataType
     {
-        Stat = 0,
-        State = 1,
-        Trigger = 2,
+        SelfStat = 0,
+        SelfState = 1,
+        SelfTrigger = 2,
+        
+        WorldStat = 1000,
+        WorldState = 1001,
+        WorldTrigger = 1002,
     }
 }

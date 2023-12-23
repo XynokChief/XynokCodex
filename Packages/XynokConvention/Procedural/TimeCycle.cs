@@ -18,7 +18,7 @@ namespace XynokConvention.Procedural
 
     public class TimeCycle : ASingleton<TimeCycle>
     {
-        [SerializeField] [HideLabel] private FloatData timeScaler;
+        [SerializeField] private FloatData timeScaler;
 
         private Action _onUpdate;
         private Action _onLateUpdate;

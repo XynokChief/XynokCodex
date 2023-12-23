@@ -1,4 +1,5 @@
 ﻿using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities;
@@ -43,16 +44,18 @@ namespace Runtime
     public class Batman : ACharacterMono
     {
         [Header("Batman")]
-        public CharacterDataRelationshipContainer xx;
+        public Animator animator;
 
 
         private void Start()
         {
-           float a = 0;
-           float b = 1;
-           var x = Math.Abs(b - a) < Mathf.Epsilon;
-           
             SetDependency(Resource);
+        }
+
+        [Button]
+        void Test()
+        {
+           
         }
     }
 }

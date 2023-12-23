@@ -16,13 +16,13 @@ namespace XynokSourceGenerator.Entities.Data
         
         [HorizontalGroup] [SerializeField] [HideLabel] private EntityDataType dataType;
         
-        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.Stat)] [HideLabel] [SerializeField] private {StatName} stat;
-        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.Stat)] [HideLabel] [SerializeField] private float statValue;
+        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private float statValue;
         
-        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.State)] [HideLabel] [SerializeField] private {StateName} state;
-        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.State)] [HideLabel] [SerializeField] private bool stateValue;
+        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private {StateName} state;
+        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private bool stateValue;
         
-        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.Trigger)] [HideLabel] [SerializeField] private {TriggerName} trigger;
+        [HorizontalGroup] [ShowIf(nameof(dataType),EntityDataType.SelfTrigger)] [HideLabel] [SerializeField] private {TriggerName} trigger;
         
         
         private {EntityName}Stat _stat;
@@ -55,7 +55,7 @@ namespace XynokSourceGenerator.Entities.Data
         
             switch (dataType)
             {
-                case EntityDataType.Stat:
+                case EntityDataType.SelfStat:
                    _stat ??= _owner.Resource.GetStat(stat);
                    if(_stat == null)
                    {
@@ -64,7 +64,7 @@ namespace XynokSourceGenerator.Entities.Data
                    }
                    _stat.Value = statValue;
                     break;
-                case EntityDataType.State:
+                case EntityDataType.SelfState:
                     _state ??= _owner.Resource.GetState(state);
                     if(_state == null)
                     {
@@ -73,7 +73,7 @@ namespace XynokSourceGenerator.Entities.Data
                     }
                     _state.Value = stateValue;
                     break;
-                case EntityDataType.Trigger:
+                case EntityDataType.SelfTrigger:
                     _trigger ??= _owner.Resource.GetTrigger(trigger);
                     if(_trigger == null)
                     {

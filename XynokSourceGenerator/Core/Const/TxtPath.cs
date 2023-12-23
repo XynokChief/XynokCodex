@@ -27,6 +27,7 @@
        
        // Ability.DataValidator
        public const string ENTITY_DATA_VALIDATOR = Prefix + ".Entity.Ability.DataValidator.EntityDataValidator" + Suffix;
+       public const string ENTITY_DATA_VALIDATOR_LISTENER = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorListener" + Suffix;
        public const string ENTITY_DATA_VALIDATOR_CONTAINER = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorContainer" + Suffix;
        
        // Ability.DataTracker

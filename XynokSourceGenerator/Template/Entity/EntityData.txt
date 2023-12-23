@@ -92,9 +92,9 @@ namespace XynokSourceGenerator.Entities.Data
         public class {EntityName}DataSmallPiece
         {
             [HorizontalGroup("data to track")] [HideLabel] public EntityDataType dataType;
-            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.Stat)] public {StatName} stat;
-            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.State)] public {StateName} state;
-            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.Trigger)] public {TriggerName} trigger;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfStat)] public {StatName} stat;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfState)] public {StateName} state;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfTrigger)] public {TriggerName} trigger;
         }
 }
 

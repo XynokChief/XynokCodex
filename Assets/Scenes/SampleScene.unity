@@ -123,189 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &296017942
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 296017944}
-  - component: {fileID: 296017945}
-  - component: {fileID: 296017946}
-  m_Layer: 0
-  m_Name: batman
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &296017944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296017942}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &296017945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296017942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61851dd55dba4529a55bd1196de922b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState:
-    baseValue: 0
-    lastValue: 0
-    currentValue: 0
-    duplicateCheck: 1
-  resource:
-    ResourceId: 0
-    Stats:
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 1
-      key: 1
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 1
-      key: 2
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 3
-      duplicateCheck: 1
-      key: 3
-    States:
-    - baseValue: 0
-      lastValue: 1
-      currentValue: 0
-      duplicateCheck: 1
-      key: 0
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 1
-      key: 1
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 1
-      key: 2
-    Triggers:
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 0
-      key: 0
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 0
-      key: 1
-    Abilities:
-    - rid: 6700482624031817730
-    - rid: 6700482670451752995
-  xx:
-    executorType: 0
-    executorOnUpdate:
-      updateMode: 0
-    executorOnDataChanged:
-      dataPieces: []
-    customExecutor:
-      rid: -2
-    validator:
-      rid: 6700482670451752991
-    relationships: []
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 6700482624031817730
-      type: {class: CharacterAnimatorBinder, ns: XynokSourceGenerator.Entities, asm: Core}
-      data:
-        ownerObj: {fileID: 296017942}
-        animator: {fileID: 296017946}
-    - rid: 6700482670451752991
-      type: {class: CharacterDataValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        validatorCheckType: 0
-        validators:
-        - rid: 6700482670451752994
-    - rid: 6700482670451752994
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 2
-        statComparisonValue: 3
-        stateStatus: 0
-        state: 0
-    - rid: 6700482670451752995
-      type: {class: CharacterDataValueSetterValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        setterValidators:
-        - dataType: 0
-          stat: 1
-          statComparison: 2
-          statComparisonValue: 6
-          state: 0
-          stateValue: 0
-          trigger: 0
-          validatorBeforeSet:
-            validatorCheckType: 0
-            validators:
-            - rid: 6700482670451752996
-    - rid: 6700482670451752996
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 0
-        statComparisonValue: 3
-        stateStatus: 0
-        state: 0
---- !u!95 &296017946
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296017942}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7bff20bc346193d48a0bd52992e69f03, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +378,147 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &642668377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642668381}
+  - component: {fileID: 642668380}
+  - component: {fileID: 642668379}
+  - component: {fileID: 642668378}
+  - component: {fileID: 642668382}
+  - component: {fileID: 642668383}
+  m_Layer: 0
+  m_Name: animator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &642668378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &642668379
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &642668380
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &642668381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1327104454}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &642668382
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c77c13cca79b3d46bf4d6d0418c1635, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &642668383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0332cc16e3514b9a848aa01533aac8af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: dabbdca8104955040ad315cc38f4ce28, type: 2}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +568,112 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1327104453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1327104454}
+  - component: {fileID: 1327104455}
+  m_Layer: 0
+  m_Name: batman
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1327104454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327104453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 642668381}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1327104455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327104453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61851dd55dba4529a55bd1196de922b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState:
+    baseValue: 0
+    lastValue: 0
+    currentValue: 0
+    duplicateCheck: 1
+  resource:
+    ResourceId: 0
+    Stats:
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 1
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 2
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 3
+    States:
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 1
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
+      key: 2
+    Triggers:
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 0
+      key: 0
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 0
+      key: 1
+    Abilities:
+    - rid: 6700482670451752997
+  animator: {fileID: 642668382}
+  references:
+    version: 2
+    RefIds:
+    - rid: 6700482670451752997
+      type: {class: CharacterAnimatorBinder, ns: XynokSourceGenerator.Entities, asm: Core}
+      data:
+        ownerObj: {fileID: 1327104453}
+        animator: {fileID: 642668382}
 --- !u!1 &1789635359
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +685,8 @@ GameObject:
   - component: {fileID: 1789635361}
   - component: {fileID: 1789635360}
   - component: {fileID: 1789635362}
+  - component: {fileID: 1789635364}
+  - component: {fileID: 1789635363}
   m_Layer: 0
   m_Name: --- managers ---
   m_TagString: Untagged
@@ -685,6 +751,52 @@ MonoBehaviour:
     lastValue: 0
     currentValue: 0
     duplicateCheck: 0
+--- !u!114 &1789635363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789635359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be53d1b95e0462c9386341516bbfb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 1789635364}
+  inputActionAsset: {fileID: -944628639613478452, guid: ebe809e6bafca9d4fa065848c3a3ccf5,
+    type: 3}
+--- !u!114 &1789635364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789635359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: ebe809e6bafca9d4fa065848c3a3ccf5,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -692,5 +804,5 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 296017944}
   - {fileID: 1789635361}
+  - {fileID: 1327104454}

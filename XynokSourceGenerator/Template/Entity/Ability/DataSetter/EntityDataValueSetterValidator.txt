@@ -21,12 +21,12 @@ namespace XynokSourceGenerator.Entities.Data
     public class {EntityName}DataValueSetterValidator : IInjectable<I{EntityName}>
     {   
         [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] private EntityDataType dataType;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private {StatName} stat;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private OperatorComparison statComparison;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Stat)] private float statComparisonValue;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private {StateName} state;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private bool stateValue;
-        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Trigger)] private {TriggerName} trigger;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfState)] private {StateName} state;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfState)] private bool stateValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfTrigger)] private {TriggerName} trigger;
         [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validatorBeforeSet;
         
         private I{EntityName} _owner;
@@ -56,7 +56,7 @@ namespace XynokSourceGenerator.Entities.Data
         
         void Init()
         {
-            if (dataType == EntityDataType.Stat)
+            if (dataType == EntityDataType.SelfStat)
             {
                 _stat ??= _owner.Resource.GetStat(stat);
                 if (_stat == null)
@@ -67,7 +67,7 @@ namespace XynokSourceGenerator.Entities.Data
                 _stat.CanChangeValue += IsStatValidToChange;
                 _onDispose += () => _stat.CanChangeValue -= IsStatValidToChange;
             }
-            else if (dataType == EntityDataType.State)
+            else if (dataType == EntityDataType.SelfState)
             {
                 _state ??= _owner.Resource.GetState(state);
                 if (_state == null)
@@ -78,7 +78,7 @@ namespace XynokSourceGenerator.Entities.Data
                 _state.CanChangeValue += IsStateValidToChange;
                 _onDispose += () => _state.CanChangeValue -= IsStateValidToChange;
             }
-            else if (dataType == EntityDataType.Trigger)
+            else if (dataType == EntityDataType.SelfTrigger)
             {
                 _trigger ??= _owner.Resource.GetTrigger(trigger);
                 if (_trigger == null)

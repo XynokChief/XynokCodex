@@ -189,6 +189,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.xynok.gui": {
+      "version": "file:XynokGUI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.xynok.input": {
       "version": "file:XynokInput",
       "depth": 0,

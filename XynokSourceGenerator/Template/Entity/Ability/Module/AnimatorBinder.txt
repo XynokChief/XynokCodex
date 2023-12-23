@@ -19,6 +19,7 @@ namespace XynokSourceGenerator.Entities
         
         public I{EntityName} Owner => _owner;
         
+        [Tooltip("obj chứa entity và data của entity đó")]
         [SerializeField] private GameObject ownerObj;
         [SerializeField] private Animator animator;
 
@@ -62,7 +63,7 @@ namespace XynokSourceGenerator.Entities
             bool isParamValid = CheckParamIsTheSameAsData();
             if(!isParamValid)
             {
-                Debug.LogError($"[{GetType().Name} - {_owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
+                Debug.LogWarning($"[{GetType().Name} - {_owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
                 return;
             }
             Bind();
@@ -139,7 +140,7 @@ namespace XynokSourceGenerator.Entities
         #if UNITY_EDITOR
             if(!ownerObj)
             {
-                Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: ownerObj is not null, this method only works when ownerObj is not null!");
+                Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: ownerObj is null, this method only works when ownerObj is not null!");
                 return;
             }
             if(_owner == null) _owner = ownerObj.GetComponent<I{EntityName}>();
