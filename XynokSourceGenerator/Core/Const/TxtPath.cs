@@ -13,7 +13,11 @@
        // Ability
        public const string AENTITY_ABILITY = Prefix + ".Entity.Ability.AEntityAbility" + Suffix;
        public const string ENTITY_STATE_FLAG = Prefix + ".Entity.Ability.EntityStateFlag" + Suffix;
-       public const string ENTITY_ANIMATOR_BINDER = Prefix + ".Entity.Ability.AnimatorBinder" + Suffix;
+       
+       // Module có sẵn
+       public const string ENTITY_ANIMATOR_BINDER = Prefix + ".Entity.Ability.Module.AnimatorBinder" + Suffix;
+       public const string ENTITY_ABILITY_EXECUTOR_ON_UPDATE = Prefix + ".Entity.Ability.Module.EntityAbilityExecutorOnUpdate" + Suffix;
+       public const string ENTITY_ABILITY_EXECUTOR_ON_DATA_CHANGED = Prefix + ".Entity.Ability.Module.EntityAbilityExecutorOnDataChanged" + Suffix;
        
        // Ability.DataSetter
        public const string ENTITY_DATA_SETTER = Prefix + ".Entity.Ability.DataSetter.EntityDataSetter" + Suffix;

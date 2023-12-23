@@ -20,6 +20,9 @@ namespace XynokSourceGenerator.Entities.Data
     {   
         
         private I{EntityName} _owner;
+        
+        public I{EntityName} Owner => _owner;
+        
         [Title("Data Setter Conditions", "các condition cần pass trước khi set value cho data", TitleAlignments.Centered)]
         [SerializeField] [TableList] private {EntityName}DataValueSetterValidator[] setterValidators;
         

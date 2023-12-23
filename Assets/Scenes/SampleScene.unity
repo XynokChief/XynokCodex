@@ -180,17 +180,17 @@ MonoBehaviour:
       lastValue: 0
       currentValue: 0
       duplicateCheck: 1
+      key: 1
+    - baseValue: 0
+      lastValue: 0
+      currentValue: 0
+      duplicateCheck: 1
       key: 2
     - baseValue: 0
       lastValue: 0
       currentValue: 3
       duplicateCheck: 1
       key: 3
-    - baseValue: 0
-      lastValue: 0
-      currentValue: 0
-      duplicateCheck: 1
-      key: 1
     States:
     - baseValue: 0
       lastValue: 1
@@ -220,9 +220,7 @@ MonoBehaviour:
       key: 1
     Abilities:
     - rid: 6700482624031817730
-    - rid: 6700482629780111373
-    - rid: 6700482640726458368
-    - rid: 6700482624031817731
+    - rid: 6700482670451752965
   xx:
     trackMode: 0
     executeValidator: 1
@@ -235,137 +233,55 @@ MonoBehaviour:
       data:
         ownerObj: {fileID: 296017942}
         animator: {fileID: 296017946}
-    - rid: 6700482624031817731
+    - rid: 6700482670451752965
       type: {class: Run, ns: Runtime, asm: Core}
       data:
-        updateMode: 0
-        executeValidator: 1
-        customValidator:
-          rid: 6700482669909377027
+        executorType: 1
+        executorOnUpdate:
+          updateMode: 0
+        executorOnDataChanged:
+          dataPieces:
+          - dataType: 1
+            stat: 0
+            state: 0
+            trigger: 0
+        customExecutor:
+          rid: 6700482670451752968
         validator:
-          validatorCheckType: 0
-          validators:
-          - rid: 6700482629780111368
-          - rid: 6700482629780111369
-    - rid: 6700482629780111368
+          rid: 6700482670451752972
+    - rid: 6700482670451752968
+      type: {class: CharacterAbilityExecutorOnUpdate, ns: XynokSourceGenerator.Entities,
+        asm: Core}
+      data:
+        updateMode: 0
+    - rid: 6700482670451752972
+      type: {class: CharacterDataValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        validatorCheckType: 0
+        validators:
+        - rid: 6700482670451752973
+        - rid: 6700482670451752974
+    - rid: 6700482670451752973
       type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
         asm: Core}
       data:
-        conditionType: 1
-        stat: 0
+        conditionType: 0
+        stat: 2
         statComparison: 0
         statComparisonValue: 0
         stateStatus: 0
-        state: 1
-    - rid: 6700482629780111369
+        state: 0
+    - rid: 6700482670451752974
       type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
         asm: Core}
       data:
-        conditionType: 1
-        stat: 0
+        conditionType: 0
+        stat: 1
         statComparison: 0
         statComparisonValue: 0
         stateStatus: 0
-        state: 4
-    - rid: 6700482629780111373
-      type: {class: CharacterDataRelationshipContainer, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        trackMode: 0
-        executeValidator: 1
-        relationships:
-        - validator:
-            validatorCheckType: 0
-            validators:
-            - rid: 6700482629780111374
-          setter:
-            dataType: 1
-            stat: 0
-            statValue: 0
-            state: 1
-            stateValue: 1
-            trigger: 0
-        - validator:
-            validatorCheckType: 0
-            validators:
-            - rid: 6700482629780111375
-            - rid: 6700482640726458370
-          setter:
-            dataType: 1
-            stat: 0
-            statValue: 0
-            state: 1
-            stateValue: 0
-            trigger: 0
-    - rid: 6700482629780111374
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 0
-        statComparisonValue: 7
-        stateStatus: 0
         state: 0
-    - rid: 6700482629780111375
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 2
-        statComparisonValue: 2
-        stateStatus: 0
-        state: 0
-    - rid: 6700482640726458368
-      type: {class: CharacterDataValueSetterValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        setterValidators:
-        - dataType: 1
-          stat: 0
-          statComparison: 0
-          statComparisonValue: 0
-          state: 0
-          stateValue: 1
-          trigger: 0
-          validatorBeforeSet:
-            validatorCheckType: 0
-            validators:
-            - rid: 6700482640726458369
-    - rid: 6700482640726458369
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 2
-        statComparisonValue: 9
-        stateStatus: 0
-        state: 0
-    - rid: 6700482640726458370
-      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        conditionType: 0
-        stat: 1
-        statComparison: 4
-        statComparisonValue: 6
-        stateStatus: 0
-        state: 0
-    - rid: 6700482669909377027
-      type: {class: CharacterDataChangedDetector, ns: XynokSourceGenerator.Entities,
-        asm: Core}
-      data:
-        dataPieces:
-        - dataType: 1
-          stat: 0
-          state: 0
-          trigger: 0
-        - dataType: 2
-          stat: 0
-          state: 0
-          trigger: 0
 --- !u!95 &296017946
 Animator:
   serializedVersion: 5

@@ -15,13 +15,16 @@ namespace XynokSourceGenerator.Entities
     [Serializable]
     public class {EntityName}AnimatorBinder: I{EntityName}Ability
     {
-        protected I{EntityName} owner;
+        private I{EntityName} _owner;
+        
+        public I{EntityName} Owner => _owner;
+        
         [SerializeField] private GameObject ownerObj;
         [SerializeField] private Animator animator;
 
-        private {EntityName}Stat[] Stats => owner.Resource.Stats;
-        private {EntityName}State[] States => owner.Resource.States;
-        private {EntityName}Trigger[] Triggers => owner.Resource.Triggers;
+        private {EntityName}Stat[] Stats => _owner.Resource.Stats;
+        private {EntityName}State[] States => _owner.Resource.States;
+        private {EntityName}Trigger[] Triggers => _owner.Resource.Triggers;
 
         private Action _onDispose;
 
@@ -33,7 +36,7 @@ namespace XynokSourceGenerator.Entities
              Debug.LogError($"[{GetType().Name}]: dependency is null");
              return;
             }
-            owner = dependency;
+            _owner = dependency;
             Execute();
         }
         
@@ -59,7 +62,7 @@ namespace XynokSourceGenerator.Entities
             bool isParamValid = CheckParamIsTheSameAsData();
             if(!isParamValid)
             {
-                Debug.LogError($"[{GetType().Name} - {owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
+                Debug.LogError($"[{GetType().Name} - {_owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
                 return;
             }
             Bind();
@@ -93,8 +96,8 @@ namespace XynokSourceGenerator.Entities
                 var stateData = States[index];
                 void UpdateAnimParam(bool value)
                 {
-                   if(value) owner.CurrentState.Add(stateData.Key);
-                   else owner.CurrentState.Remove(stateData.Key);
+                   if(value) _owner.CurrentState.Add(stateData.Key);
+                   else _owner.CurrentState.Remove(stateData.Key);
                     animator.SetBool(stateData.HashKey, value);
                 }
 
@@ -139,7 +142,7 @@ namespace XynokSourceGenerator.Entities
                 Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: ownerObj is not null, this method only works when ownerObj is not null!");
                 return;
             }
-            if(owner == null) owner = ownerObj.GetComponent<I{EntityName}>();
+            if(_owner == null) _owner = ownerObj.GetComponent<I{EntityName}>();
             XynokUtility.AnimatorUtils.ClearAllParams(animator);
             
             var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;

@@ -24,5 +24,7 @@ namespace Runtime
         {
             throw new System.NotImplementedException();
         }
+
+        public ICharacter Owner { get; }
     }
 }

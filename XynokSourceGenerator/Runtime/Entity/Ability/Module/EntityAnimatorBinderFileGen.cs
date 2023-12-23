@@ -1,6 +1,6 @@
 ﻿using XynokSourceGenerator.Core.Const;
 
-namespace XynokSourceGenerator.Runtime.Entity.Ability
+namespace XynokSourceGenerator.Runtime.Entity.Ability.Module
 {
     public class EntityAnimatorBinderFileGen: AEntityAbilityFileGen
     {

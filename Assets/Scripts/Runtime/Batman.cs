@@ -20,7 +20,9 @@ namespace Runtime
     [Serializable]
     public class Run : ACharacterAbility
     {
-        protected override void Init()
+       
+
+        protected override void OnInit()
         {
         }
 

@@ -18,6 +18,7 @@ namespace XynokSourceGenerator.Entities.Data
     public class {EntityName}DataRelationshipContainer: I{EntityName}Ability
     {
         private I{EntityName} _owner;
+        public I{EntityName} Owner => _owner;
         
         [SerializeField] [LabelWidth(130)] private UpdateMode trackMode;
         [SerializeField] [LabelWidth(130)] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;

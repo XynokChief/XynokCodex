@@ -1,6 +1,10 @@
 ﻿using System.Linq;
 using Microsoft.CodeAnalysis;
 using XynokSourceGenerator.Core.SourceGen;
+using XynokSourceGenerator.Runtime.Entity.Ability.DataSetter;
+using XynokSourceGenerator.Runtime.Entity.Ability.DataTracker;
+using XynokSourceGenerator.Runtime.Entity.Ability.DataValidator;
+using XynokSourceGenerator.Runtime.Entity.Ability.Module;
 using XynokSourceGenerator.Utils.Extensions;
 
 namespace XynokSourceGenerator.Runtime.Entity.Ability
@@ -113,6 +117,22 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+                
+                var abilityExecutorOnUpdateFileGen = new EntityAbilityExecutorOnUpdateFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                };
+                
+                var abilityExecutorOnDataChangedFileGen = new EntityAbilityExecutorOnDataChangedFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
@@ -125,6 +145,8 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                 GenCode(context, valueSetterValidatorFileGen);
                 GenCode(context, valueSetterValidatorContainerFileGen);
                 GenCode(context, dataChangedDetectorFileGen);
+                GenCode(context, abilityExecutorOnUpdateFileGen);
+                GenCode(context, abilityExecutorOnDataChangedFileGen);
                 
             }
         }

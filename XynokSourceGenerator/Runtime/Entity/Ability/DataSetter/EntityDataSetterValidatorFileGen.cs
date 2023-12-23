@@ -1,11 +1,11 @@
 ﻿using XynokSourceGenerator.Core.Const;
 
-namespace XynokSourceGenerator.Runtime.Entity.Ability
+namespace XynokSourceGenerator.Runtime.Entity.Ability.DataSetter
 {
-    public class EntityDataValidatorContainerFileGen: AEntityAbilityFileGen
+    public class EntityDataSetterValidatorFileGen: AEntityAbilityFileGen
     {
-        protected override string FileName => $"{EntityName}_DataValidatorContainer";
-        protected override string TemplatePath => TxtPath.ENTITY_DATA_VALIDATOR_CONTAINER;
+        protected override string FileName => $"{EntityName}_DataSetterValidator";
+        protected override string TemplatePath => TxtPath.ENTITY_DATA_SETTER_VALIDATOR;
         
         protected override void Scopes()
         {
@@ -13,5 +13,6 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
             AppendScope(StateSymbol.ContainingNamespace.ToString());
             AppendScope(TriggerSymbol.ContainingNamespace.ToString());
         }
+         
     }
 }

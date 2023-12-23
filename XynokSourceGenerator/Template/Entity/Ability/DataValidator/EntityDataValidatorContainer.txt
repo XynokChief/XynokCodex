@@ -13,7 +13,7 @@ namespace XynokSourceGenerator.Entities.Data
     public class {EntityName}DataValidatorContainer: I{EntityName}DataValidator
     {
         private I{EntityName} _owner;
-        [SerializeField] [LabelWidth(130)] protected OperatorRelationship validatorCheckType = OperatorRelationship.And;
+        [SerializeField] [LabelWidth(150)] protected OperatorRelationship validatorCheckType = OperatorRelationship.And;
         [TableList] [Space(10)] [SerializeReference] protected I{EntityName}DataValidator[] validators = Array.Empty<I{EntityName}DataValidator>();
         
         private Action _onDispose;

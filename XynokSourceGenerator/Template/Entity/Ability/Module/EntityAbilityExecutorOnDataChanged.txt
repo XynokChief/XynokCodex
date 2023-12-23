@@ -1,36 +1,48 @@
 {Scope}
 using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention.Procedural;
+using XynokConvention.Enums;
 using XynokEntity.Enums;
 using XynokSourceGenerator.Entities.APIs;
 using XynokSourceGenerator.Entities.Data;
 
-
-namespace XynokSourceGenerator.Entities 
+namespace XynokSourceGenerator.Entities
 {
+    
     /// <summary>
-    /// xác định sự thay đổi của dữ liệu của {EntityName} thông qua các đối tượng {EntityName}DataSmallPiece
+    /// Execute ability trong mode Update tương ứng
     /// </summary>
     [Serializable]
-    public class {EntityName}DataChangedDetector: I{EntityName}DataValidator
+    public class {EntityName}AbilityExecutorOnDataChanged: I{EntityName}AbilityExecutor
     {
-        private I{EntityName} _owner;
+        private I{EntityName}Ability _owner;
+        private I{EntityName} _ownerOfAbility => _owner.Owner;
         
         [TableList] [SerializeField] [HideLabel] private {EntityName}DataSmallPiece[] dataPieces;
         
-        private bool _hasChanged;
         private Action _onDispose;
     
-        public void SetDependency(I{EntityName} dependency)
+
+        public void SetDependency(I{EntityName}Ability dependency)
         {
             Dispose();
+            
             if(dependency == null)
             {
              Debug.LogError($"[{GetType().Name}]: dependency is null");
              return;
             }
+            
             _owner = dependency;
+            
+            if(_owner.Owner == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: owner of ability is null");
+             return;
+            }
+            
             Init();
         }
         
@@ -38,14 +50,6 @@ namespace XynokSourceGenerator.Entities
         {
             _onDispose?.Invoke();
             _onDispose = default;
-            _hasChanged = default;
-        }
-        
-        public bool IsValid()
-        {
-            bool isValid = _hasChanged;
-            OnValidCalled();
-            return isValid;
         }
         
         void Init()
@@ -54,7 +58,7 @@ namespace XynokSourceGenerator.Entities
             {
                 if(dataPiece.dataType == EntityDataType.Stat)
                 {
-                    var stat = _owner.Resource.GetStat(dataPiece.stat);
+                    var stat = _ownerOfAbility.Resource.GetStat(dataPiece.stat);
                     stat.OnChanged += OnStatHasChanged;
                     _onDispose += () => stat.OnChanged -= OnStatHasChanged;
                     return;
@@ -62,7 +66,7 @@ namespace XynokSourceGenerator.Entities
                 
                 if(dataPiece.dataType == EntityDataType.State)
                 {
-                    var state = _owner.Resource.GetState(dataPiece.state);
+                    var state = _ownerOfAbility.Resource.GetState(dataPiece.state);
                     state.OnChanged += OnStateHasChanged;
                     _onDispose += () => state.OnChanged -= OnStateHasChanged;
                     return;
@@ -70,23 +74,22 @@ namespace XynokSourceGenerator.Entities
                 
                 if(dataPiece.dataType == EntityDataType.Trigger)
                 {
-                    var trigger = _owner.Resource.GetTrigger(dataPiece.trigger);
+                    var trigger = _ownerOfAbility.Resource.GetTrigger(dataPiece.trigger);
                     trigger.OnChanged += OnTriggerHasChanged;
                     _onDispose += () => trigger.OnChanged -= OnTriggerHasChanged;
                 }
             }
         }
         
-        void OnStatHasChanged(float value) => _hasChanged = true;
-        void OnStateHasChanged(bool value) => _hasChanged = true;
-        void OnTriggerHasChanged(bool value) => _hasChanged = value;
+        void OnStatHasChanged(float value) => _owner?.Execute();
+        void OnStateHasChanged(bool value) => _owner?.Execute();
         
-        void OnValidCalled()
+        void OnTriggerHasChanged(bool value)
         {
-            _hasChanged = default;
+            if(value) _owner?.Execute();
         }
+      
     }
-
+    {Body}
 }
 
-{Body}
