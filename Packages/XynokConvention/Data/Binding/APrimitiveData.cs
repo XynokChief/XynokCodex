@@ -5,6 +5,7 @@ using XynokConvention.APIs;
 
 namespace XynokConvention.Data.Binding
 {
+    
     /// <summary>
     /// should be used for primitive types only
     /// </summary>

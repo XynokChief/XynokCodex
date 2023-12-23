@@ -1,7 +1,6 @@
 {Scope}
 using System;
 using UnityEngine;
-using XynokEntity.APIs;
 using XynokEntity.Enums;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities.APIs;

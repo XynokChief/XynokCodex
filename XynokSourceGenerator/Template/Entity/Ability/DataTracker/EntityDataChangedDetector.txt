@@ -1,0 +1,92 @@
+{Scope}
+using System;
+using Sirenix.OdinInspector;
+using UnityEngine;
+using XynokEntity.Enums;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+
+namespace XynokSourceGenerator.Entities 
+{
+    /// <summary>
+    /// {EntityName} base class ability
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataChangedDetector: I{EntityName}DataValidator
+    {
+        private I{EntityName} _owner;
+        
+        [TableList] [SerializeField] [HideLabel] private {EntityName}DataSmallPiece[] dataPieces;
+        
+        private bool _hasChanged;
+        private Action _onDispose;
+    
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+            _hasChanged = default;
+        }
+        
+        public bool IsValid()
+        {
+            bool isValid = _hasChanged;
+            OnValidCalled();
+            return isValid;
+        }
+        
+        void Init()
+        {
+            foreach (var dataPiece in dataPieces)
+            {
+                if(dataPiece.dataType == EntityDataType.Stat)
+                {
+                    var stat = _owner.Resource.GetStat(dataPiece.stat);
+                    stat.OnChanged += OnStatHasChanged;
+                    _onDispose += () => stat.OnChanged -= OnStatHasChanged;
+                    return;
+                }
+                
+                if(dataPiece.dataType == EntityDataType.State)
+                {
+                    var state = _owner.Resource.GetState(dataPiece.state);
+                    state.OnChanged += OnStateHasChanged;
+                    _onDispose += () => state.OnChanged -= OnStateHasChanged;
+                    return;
+                }
+                
+                if(dataPiece.dataType == EntityDataType.Trigger)
+                {
+                    var trigger = _owner.Resource.GetTrigger(dataPiece.trigger);
+                    trigger.OnChanged += OnTriggerHasChanged;
+                    _onDispose += () => trigger.OnChanged -= OnTriggerHasChanged;
+                }
+            }
+        }
+        
+        void OnStatHasChanged(float value) => _hasChanged = true;
+        void OnStateHasChanged(bool value) => _hasChanged = true;
+        void OnTriggerHasChanged(bool value) => _hasChanged = value;
+        
+        void OnValidCalled()
+        {
+            _hasChanged = default;
+        }
+    }
+
+}
+
+{Body}

@@ -105,6 +105,14 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
+                
+                var dataChangedDetectorFileGen = new EntityDataChangedDetectorFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
@@ -116,6 +124,7 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                 GenCode(context, dataRelationshipContainerFileGen);
                 GenCode(context, valueSetterValidatorFileGen);
                 GenCode(context, valueSetterValidatorContainerFileGen);
+                GenCode(context, dataChangedDetectorFileGen);
                 
             }
         }

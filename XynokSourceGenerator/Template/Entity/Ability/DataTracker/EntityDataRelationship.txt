@@ -2,7 +2,6 @@
 using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
-using XynokEntity.APIs;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities.APIs;
 

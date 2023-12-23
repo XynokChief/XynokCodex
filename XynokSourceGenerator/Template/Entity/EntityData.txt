@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using XynokEntity.Enums;
 using XynokConvention.Data.Binding;
 using XynokSourceGenerator.Entities.APIs;
 
@@ -85,6 +86,15 @@ namespace XynokSourceGenerator.Entities.Data
                 
                 _stateCacheDict.Add(state, Enum.Parse<{EntityName}StateFlag>(state.ToString()));
             }
+        }
+        
+        [Serializable]
+        public class {EntityName}DataSmallPiece
+        {
+            [HorizontalGroup("data to track")] [HideLabel] public EntityDataType dataType;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.Stat)] public {StatName} stat;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.State)] public {StateName} state;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.Trigger)] public {TriggerName} trigger;
         }
 }
 

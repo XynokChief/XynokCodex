@@ -1,4 +1,4 @@
-﻿namespace XynokEntity.APIs
+﻿namespace XynokConvention.APIs
 {
     public interface IExecute
     {
@@ -15,7 +15,6 @@
         /// </summary>
         void Reset();
     }
-
     public interface IControlAble : IExecute, IReset
     {
     }

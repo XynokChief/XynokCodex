@@ -221,8 +221,8 @@ MonoBehaviour:
     Abilities:
     - rid: 6700482624031817730
     - rid: 6700482629780111373
-    - rid: 6700482624031817731
     - rid: 6700482640726458368
+    - rid: 6700482624031817731
   xx:
     trackMode: 0
     executeValidator: 1
@@ -239,7 +239,9 @@ MonoBehaviour:
       type: {class: Run, ns: Runtime, asm: Core}
       data:
         updateMode: 0
-        executeValidator: 0
+        executeValidator: 1
+        customValidator:
+          rid: 6700482669909377027
         validator:
           validatorCheckType: 0
           validators:
@@ -351,6 +353,19 @@ MonoBehaviour:
         statComparisonValue: 6
         stateStatus: 0
         state: 0
+    - rid: 6700482669909377027
+      type: {class: CharacterDataChangedDetector, ns: XynokSourceGenerator.Entities,
+        asm: Core}
+      data:
+        dataPieces:
+        - dataType: 1
+          stat: 0
+          state: 0
+          trigger: 0
+        - dataType: 2
+          stat: 0
+          state: 0
+          trigger: 0
 --- !u!95 &296017946
 Animator:
   serializedVersion: 5

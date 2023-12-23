@@ -1,7 +1,6 @@
 {Scope}
 using System;
 using UnityEngine;
-using XynokEntity.APIs;
 using XynokConvention.APIs;
 using XynokConvention.Enums;
 using XynokSourceGenerator.Entities.APIs;
@@ -11,7 +10,7 @@ namespace XynokSourceGenerator.Entities.Data
 {
 
     [Serializable]
-    public class {EntityName}DataValidatorContainer: IValidator, IInjectable<I{EntityName}>
+    public class {EntityName}DataValidatorContainer: I{EntityName}DataValidator
     {
         private I{EntityName} _owner;
         [SerializeField] [LabelWidth(130)] protected OperatorRelationship validatorCheckType = OperatorRelationship.And;
