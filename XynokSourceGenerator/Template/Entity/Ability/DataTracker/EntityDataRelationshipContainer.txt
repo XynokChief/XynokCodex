@@ -15,89 +15,46 @@ namespace XynokSourceGenerator.Entities.Data
     /// Luôn chạy khi owner thay đổi trạng thái hoặc theo trackMode. Cách hoạt động: State thay đổi State
     /// </summary>
     [Serializable]
-    public class {EntityName}DataRelationshipContainer: I{EntityName}Ability
+    public class {EntityName}DataRelationshipContainer: A{EntityName}Ability
     {
-        private I{EntityName} _owner;
-        public I{EntityName} Owner => _owner;
-        
-        [SerializeField] [LabelWidth(130)] private UpdateMode trackMode;
-        [SerializeField] [LabelWidth(130)] private AbilityExecuteValidatorType executeValidator = AbilityExecuteValidatorType.Always;
         
         [Title("State Impacts Another", "khi các validators thỏa mãn thì setter sẽ dc thực thi", TitleAlignments.Centered)]
         [SerializeField] [HideLabel] [Space(10)] [TableList] private {EntityName}DataRelationship[] relationships;
 
 
-        private Action _onDispose;
-        private bool _canExecute;
-        private bool _isInitialized;
+        private Action _onDisposeRelationship;
 
-        public void SetDependency(I{EntityName} dependency)
+       
+        protected override void OnInit()
         {
-            Dispose();
-            if(dependency == null)
+            foreach (var relationship in relationships)
             {
-             Debug.LogError($"[{GetType().Name}]: dependency is null");
-             return;
+                relationship.SetDependency(owner);
+                _onDisposeRelationship += relationship.Dispose;
             }
-            _owner = dependency;
-            Execute();
-
+        }
+               
+        protected override void OnDispose()
+        {
+            _onDisposeRelationship?.Invoke();
+            _onDisposeRelationship = default;
         }
         
-        public void Dispose()
-        {
-            TimeCycle.Instance.RemoveInvoker(Execute, trackMode);
-            if(_owner != null) _owner.CurrentState.OnChanged -= OnStateOwnerChanged;
-            _onDispose?.Invoke();
-            _onDispose = default;
-            _canExecute = default;
-            _isInitialized = false;
-        }
         
-        public void Execute()
+        protected override void OnExecute()
         {
-            if(!_isInitialized)
-            {
-                _isInitialized = true;
-                Init();
-                return;
-            }
-            
-            if(executeValidator == AbilityExecuteValidatorType.WhenOwnerStateChanged)
-            {
-                if(!_canExecute) return;
-                _canExecute = false;
-            }
-            
             foreach (var relationship in relationships)
             {
                 relationship?.Execute();
             }
         }
 
-        public void Reset()
+        public override void Reset()
         {
-            Dispose();
+           OnDispose();
+           OnInit();
         }
 
-        void OnStateOwnerChanged({EntityName}StateFlag state)
-        {
-            _canExecute = true;
-        }
-        
-        void Init()
-        {
-        
-            foreach (var relationship in relationships)
-            {
-                relationship.SetDependency(_owner);
-                _onDispose+= relationship.Dispose;
-            }
-            
-            OnStateOwnerChanged(_owner.CurrentState.Value);
-            _owner.CurrentState.OnChanged += OnStateOwnerChanged;
-            TimeCycle.Instance.AddInvoker(Execute, trackMode);
-        }
     }
         
 

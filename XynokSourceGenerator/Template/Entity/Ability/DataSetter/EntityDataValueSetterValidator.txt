@@ -27,7 +27,7 @@ namespace XynokSourceGenerator.Entities.Data
         [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private {StateName} state;
         [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.State)] private bool stateValue;
         [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.Trigger)] private {TriggerName} trigger;
-        [SerializeField] [HideLabel] private CharacterDataValidatorContainer validatorBeforeSet;
+        [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validatorBeforeSet;
         
         private I{EntityName} _owner;
         private {EntityName}Stat _stat;
@@ -114,9 +114,11 @@ namespace XynokSourceGenerator.Entities.Data
             
             bool sameAsComparisonValue = XynokUtility.DataUtils.IsValid(value, statComparisonValue, statComparison);
             
-            if(!sameAsComparisonValue) return true;
+            // nếu ko bằng với giá trị so sánh thì dc phép thay đổi
+            if(!sameAsComparisonValue) return true; 
             
-            return !validatorBeforeSet.IsValid();
+            // trả về xem giá trị hiện tại có valid hay ko
+            return validatorBeforeSet.IsValid(); 
         }
       
     }
