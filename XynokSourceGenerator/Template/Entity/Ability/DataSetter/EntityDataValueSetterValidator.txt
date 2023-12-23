@@ -97,6 +97,7 @@ namespace XynokSourceGenerator.Entities.Data
 
         bool IsTriggerValidToChange(bool value)
         {
+            if(!value) return true;
             return validatorBeforeSet.IsValid();
         }
 
