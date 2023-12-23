@@ -6,6 +6,7 @@ using XynokConvention;
 using XynokConvention.APIs;
 using XynokConvention.Enums;
 using XynokEntity.Enums;
+using XynokUtils;
 using XynokSourceGenerator.Entities.APIs;
 using XynokSourceGenerator.Entities.Data;
 
@@ -13,21 +14,31 @@ namespace XynokSourceGenerator.Entities.Data
 { 
 
     /// <summary>
-    /// Xác định xem giá trị data "hiện thời - hiện tai" của Entity có thỏa mãn điều kiện hay không
+    /// 
     /// </summary>
     [Serializable]
-    public class {EntityName}DataValidatorListener: I{EntityName}DataValidator
+    public class {EntityName}DataValidatorListener: IInjectable<I{EntityName}>
     {
-        protected I{EntityName} owner;
-        [HorizontalGroup(ConventionKey.Conditions)] [HideLabel] [SerializeField] private EntityDataType conditionType;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private float statComparisonValue;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfState)] [HideLabel] [SerializeField] private EntityStateStatus stateStatus;
-        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfState)] [HideLabel] [SerializeField] private {EntityName}StateFlag state;
+        private I{EntityName} _owner;
+        [HorizontalGroup("when data is")] [SerializeField] [HideLabel] private EntityDataType dataType;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private float statValue;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private {StateName} state;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private bool stateValue;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfTrigger)] [HideLabel] [SerializeField] private {TriggerName} trigger;
         
-        private {EntityName}Stat _targetStat;
-
+        
+        private {EntityName}Stat _stat;
+        private {EntityName}State _state;
+        private {EntityName}Trigger _trigger;
+        private Action _actionOnValid;
+        
+        public void SetActionOnValid(Action action)
+        {
+            _actionOnValid = action;
+        }
+        
         public void SetDependency(I{EntityName} dependency)
         {
             Dispose();
@@ -36,65 +47,64 @@ namespace XynokSourceGenerator.Entities.Data
              Debug.LogError($"[{GetType().Name}]: dependency is null");
              return;
             }
-            owner = dependency;
-           
+            _owner = dependency;
+            Init();
         }
         
-        public void Dispose(){}
-        
-        public bool IsValid()
+        public void Dispose()
         {
-            if(owner == null)
+            _actionOnValid = default;
+            if(_owner == null) return;
+            if(_stat != null) _stat.OnChanged -= OnStatChanged;
+            if(_state != null) _state.OnChanged -= OnStateChanged;
+            if(_trigger != null) _trigger.OnChanged -= OnTriggerChanged;
+        }
+        
+        void Init()
+        {
+            if(_owner == null)
             {
                 Debug.LogError($"[{GetType().Name}]: owner is null");
-                return false;
+                return;
             }
-            if(conditionType == EntityDataType.SelfStat) return IsSelfStatValid();
-            if(conditionType == EntityDataType.SelfState) return IsSelfStateValid();
-            return false;
-        }
-        
-        bool IsSelfStatValid()
-        {
-            _targetStat ??= owner.Resource.GetStat(stat);
-            if(_targetStat == null)
-            {
-                Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
-                return false;
-            }
-            switch (statComparison)
-            {
-                case OperatorComparison.Equal:
-                    return Math.Abs(_targetStat.Value - statComparisonValue) < Mathf.Epsilon;
-                
-                case OperatorComparison.NotEqual:
-                    return _targetStat.Value != statComparisonValue;
-                
-                case OperatorComparison.GreaterThan:
-                    return _targetStat.Value > statComparisonValue;
-                
-                case OperatorComparison.GreaterOrEqual:
-                    return _targetStat.Value >= statComparisonValue;
-                
-                case OperatorComparison.LessThan:
-                    return _targetStat.Value < statComparisonValue;
-                    
-                case OperatorComparison.LessOrEqual:
-                    return _targetStat.Value <= statComparisonValue;
-                default:
-                    Debug.LogError($"[{GetType().Name}]: statComparison {statComparison} is not supported !");
-                    return false;
-            }
-        }
-        
-        bool IsSelfStateValid()
-        {
-            if(stateStatus == EntityStateStatus.Exist) return owner.CurrentState.Has(state);
-            if(stateStatus == EntityStateStatus.NoExist) return !owner.CurrentState.Has(state);
             
-            Debug.LogError($"[{GetType().Name}]: stateStatus {stateStatus} is not supported !");
-            return false;
+            
+            switch (dataType)
+            {
+                case EntityDataType.SelfStat:
+                    _stat = _owner.Resource.GetStat(stat);
+                    _stat.OnChanged += OnStatChanged;
+                    break;
+                case EntityDataType.SelfState:
+                    _state = _owner.Resource.GetState(state);
+                    _state.OnChanged += OnStateChanged;
+                    break;
+                case EntityDataType.SelfTrigger:
+                    _trigger = _owner.Resource.GetTrigger(trigger);
+                    _trigger.OnChanged += OnTriggerChanged;
+                    break;
+                default:
+                    throw new ($"[{GetType().Name}]: {dataType} is not supported !");
+            }
+            
         }
+        
+        
+        void OnStatChanged(float value)
+        {
+            bool result = XynokUtility.DataUtils.IsValid(value, statValue, statComparison);
+            if(result) _actionOnValid?.Invoke();
+        }
+        
+        void OnStateChanged(bool value)
+        {   
+            if(value == stateValue) _actionOnValid?.Invoke();
+        }
+
+        void OnTriggerChanged(bool value)
+        {
+            if(value) _actionOnValid?.Invoke();
+        }        
         
     }
         

@@ -52,6 +52,7 @@ namespace XynokSourceGenerator.Entities.Data
             }
             if(conditionType == EntityDataType.SelfStat) return IsSelfStatValid();
             if(conditionType == EntityDataType.SelfState) return IsSelfStateValid();
+            Debug.LogError($"[{GetType().Name}]: conditionType {conditionType} is not supported !");
             return false;
         }
         

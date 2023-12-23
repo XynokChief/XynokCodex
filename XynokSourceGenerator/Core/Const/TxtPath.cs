@@ -21,13 +21,14 @@
        
        // Ability.DataSetter
        public const string ENTITY_DATA_SETTER = Prefix + ".Entity.Ability.DataSetter.EntityDataSetter" + Suffix;
-       public const string ENTITY_DATA_SETTER_VALIDATOR = Prefix + ".Entity.Ability.DataSetter.EntityDataSetterValidator" + Suffix; // có thay đổi thì set 
        public const string ENTITY_DATA_VALUE_SETTER_VALIDATOR = Prefix + ".Entity.Ability.DataSetter.EntityDataValueSetterValidator" + Suffix; // check điều kiện trước khi set
        public const string ENTITY_DATA_VALUE_SETTER_VALIDATOR_CONTAINER = Prefix + ".Entity.Ability.DataSetter.EntityDataValueSetterValidatorContainer" + Suffix; // check điều kiện trước khi set
        
        // Ability.DataValidator
        public const string ENTITY_DATA_VALIDATOR = Prefix + ".Entity.Ability.DataValidator.EntityDataValidator" + Suffix;
        public const string ENTITY_DATA_VALIDATOR_LISTENER = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorListener" + Suffix;
+       public const string ENTITY_DATA_VALIDATOR_LISTENER_EXECUTOR = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorListenerExecutor" + Suffix;
+       public const string ENTITY_DATA_VALIDATOR_LISTENER_EXECUTOR_CONTAINER = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorListenerExecutorContainer" + Suffix;
        public const string ENTITY_DATA_VALIDATOR_CONTAINER = Prefix + ".Entity.Ability.DataValidator.EntityDataValidatorContainer" + Suffix;
        
        // Ability.DataTracker

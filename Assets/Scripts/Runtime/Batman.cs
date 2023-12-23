@@ -19,7 +19,7 @@ namespace Runtime
     }
 
     [Serializable]
-    public class Run : ACharacterAbility
+    public class Run : ACharacterAbility, IAction
     {
        
 
@@ -38,6 +38,11 @@ namespace Runtime
 
         public override void Reset()
         {
+        }
+
+        public void Invoke()
+        {
+            Execute();
         }
     }
 

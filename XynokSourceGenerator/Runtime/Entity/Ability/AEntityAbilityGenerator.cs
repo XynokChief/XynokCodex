@@ -141,6 +141,22 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
                 };
+                
+                var dataValidatorListenerExecutorFileGen = new EntityDataValidatorListenerExecutorFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                };
+                
+                var dataValidatorListenerExecutorContainerFileGen = new EntityDataValidatorListenerExecutorContainerFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                };
             
                 GenCode(context, abilityFileGen);
                 GenCode(context, stateFileGen);
@@ -156,6 +172,8 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                 GenCode(context, abilityExecutorOnUpdateFileGen);
                 GenCode(context, abilityExecutorOnDataChangedFileGen);
                 GenCode(context, dataValidatorListenerFileGen);
+                GenCode(context, dataValidatorListenerExecutorFileGen);
+                GenCode(context, dataValidatorListenerExecutorContainerFileGen);
             }
         }
     }

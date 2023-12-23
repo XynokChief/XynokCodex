@@ -664,16 +664,71 @@ MonoBehaviour:
       duplicateCheck: 0
       key: 1
     Abilities:
-    - rid: 6700482670451752997
-  animator: {fileID: 642668382}
+    - rid: 6700482670451753030
+  animator: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 6700482670451752997
-      type: {class: CharacterAnimatorBinder, ns: XynokSourceGenerator.Entities, asm: Core}
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 6700482670451753030
+      type: {class: CharacterDataValidatorListenerExecutorContainer, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
       data:
-        ownerObj: {fileID: 1327104453}
-        animator: {fileID: 642668382}
+        invokers:
+        - listener:
+            dataType: 1
+            stat: 0
+            statComparison: 0
+            statValue: 0
+            state: 0
+            stateValue: 0
+            trigger: 0
+          validator:
+            validatorCheckType: 0
+            validators:
+            - rid: 6700482670451753033
+          executor:
+            rid: 6700482670451753034
+    - rid: 6700482670451753033
+      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        conditionType: 0
+        stat: 1
+        statComparison: 2
+        statComparisonValue: 3
+        stateStatus: 0
+        state: 0
+    - rid: 6700482670451753034
+      type: {class: Run, ns: Runtime, asm: Core}
+      data:
+        executorType: 2
+        executorOnUpdate:
+          updateMode: 0
+        executorOnDataChanged:
+          dataPieces: []
+        customExecutor:
+          rid: -2
+        validator:
+          rid: 6700482670451753035
+    - rid: 6700482670451753035
+      type: {class: CharacterDataValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        validatorCheckType: 0
+        validators:
+        - rid: 6700482670451753036
+    - rid: 6700482670451753036
+      type: {class: CharacterDataValidator, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        conditionType: 0
+        stat: 1
+        statComparison: 2
+        statComparisonValue: 6
+        stateStatus: 0
+        state: 0
 --- !u!1 &1789635359
 GameObject:
   m_ObjectHideFlags: 0

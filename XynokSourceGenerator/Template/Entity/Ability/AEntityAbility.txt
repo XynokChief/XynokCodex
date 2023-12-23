@@ -76,8 +76,11 @@ namespace XynokSourceGenerator.Entities
                     break;
                     
                 case AbilityExecutorType.Custom:
-                    customExecutor.SetDependency(this);
-                    _onDispose += customExecutor.Dispose;
+                    if(customExecutor != null)
+                    {
+                        customExecutor.SetDependency(this);
+                        _onDispose += customExecutor.Dispose;
+                    }
                     break;
                     
                 default:

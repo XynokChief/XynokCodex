@@ -1,0 +1,67 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{ 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValidatorListenerExecutorContainer: I{EntityName}Ability
+    {
+        private I{EntityName} _owner;
+        public I{EntityName} Owner => _owner;
+        
+        
+        
+        [SerializeField] [TableList] private {EntityName}DataValidatorListenerExecutor[] invokers;
+        
+        private Action _onDispose;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Execute();
+        }
+        
+        public void Dispose()
+        {
+           _onDispose?.Invoke();
+           _onDispose= default;
+        }
+        
+        public void Execute()
+        {
+            Init();
+        }
+
+        public void Reset()
+        {
+            Dispose();
+        }
+
+        void Init()
+        {
+           foreach(var invoker in invokers)
+           {
+               invoker.SetDependency(_owner);
+               _onDispose += invoker.Dispose;
+           }
+            
+        }
+    }
+        
+        {Body}
+
+}
+
