@@ -14,7 +14,7 @@ namespace XynokSourceGenerator.Entities.Data
 { 
 
     /// <summary>
-    /// Xác định xem giá trị data "hiện thời - hiện tai" của Entity có thỏa mãn điều kiện hay không
+    /// Xác định xem giá trị data "hiện tai" của Entity có thỏa mãn điều kiện hay không
     /// </summary>
     [Serializable]
     public class {EntityName}DataValidator: I{EntityName}DataValidator

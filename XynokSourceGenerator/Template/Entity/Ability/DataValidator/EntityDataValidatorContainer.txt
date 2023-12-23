@@ -8,7 +8,10 @@ using Sirenix.OdinInspector;
 
 namespace XynokSourceGenerator.Entities.Data
 {
-
+    
+    /// <summary>
+    /// Một tập hợp các data validator của {EntityName}
+    /// </summary>
     [Serializable]
     public class {EntityName}DataValidatorContainer: I{EntityName}DataValidator
     {

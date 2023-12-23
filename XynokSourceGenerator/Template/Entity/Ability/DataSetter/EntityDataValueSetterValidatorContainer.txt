@@ -13,7 +13,7 @@ namespace XynokSourceGenerator.Entities.Data
 {
     
     /// <summary>
-    /// Container of value setters conditions for {EntityName}
+    /// Một tập hợp validate dữ liệu trước khi set giá trị cho {EntityName}
     /// </summary>
     [Serializable]
     public class {EntityName}DataValueSetterValidatorContainer : I{EntityName}Ability

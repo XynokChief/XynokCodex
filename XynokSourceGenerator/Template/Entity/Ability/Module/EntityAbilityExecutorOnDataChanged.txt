@@ -12,7 +12,7 @@ namespace XynokSourceGenerator.Entities
 {
     
     /// <summary>
-    /// Execute ability trong mode Update tương ứng
+    /// Executor của một ability khi có sự thay đổi dữ liệu
     /// </summary>
     [Serializable]
     public class {EntityName}AbilityExecutorOnDataChanged: I{EntityName}AbilityExecutor

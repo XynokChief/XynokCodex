@@ -8,7 +8,7 @@ namespace XynokSourceGenerator.Entities.Data
 { 
 
     /// <summary>
-    /// 
+    /// Một tập hợp các invoker được tạo ra từ các <see cref="{EntityName}DataValidatorListenerExecutor"/>.
     /// </summary>
     [Serializable]
     public class {EntityName}DataValidatorListenerExecutorContainer: I{EntityName}Ability

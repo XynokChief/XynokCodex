@@ -9,7 +9,7 @@ namespace XynokSourceGenerator.Entities.Data
 { 
 
     /// <summary>
-    /// 
+    /// Sau khi lắng nghe, check 1 lần nữa thông qua validator, nếu hợp lệ thì thực thi executor
     /// </summary>
     [Serializable]
     public class {EntityName}DataValidatorListenerExecutor: IInjectable<I{EntityName}>

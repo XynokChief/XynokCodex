@@ -15,7 +15,7 @@ namespace XynokSourceGenerator.Entities.Data
     
     
     /// <summary>
-    /// This class is used to validate if the value of a {EntityName} is being set new value.
+    /// Tự động đăng ký vào quá trình validate dữ liệu trước khi set giá trị cho {EntityName}
     /// </summary>
     [Serializable]
     public class {EntityName}DataValueSetterValidator : IInjectable<I{EntityName}>

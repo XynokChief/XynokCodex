@@ -14,7 +14,7 @@ namespace XynokSourceGenerator.Entities.Data
 { 
 
     /// <summary>
-    /// 
+    /// Lắng nghe sự thay đổi của dữ liệu của {EntityName} và thực thi một hành động khi dữ liệu thỏa mãn điều kiện
     /// </summary>
     [Serializable]
     public class {EntityName}DataValidatorListener: IInjectable<I{EntityName}>

@@ -7,7 +7,10 @@ using XynokSourceGenerator.Entities.APIs;
 
 namespace XynokSourceGenerator.Entities.Data
 {
-
+    
+    /// <summary>
+    /// Khi các validator đã thỏa mãn thì các setter sẽ được thực thi. Sử dụng = cách gọi hàm Execute()
+    /// </summary>
     [Serializable]
     public class {EntityName}DataRelationship: IExecute, IInjectable<I{EntityName}>
     {

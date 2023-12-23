@@ -12,7 +12,7 @@ namespace XynokSourceGenerator.Entities.Data
 {
 
     /// <summary>
-    /// Luôn chạy khi owner thay đổi trạng thái hoặc theo trackMode. Cách hoạt động: State thay đổi State
+    /// Một tập hợp các data impactors của {EntityName}
     /// </summary>
     [Serializable]
     public class {EntityName}DataRelationshipContainer: A{EntityName}Ability

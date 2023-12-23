@@ -9,6 +9,9 @@ using Sirenix.OdinInspector;
 namespace XynokSourceGenerator.Entities.Data
 {
 
+    /// <summary>
+    /// Thay đổi dữ liệu của {EntityName} khi gọi hàm Execute
+    /// </summary>
     [Serializable]
     public class {EntityName}DataSetter: IExecute, IInjectable<I{EntityName}>
     {
