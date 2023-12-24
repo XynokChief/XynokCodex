@@ -2,6 +2,7 @@
 using System;
 using UnityEngine;
 using XynokUtils;
+using XynokEntity.Enums;
 using Sirenix.OdinInspector;
 using XynokSourceGenerator.Entities.Data;
 using XynokSourceGenerator.Entities.APIs;
@@ -21,7 +22,11 @@ namespace XynokSourceGenerator.Entities
         
         [Tooltip("obj chứa entity và data của entity đó")]
         [SerializeField] private GameObject ownerObj;
+        
         [SerializeField] private Animator animator;
+        
+        [Tooltip("các data ko dc binding với animator")]
+        [SerializeField] private {EntityName}DataSmallPiece[] excludes;
 
         private {EntityName}Stat[] Stats => _owner.Resource.Stats;
         private {EntityName}State[] States => _owner.Resource.States;
@@ -77,6 +82,8 @@ namespace XynokSourceGenerator.Entities
             {
                 int index = i;
                 var statData = Stats[index];
+                if(ExistInExcludes(statData)) continue;
+                
                 void UpdateAnimParam(float value)
                 {
                     animator.SetFloat(statData.HashKey, value);
@@ -95,6 +102,8 @@ namespace XynokSourceGenerator.Entities
             {
                 int index = i;
                 var stateData = States[index];
+                if(ExistInExcludes(stateData)) continue;
+                
                 void UpdateAnimParam(bool value)
                 {
                    if(value) _owner.CurrentState.Add(stateData.Key);
@@ -115,6 +124,8 @@ namespace XynokSourceGenerator.Entities
             {
                 int index = i;
                 var data = Triggers[index];
+                if(ExistInExcludes(data)) continue;
+                
                 void UpdateAnimParam(bool value)
                 {
                     if (value)
@@ -149,40 +160,79 @@ namespace XynokSourceGenerator.Entities
             var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
             
             for (int i = 0; i < Stats.Length; i++)
+            {
+                  if(ExistInExcludes(Stats[i])) continue;
                 animatorController.AddParameter(Stats[i].Key.ToString(),
                     AnimatorControllerParameterType.Float);
+            }
 
             for (int i = 0; i < States.Length; i++)
+            {
+                  if(ExistInExcludes(States[i])) continue;
                 animatorController.AddParameter(States[i].Key.ToString(),
                     AnimatorControllerParameterType.Bool);
+            }
 
             for (int i = 0; i < Triggers.Length; i++)
+            {
+                  if(ExistInExcludes(Triggers[i])) continue;
                 animatorController.AddParameter(Triggers[i].Key.ToString(),
                     AnimatorControllerParameterType.Trigger);
+            }
         #endif
         }
         
         bool CheckParamIsTheSameAsData()
         {
             foreach(var stat in Stats)
-            {
+            {   
+                if(ExistInExcludes(stat)) continue;
                 bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, stat.Key.ToString(), AnimatorControllerParameterType.Float);
                 if(!exist) return false;
             }
             
             foreach(var state in States)
             {
+                if(ExistInExcludes(state)) continue;
                 bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, state.Key.ToString(), AnimatorControllerParameterType.Bool);
                 if(!exist) return false;
             }
             
             foreach(var trigger in Triggers)
             {
+                if(ExistInExcludes(trigger)) continue;
                 bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, trigger.Key.ToString(), AnimatorControllerParameterType.Trigger);
                 if(!exist) return false;
             }
             
             return true;
+        }
+        
+        bool ExistInExcludes({EntityName}Stat stat)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfStat && exclude.stat == stat.Key) return true;
+            }
+            return false;
+        }
+        
+        bool ExistInExcludes({EntityName}State state)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfState && exclude.state == state.Key) return true;
+            }
+            return false;
+        }
+
+        bool ExistInExcludes({EntityName}Trigger trigger)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfTrigger && exclude.trigger == trigger.Key) return true;
+            }
+            return false;
         }
     }
     {Body}
