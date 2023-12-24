@@ -48,6 +48,11 @@ namespace XynokSourceGenerator.Entities.Data
                 relationship?.Execute();
             }
         }
+        
+        protected override void OnInterrupted()
+        {
+           
+        }
 
         public override void Reset()
         {

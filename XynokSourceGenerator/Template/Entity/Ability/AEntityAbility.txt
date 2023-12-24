@@ -52,7 +52,11 @@ namespace XynokSourceGenerator.Entities
         public void Execute()
         {
             if(validator == null) Debug.LogWarning($"[{GetType().Name}]: execute validator is null");
-            if(validator !=null && !validator.IsValid()) return;
+            if(validator !=null && !validator.IsValid())
+            {
+                OnInterrupted();
+                return;
+            }
             OnExecute();
         }
         
@@ -90,6 +94,7 @@ namespace XynokSourceGenerator.Entities
 
         protected abstract void OnInit();
         protected abstract void OnExecute();
+        protected abstract void OnInterrupted();
         public abstract void Reset();
         protected abstract void OnDispose();
       

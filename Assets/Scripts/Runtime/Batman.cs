@@ -32,6 +32,11 @@ namespace Runtime
             Debug.Log($"{owner.Resource.ResourceId} is running");
         }
 
+        protected override void OnInterrupted()
+        {
+            
+        }
+
         protected override void OnDispose()
         {
         }
