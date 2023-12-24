@@ -169,6 +169,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.xynok.3dprototype": {
+      "version": "file:Xynok3dPrototypeAsset",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.xynok.convention": {
       "version": "file:XynokConvention",
       "depth": 0,
