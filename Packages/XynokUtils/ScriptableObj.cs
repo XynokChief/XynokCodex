@@ -10,6 +10,10 @@ namespace XynokUtils
             public static T GetInstanceOfSo<T>(string hintCreate)
                 where T : ScriptableObject
             {
+#if !UNITY_EDITOR
+                Debug.LogError($"[XynokUtility.ScriptableObj.GetInstanceOfSo] is only run in editor mode !");
+#endif
+
 #if UNITY_EDITOR
                 string typeName = typeof(T).Name;
                 var guidList = UnityEditor.AssetDatabase.FindAssets($"t:{typeName}");
@@ -23,10 +27,10 @@ namespace XynokUtils
                     so = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
                     if (so != null) return so;
                 }
-#endif
 
                 Debug.LogError(
                     $"not found instance of {typeName} \n To Create:<color=cyan> Right Click > Create > {hintCreate}</color>");
+#endif
                 return null;
             }
         }
