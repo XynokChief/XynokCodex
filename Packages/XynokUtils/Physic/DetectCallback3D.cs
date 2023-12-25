@@ -1,20 +1,23 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
+using XynokConvention;
 using XynokUtils.Physics.Data;
 
 namespace XynokUtils.Physic
 {
     [RequireComponent(typeof(Collider))]
-    public class DetectCallback3D: MonoBehaviour
+    public class DetectCallback3D : MonoBehaviour
     {
-        [Header("COLLISION SETTING")] [SerializeField]
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
         private LayerMask interactableLayer;
 
-        [SerializeField] private OrderInvokeCallback executeOrder;
-        public TriggerCallback3D onTriggerEnter;
-        public TriggerCallback3D onTriggerExit;
-        public CollisionCallback3D onCollisionEnter;
-        public CollisionCallback3D onCollisionExit;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
+        private OrderInvokeCallback executeOrder;
+
+        [FoldoutGroup(ConventionKey.Settings)] public TriggerCallback3D onTriggerEnter;
+        [FoldoutGroup(ConventionKey.Settings)] public TriggerCallback3D onTriggerExit;
+        [FoldoutGroup(ConventionKey.Settings)] public CollisionCallback3D onCollisionEnter;
+        [FoldoutGroup(ConventionKey.Settings)] public CollisionCallback3D onCollisionExit;
 
         private void OnTriggerEnter(Collider other)
         {

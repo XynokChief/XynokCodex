@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
+using XynokConvention;
 using XynokUtils.Physics.Data;
 
 namespace XynokUtils.Physic
@@ -13,14 +15,12 @@ namespace XynokUtils.Physic
     [RequireComponent(typeof(Collider2D))]
     public class DetectCallback2D : MonoBehaviour
     {
-        [Header("COLLISION SETTING")] [SerializeField]
-        private LayerMask interactableLayer;
-
-        [SerializeField] private OrderInvokeCallback executeOrder;
-        public TriggerCallback2D onTriggerEnter;
-        public TriggerCallback2D onTriggerExit;
-        public CollisionCallback2D onCollisionEnter;
-        public CollisionCallback2D onCollisionExit;
+       [FoldoutGroup(ConventionKey.Settings)] [SerializeField] private LayerMask interactableLayer;
+       [FoldoutGroup(ConventionKey.Settings)] [SerializeField] private OrderInvokeCallback executeOrder;
+       [FoldoutGroup(ConventionKey.Settings)] public TriggerCallback2D onTriggerEnter;
+       [FoldoutGroup(ConventionKey.Settings)] public TriggerCallback2D onTriggerExit;
+       [FoldoutGroup(ConventionKey.Settings)] public CollisionCallback2D onCollisionEnter;
+       [FoldoutGroup(ConventionKey.Settings)] public CollisionCallback2D onCollisionExit;
 
 
         private void OnTriggerEnter2D(Collider2D other)
