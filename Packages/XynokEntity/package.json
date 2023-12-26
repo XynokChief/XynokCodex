@@ -4,11 +4,11 @@
   "displayName": "Xynok Entity",
   "description": "Bao gồm những qui ước cho việc triển khai một đối tượng, thực thể.",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
+  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Entity-aa0ca56b30bc4475aa6e2f41ac5041b3?pvs=74",
+  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Entity-aa0ca56b30bc4475aa6e2f41ac5041b3?pvs=74",
   "licensesUrl": "",
   "dependencies": {
-    "com.xynok.convention": "1.0.0"
+    
   },
   "author": {
     "name": "HoangCuongZk1",

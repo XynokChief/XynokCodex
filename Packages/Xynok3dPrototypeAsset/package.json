@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.3dprototype",
+  "version": "1.0.0",
+  "displayName": "Xynok 3d Prototype Asset",
+  "description": "các asset cần thiết để làm prototype",
+  "unity": "2022.3",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+    
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}

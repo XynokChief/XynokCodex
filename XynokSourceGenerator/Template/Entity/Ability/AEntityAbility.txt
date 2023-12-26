@@ -1,0 +1,105 @@
+{Scope}
+using System;
+using Sirenix.OdinInspector;
+using UnityEngine;
+using XynokConvention;
+using XynokEntity.Enums;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+
+namespace XynokSourceGenerator.Entities 
+{
+    /// <summary>
+    /// {EntityName} base class ability
+    /// </summary>
+    [Serializable]
+    public abstract class A{EntityName}Ability: I{EntityName}Ability
+    {
+        protected I{EntityName} owner;
+        public I{EntityName} Owner => owner;
+        
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [LabelWidth(130)] [Space(10)] private AbilityExecutorType executorType;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.OnUpdate)] [SerializeField] private {EntityName}AbilityExecutorOnUpdate executorOnUpdate;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.OnOwnerDataChanged)] [SerializeField] private {EntityName}AbilityExecutorOnDataChanged executorOnDataChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.Custom)] [SerializeReference] private I{EntityName}AbilityExecutor customExecutor;
+        
+        [Tooltip("điều kiện để thực thi ability")]
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeReference] [Space(20)] private I{EntityName}DataValidator validator = new {EntityName}DataValidatorContainer();
+        
+        private bool _canExecute;
+        private Action _onDispose;
+    
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+            OnDispose();
+        }
+        
+        public void Execute()
+        {
+            if(validator == null) Debug.LogWarning($"[{GetType().Name}]: execute validator is null");
+            if(validator !=null && !validator.IsValid())
+            {
+                OnInterrupted();
+                return;
+            }
+            OnExecute();
+        }
+        
+        void Init()
+        {
+            validator.SetDependency(owner);
+            _onDispose += validator.Dispose;
+            
+            OnInit();
+            
+            switch (executorType)
+            {
+                case AbilityExecutorType.OnUpdate:
+                    executorOnUpdate.SetDependency(this);
+                    _onDispose += executorOnUpdate.Dispose;
+                    break;
+                    
+                case AbilityExecutorType.OnOwnerDataChanged:
+                    executorOnDataChanged.SetDependency(this);
+                    _onDispose += executorOnDataChanged.Dispose;
+                    break;
+                    
+                case AbilityExecutorType.Custom:
+                    if(customExecutor != null)
+                    {
+                        customExecutor.SetDependency(this);
+                        _onDispose += customExecutor.Dispose;
+                    }
+                    break;
+                    
+                default:
+                    throw new ($"[{GetType().Name}]: executor type is not supported !");
+            }
+        }
+
+        protected abstract void OnInit();
+        protected abstract void OnExecute();
+        protected abstract void OnInterrupted();
+        public abstract void Reset();
+        protected abstract void OnDispose();
+      
+    }
+
+}
+
+{Body}

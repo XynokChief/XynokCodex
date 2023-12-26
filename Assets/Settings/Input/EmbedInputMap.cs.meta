@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 98e49e7617034562b0a3603ef1c48610
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inputActionAsset: {fileID: -944628639613478452, guid: ebe809e6bafca9d4fa065848c3a3ccf5,
+      type: 3}
+  - t4Generator: {fileID: 2811297602134710623, guid: 42f5f61dc1df44a6a1379f46f367b911,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

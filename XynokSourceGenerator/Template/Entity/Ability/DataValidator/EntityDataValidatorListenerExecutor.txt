@@ -1,0 +1,69 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{ 
+
+    /// <summary>
+    /// Sau khi lắng nghe, check 1 lần nữa thông qua validator, nếu hợp lệ thì thực thi executor
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValidatorListenerExecutor: IInjectable<I{EntityName}>
+    {
+        private I{EntityName} _owner;
+        
+        [SerializeField] [HideLabel] private {EntityName}DataValidatorListener listener;
+        [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validator;
+        
+        [Title("Note","this field can be call as an IInjectable<I{EntityName}>", TitleAlignments.Centered)]
+        [HideLabel] [SerializeReference]  private IAction executor;
+     
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+           listener.Dispose();
+           validator.Dispose();
+           if(executor != null && executor is IInjectable<I{EntityName}> injectAble) injectAble.Dispose();
+        }
+        
+        void Init()
+        {
+            if(_owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: owner is null");
+                return;
+            }
+            validator.SetDependency(_owner);
+            listener.SetDependency(_owner);
+            if(executor != null && executor is IInjectable<I{EntityName}> injectAble) injectAble.SetDependency(_owner);
+            listener.SetActionOnValid(OnValid);
+            
+        }
+        
+        
+        void OnValid()
+        {
+            if(validator.IsValid()) executor?.Invoke();
+        }
+        
+    }
+        
+        {Body}
+
+}
+

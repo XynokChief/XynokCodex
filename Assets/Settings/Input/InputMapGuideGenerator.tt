@@ -1,0 +1,37 @@
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ output extension=".gen.cs" #>
+
+
+namespace XynokInput.Settings.Input
+{
+<#
+    var maps = Host.Data.GetAllInputMaps();
+    var actions = Host.Data.GetAllInputActions();
+#>
+
+
+public enum InputMapID{
+<#
+    foreach (var map in maps)
+    {
+#>
+    <#= map #>,   
+<#
+    }
+#>  
+}
+
+
+public enum InputActionID{
+<#
+    foreach (var act in actions)
+    {
+#>
+    <#= act #>,        
+<#
+    }
+#>
+}
+
+}

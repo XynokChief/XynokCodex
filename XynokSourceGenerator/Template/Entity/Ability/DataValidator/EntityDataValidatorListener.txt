@@ -1,0 +1,114 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention;
+using XynokConvention.APIs;
+using XynokConvention.Enums;
+using XynokEntity.Enums;
+using XynokUtils;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+namespace XynokSourceGenerator.Entities.Data
+{ 
+
+    /// <summary>
+    /// Lắng nghe sự thay đổi của dữ liệu của {EntityName} và thực thi một hành động khi dữ liệu thỏa mãn điều kiện
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValidatorListener: IInjectable<I{EntityName}>
+    {
+        private I{EntityName} _owner;
+        [HorizontalGroup("when data is")] [SerializeField] [HideLabel] private EntityDataType dataType;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] [HideLabel] [SerializeField] private float statValue;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private {StateName} state;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfState)] [HideLabel] [SerializeField] private bool stateValue;
+        [HorizontalGroup("when data is")] [ShowIf(nameof(dataType),EntityDataType.SelfTrigger)] [HideLabel] [SerializeField] private {TriggerName} trigger;
+        
+        
+        private {EntityName}Stat _stat;
+        private {EntityName}State _state;
+        private {EntityName}Trigger _trigger;
+        private Action _actionOnValid;
+        
+        public void SetActionOnValid(Action action)
+        {
+            _actionOnValid = action;
+        }
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _actionOnValid = default;
+            if(_owner == null) return;
+            if(_stat != null) _stat.OnChanged -= OnStatChanged;
+            if(_state != null) _state.OnChanged -= OnStateChanged;
+            if(_trigger != null) _trigger.OnChanged -= OnTriggerChanged;
+        }
+        
+        void Init()
+        {
+            if(_owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: owner is null");
+                return;
+            }
+            
+            
+            switch (dataType)
+            {
+                case EntityDataType.SelfStat:
+                    _stat = _owner.Resource.GetStat(stat);
+                    _stat.OnChanged += OnStatChanged;
+                    break;
+                case EntityDataType.SelfState:
+                    _state = _owner.Resource.GetState(state);
+                    _state.OnChanged += OnStateChanged;
+                    break;
+                case EntityDataType.SelfTrigger:
+                    _trigger = _owner.Resource.GetTrigger(trigger);
+                    _trigger.OnChanged += OnTriggerChanged;
+                    break;
+                default:
+                    throw new ($"[{GetType().Name}]: {dataType} is not supported !");
+            }
+            
+        }
+        
+        
+        void OnStatChanged(float value)
+        {
+            bool result = XynokUtility.DataUtils.IsValid(value, statValue, statComparison);
+            if(result) _actionOnValid?.Invoke();
+        }
+        
+        void OnStateChanged(bool value)
+        {   
+            if(value == stateValue) _actionOnValid?.Invoke();
+        }
+
+        void OnTriggerChanged(bool value)
+        {
+            if(value) _actionOnValid?.Invoke();
+        }        
+        
+    }
+        
+        {Body}
+
+}
+

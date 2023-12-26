@@ -1,0 +1,18 @@
+{
+    "name": "XynokGUI",
+    "rootNamespace": "XynokGUI",
+    "references": [
+        "GUID:ab2a0f1fa0acc78439a171391789b449",
+        "GUID:6651d52749746704993a919cc6a4eaec",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

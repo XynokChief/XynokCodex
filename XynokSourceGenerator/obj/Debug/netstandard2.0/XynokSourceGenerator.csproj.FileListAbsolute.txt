@@ -1,0 +1,10 @@
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\bin\Debug\netstandard2.0\XynokSourceGenerator.deps.json
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\bin\Debug\netstandard2.0\XynokSourceGenerator.dll
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\bin\Debug\netstandard2.0\XynokSourceGenerator.pdb
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.csproj.AssemblyReference.cache
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.GeneratedMSBuildEditorConfig.editorconfig
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.AssemblyInfoInputs.cache
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.AssemblyInfo.cs
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.csproj.CoreCompileInputs.cache
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.dll
+D:\Gitfork\GitHubs\XynokCodex\XynokSourceGenerator\obj\Debug\netstandard2.0\XynokSourceGenerator.pdb

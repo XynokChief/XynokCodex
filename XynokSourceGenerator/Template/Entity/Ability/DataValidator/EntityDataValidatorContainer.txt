@@ -1,0 +1,78 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokConvention.APIs;
+using XynokConvention.Enums;
+using XynokSourceGenerator.Entities.APIs;
+using Sirenix.OdinInspector;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+    
+    /// <summary>
+    /// Một tập hợp các data validator của {EntityName}
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValidatorContainer: I{EntityName}DataValidator
+    {
+        private I{EntityName} _owner;
+        [SerializeField] [LabelWidth(150)] protected OperatorRelationship validatorCheckType = OperatorRelationship.And;
+        [TableList] [Space(10)] [SerializeReference] protected I{EntityName}DataValidator[] validators = Array.Empty<{EntityName}DataValidator>();
+        
+        private Action _onDispose;
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            InitValidators();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        public bool IsValid()
+        {
+            if(validators == null || validators.Length < 1) return true;
+            bool isValidated = false;
+            
+            foreach (var validator in validators)
+            {
+                if(validator == null) continue;
+                bool valid = validator.IsValid();
+                
+                if(valid) isValidated = true;
+                
+                if(validatorCheckType == OperatorRelationship.And && !valid)
+                {
+                    isValidated = false;
+                    break;
+                }
+                
+                if(validatorCheckType == OperatorRelationship.Or && valid) break;
+            }
+            return isValidated;
+        }
+
+        void InitValidators()
+        {
+            if(validators == null || validators.Length < 1) return;
+            foreach (var validator in validators)
+            {
+                if(validator == null) continue;
+                validator.SetDependency(_owner);
+                _onDispose += validator.Dispose;
+            }
+        }
+        
+    }
+}
+
+{Body}

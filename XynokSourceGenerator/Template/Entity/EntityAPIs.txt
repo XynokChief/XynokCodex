@@ -1,0 +1,30 @@
+{Scope}
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+
+namespace XynokSourceGenerator.Entities.APIs
+{
+
+    public interface I{EntityName}: IInjectable<{EntityName}Resource>
+    {
+        {EntityName}CurrentState CurrentState { get; }
+        {EntityName}Resource Resource { get; }
+    }
+    
+    public interface I{EntityName}Ability: IControlAble, IInjectable<I{EntityName}>
+    {
+        I{EntityName} Owner { get; }
+    }
+
+    public interface I{EntityName}AbilityExecutor: IInjectable<I{EntityName}Ability>
+    {
+    }
+
+    public interface I{EntityName}DataValidator: IValidator, IInjectable<I{EntityName}>
+    {
+    }
+        
+}
+
+{Body}

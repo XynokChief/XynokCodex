@@ -1,0 +1,62 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+    
+    /// <summary>
+    /// Khi các validator đã thỏa mãn thì các setter sẽ được thực thi. Sử dụng = cách gọi hàm Execute()
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataRelationship: IExecute, IInjectable<I{EntityName}>
+    {
+        [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validator;
+        [SerializeField] [HideLabel] private {EntityName}DataSetter setter;
+        
+        private I{EntityName} _owner;
+        private Action _onDispose;
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Init();
+
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        public void Execute()
+        {
+            if(_owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: dependency is null");
+                return;
+            }
+            if(validator.IsValid()) setter.Execute();
+        }
+        
+        void Init()
+        {
+            setter.SetDependency(_owner);
+            _onDispose+= setter.Dispose;
+
+            validator.SetDependency(_owner);
+            _onDispose+= validator.Dispose;
+        }
+    }
+
+}
+

@@ -8,8 +8,7 @@
   "changelogUrl": "https://xynokstudio.notion.site/Xynok-Convention-36bb8272ec814e3c846ee589d3822d5b",
   "licensesUrl": "",
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.2.1",
-    "com.xynok.plugin": "1.0.0"
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
   },
   "author": {
     "name": "HoangCuongZk1",

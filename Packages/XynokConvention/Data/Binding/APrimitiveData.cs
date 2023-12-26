@@ -1,9 +1,11 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 using XynokConvention.APIs;
 
 namespace XynokConvention.Data.Binding
 {
+    
     /// <summary>
     /// should be used for primitive types only
     /// </summary>
@@ -11,21 +13,42 @@ namespace XynokConvention.Data.Binding
     [Serializable]
     public class APrimitiveData<T> : IBindableDeeper<T>
     {
-        private T _baseValue;
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
+        protected T baseValue;
+
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
         protected T lastValue;
+
+        [TableColumnWidth(60)] [LabelWidth(120)] [FoldoutGroup(ConventionKey.Settings)] [SerializeField]
         protected T currentValue;
 
-        [ShowInInspector] [HorizontalGroup] public T BaseValue => _baseValue;
+        [Tooltip("if true, the value will not be set if it is equal to the current value")]
+        [TableColumnWidth(60)]
+        [LabelWidth(120)]
+        [FoldoutGroup(ConventionKey.Settings)]
+        [SerializeField]
+        protected bool duplicateCheck = true;
 
-        [ShowInInspector] [HorizontalGroup] public T LastValue => lastValue;
+        public event Func<T, bool> CanChangeValue;
+        public T BaseValue => baseValue;
 
+        public T LastValue => lastValue;
+
+        [TableColumnWidth(90, Resizable = false)]
         [ShowInInspector]
-        [HorizontalGroup]
+        [HorizontalGroup(ConventionKey.CurrentValue)]
+        [HideLabel]
         public virtual T Value
         {
             get => currentValue;
             set
             {
+                if (!CanChangeValueTo(value))
+                {
+                    return;
+                }
+
+                if (duplicateCheck && currentValue.Equals(value)) return;
                 lastValue = currentValue;
                 currentValue = value;
                 EmitEventDeepChanged();
@@ -35,21 +58,21 @@ namespace XynokConvention.Data.Binding
 
         public APrimitiveData()
         {
-            _baseValue = default;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            baseValue = default;
+            lastValue = baseValue;
+            currentValue = baseValue;
         }
 
         public APrimitiveData(T baseValue)
         {
-            _baseValue = baseValue;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            this.baseValue = baseValue;
+            lastValue = this.baseValue;
+            currentValue = this.baseValue;
         }
 
         public APrimitiveData(T baseValue, T lastValue, T currentValue)
         {
-            _baseValue = baseValue;
+            this.baseValue = baseValue;
             this.lastValue = lastValue;
             this.currentValue = currentValue;
         }
@@ -58,12 +81,14 @@ namespace XynokConvention.Data.Binding
         public event Action<T, T, T> OnDeepChanged;
 
 
+        [TableColumnWidth(60)]
+        [FoldoutGroup(ConventionKey.Settings)]
         [Button]
         public void SetBaseValue(T value, bool emmitEvent = true)
         {
-            _baseValue = value;
-            lastValue = _baseValue;
-            currentValue = _baseValue;
+            baseValue = value;
+            lastValue = baseValue;
+            currentValue = baseValue;
             if (emmitEvent) EmitEventDeepChanged();
             if (emmitEvent) EmitEventChanged();
         }
@@ -77,6 +102,12 @@ namespace XynokConvention.Data.Binding
             if (emmitEvent) EmitEventChanged();
         }
 
+        protected virtual bool CanChangeValueTo(T value)
+        {
+            if (CanChangeValue == default) return true;
+            var canChange = CanChangeValue.Invoke(value);
+            return canChange;
+        }
 
         protected virtual void EmitEventChanged()
         {
@@ -85,7 +116,7 @@ namespace XynokConvention.Data.Binding
 
         protected virtual void EmitEventDeepChanged()
         {
-            OnDeepChanged?.Invoke(_baseValue, lastValue, currentValue);
+            OnDeepChanged?.Invoke(baseValue, lastValue, currentValue);
         }
     }
 
@@ -236,57 +267,57 @@ namespace XynokConvention.Data.Binding
     }
 
     [Serializable]
-    public class Vector2Data : APrimitiveData<UnityEngine.Vector2>
+    public class Vector2Data : APrimitiveData<Vector2>
     {
-        public Vector2Data(UnityEngine.Vector2 baseValue) : base(baseValue)
+        public Vector2Data(Vector2 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class Vector3Data : APrimitiveData<UnityEngine.Vector3>
+    public class Vector3Data : APrimitiveData<Vector3>
     {
-        public Vector3Data(UnityEngine.Vector3 baseValue) : base(baseValue)
+        public Vector3Data(Vector3 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class Vector4Data : APrimitiveData<UnityEngine.Vector4>
+    public class Vector4Data : APrimitiveData<Vector4>
     {
-        public Vector4Data(UnityEngine.Vector4 baseValue) : base(baseValue)
+        public Vector4Data(Vector4 baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class QuaternionData : APrimitiveData<UnityEngine.Quaternion>
+    public class QuaternionData : APrimitiveData<Quaternion>
     {
-        public QuaternionData(UnityEngine.Quaternion baseValue) : base(baseValue)
+        public QuaternionData(Quaternion baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class ColorData : APrimitiveData<UnityEngine.Color>
+    public class ColorData : APrimitiveData<Color>
     {
-        public ColorData(UnityEngine.Color baseValue) : base(baseValue)
+        public ColorData(Color baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class BoundsData : APrimitiveData<UnityEngine.Bounds>
+    public class BoundsData : APrimitiveData<Bounds>
     {
-        public BoundsData(UnityEngine.Bounds baseValue) : base(baseValue)
+        public BoundsData(Bounds baseValue) : base(baseValue)
         {
         }
     }
 
     [Serializable]
-    public class RectData : APrimitiveData<UnityEngine.Rect>
+    public class RectData : APrimitiveData<Rect>
     {
-        public RectData(UnityEngine.Rect baseValue) : base(baseValue)
+        public RectData(Rect baseValue) : base(baseValue)
         {
         }
     }

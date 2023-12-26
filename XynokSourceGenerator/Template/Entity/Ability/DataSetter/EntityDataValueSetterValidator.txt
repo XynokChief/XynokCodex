@@ -1,0 +1,126 @@
+
+{Scope}
+using System;
+using UnityEngine;
+using XynokUtils;
+using XynokConvention.Enums;
+using XynokConvention.APIs;
+using XynokConvention;
+using XynokEntity.Enums;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+    
+    
+    /// <summary>
+    /// Tự động đăng ký vào quá trình validate dữ liệu trước khi set giá trị cho {EntityName}
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValueSetterValidator : IInjectable<I{EntityName}>
+    {   
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] private EntityDataType dataType;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfStat)] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfState)] private {StateName} state;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfState)] private bool stateValue;
+        [HorizontalGroup(ConventionKey.SetDataValue)] [SerializeField] [HideLabel] [ShowIf(nameof(dataType),EntityDataType.SelfTrigger)] private {TriggerName} trigger;
+        [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validatorBeforeSet;
+        
+        private I{EntityName} _owner;
+        private {EntityName}Stat _stat;
+        private {EntityName}State _state;
+        private {EntityName}Trigger _trigger;
+        
+        private Action _onDispose;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if (dependency == null)
+            {
+                Debug.LogError($"{GetType().Name}: Dependency is null");
+                return;
+            }
+            _owner = dependency;
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        void Init()
+        {
+            if (dataType == EntityDataType.SelfStat)
+            {
+                _stat ??= _owner.Resource.GetStat(stat);
+                if (_stat == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
+                    return;
+                }
+                _stat.CanChangeValue += IsStatValidToChange;
+                _onDispose += () => _stat.CanChangeValue -= IsStatValidToChange;
+            }
+            else if (dataType == EntityDataType.SelfState)
+            {
+                _state ??= _owner.Resource.GetState(state);
+                if (_state == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: state {state} is null");
+                    return;
+                }
+                _state.CanChangeValue += IsStateValidToChange;
+                _onDispose += () => _state.CanChangeValue -= IsStateValidToChange;
+            }
+            else if (dataType == EntityDataType.SelfTrigger)
+            {
+                _trigger ??= _owner.Resource.GetTrigger(trigger);
+                if (_trigger == null)
+                {
+                    Debug.LogError($"[{GetType().Name}]: trigger {trigger} is null");
+                    return;
+                }
+                _trigger.CanChangeValue += IsTriggerValidToChange;
+                _onDispose += () => _trigger.CanChangeValue -= IsTriggerValidToChange;
+            }
+            
+            validatorBeforeSet.SetDependency(_owner);
+            _onDispose += validatorBeforeSet.Dispose;
+        }
+       
+
+        bool IsTriggerValidToChange(bool value)
+        {
+            if(!value) return true;
+            return validatorBeforeSet.IsValid();
+        }
+
+        bool IsStateValidToChange(bool value)
+        {
+            bool sameAsComparisonValue = value == stateValue;
+            
+            if(!sameAsComparisonValue) return true;
+            
+            return validatorBeforeSet.IsValid();
+        }
+        
+        bool IsStatValidToChange(float value)
+        {
+            
+            bool sameAsComparisonValue = XynokUtility.DataUtils.IsValid(value, statComparisonValue, statComparison);
+            
+            // nếu ko bằng với giá trị so sánh thì dc phép thay đổi
+            if(!sameAsComparisonValue) return true; 
+            
+            // trả về xem giá trị hiện tại có valid hay ko
+            return validatorBeforeSet.IsValid(); 
+        }
+      
+    }
+}

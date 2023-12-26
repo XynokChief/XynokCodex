@@ -1,0 +1,87 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention;
+using XynokConvention.APIs;
+using XynokConvention.Enums;
+using XynokEntity.Enums;
+using XynokUtils;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+namespace XynokSourceGenerator.Entities.Data
+{ 
+
+    /// <summary>
+    /// Xác định xem giá trị data "hiện tai" của Entity có thỏa mãn điều kiện hay không
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataValidator: I{EntityName}DataValidator
+    {
+        protected I{EntityName} owner;
+        [HorizontalGroup(ConventionKey.Conditions)] [HideLabel] [SerializeField] private EntityDataType conditionType;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private {StatName} stat;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private OperatorComparison statComparison;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfStat)] [HideLabel] [SerializeField] private float statComparisonValue;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfState)] [HideLabel] [SerializeField] private EntityStateStatus stateStatus;
+        [HorizontalGroup(ConventionKey.Conditions)] [ShowIf(nameof(conditionType), EntityDataType.SelfState)] [HideLabel] [SerializeField] private {EntityName}StateFlag state;
+        
+        private {EntityName}Stat _targetStat;
+
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            owner = dependency;
+           
+        }
+        
+        public void Dispose(){}
+        
+        public bool IsValid()
+        {
+            if(owner == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: owner is null");
+                return false;
+            }
+            if(conditionType == EntityDataType.SelfStat) return IsSelfStatValid();
+            if(conditionType == EntityDataType.SelfState) return IsSelfStateValid();
+            Debug.LogError($"[{GetType().Name}]: conditionType {conditionType} is not supported !");
+            return false;
+        }
+        
+        bool IsSelfStatValid()
+        {
+            _targetStat ??= owner.Resource.GetStat(stat);
+            if(_targetStat == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: stat {stat} is null");
+                return false;
+            }
+            
+            bool result = XynokUtility.DataUtils.IsValid(_targetStat.Value, statComparisonValue, statComparison);
+            
+            return result;
+        }
+        
+        bool IsSelfStateValid()
+        {
+            if(stateStatus == EntityStateStatus.Exist) return owner.CurrentState.Has(state);
+            if(stateStatus == EntityStateStatus.NoExist) return !owner.CurrentState.Has(state);
+            
+            Debug.LogError($"[{GetType().Name}]: stateStatus {stateStatus} is not supported !");
+            return false;
+        }
+        
+    }
+        
+        {Body}
+
+}
+

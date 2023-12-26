@@ -1,0 +1,67 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokEntity.Enums;
+using XynokConvention.Enums;
+using XynokConvention.APIs;
+using XynokSourceGenerator.Entities.APIs;
+using XynokConvention.Procedural;
+
+namespace XynokSourceGenerator.Entities.Data
+{
+
+    /// <summary>
+    /// Một tập hợp các data impactors của {EntityName}
+    /// </summary>
+    [Serializable]
+    public class {EntityName}DataRelationshipContainer: A{EntityName}Ability
+    {
+        
+        [Title("State Impacts Another", "khi các validators thỏa mãn thì setter sẽ dc thực thi", TitleAlignments.Centered)]
+        [SerializeField] [HideLabel] [Space(10)] [TableList] private {EntityName}DataRelationship[] relationships;
+
+
+        private Action _onDisposeRelationship;
+
+       
+        protected override void OnInit()
+        {
+            foreach (var relationship in relationships)
+            {
+                relationship.SetDependency(owner);
+                _onDisposeRelationship += relationship.Dispose;
+            }
+        }
+               
+        protected override void OnDispose()
+        {
+            _onDisposeRelationship?.Invoke();
+            _onDisposeRelationship = default;
+        }
+        
+        
+        protected override void OnExecute()
+        {
+            foreach (var relationship in relationships)
+            {
+                relationship?.Execute();
+            }
+        }
+        
+        protected override void OnInterrupted()
+        {
+           
+        }
+
+        public override void Reset()
+        {
+           OnDispose();
+           OnInit();
+        }
+
+    }
+        
+
+}
+

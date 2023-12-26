@@ -1,0 +1,240 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokUtils;
+using XynokEntity.Enums;
+using Sirenix.OdinInspector;
+using XynokSourceGenerator.Entities.Data;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities
+{
+    
+    /// <summary>
+    /// Animator binder for {EntityName}. Tự động Execute khi {EntityName} được khởi tạo.
+    /// </summary>
+    [Serializable]
+    public class {EntityName}AnimatorBinder: I{EntityName}Ability
+    {
+        private I{EntityName} _owner;
+        
+        public I{EntityName} Owner => _owner;
+        
+        [Tooltip("obj chứa entity và data của entity đó")]
+        [SerializeField] private GameObject ownerObj;
+        
+        [SerializeField] private Animator animator;
+        
+        [Tooltip("các data ko dc binding với animator")]
+        [SerializeField] private {EntityName}DataSmallPiece[] excludes;
+
+        private {EntityName}Stat[] Stats => _owner.Resource.Stats;
+        private {EntityName}State[] States => _owner.Resource.States;
+        private {EntityName}Trigger[] Triggers => _owner.Resource.Triggers;
+
+        private Action _onDispose;
+
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            _owner = dependency;
+            Execute();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        public void Execute()
+        {
+            if(_onDispose != default) Dispose();
+            Init();
+        }
+
+        public void Reset()
+        {
+            Dispose();
+        }
+     
+        void Init()
+        {
+            bool isParamValid = CheckParamIsTheSameAsData();
+            if(!isParamValid)
+            {
+                Debug.LogWarning($"[{GetType().Name} - {_owner.Resource.ResourceId}]: Animator parameters are not the same as data!");
+                return;
+            }
+            Bind();
+        }
+        
+        
+        void Bind()
+        {
+            // stats
+            for (int i = 0; i < Stats.Length; i++)
+            {
+                int index = i;
+                var statData = Stats[index];
+                if(ExistInExcludes(statData)) continue;
+                
+                void UpdateAnimParam(float value)
+                {
+                    animator.SetFloat(statData.HashKey, value);
+                }
+
+                UpdateAnimParam(statData.Value);
+                statData.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    statData.OnChanged -= UpdateAnimParam;
+                };
+            }
+
+            // states
+            for (int i = 0; i < States.Length; i++)
+            {
+                int index = i;
+                var stateData = States[index];
+                if(ExistInExcludes(stateData)) continue;
+                
+                void UpdateAnimParam(bool value)
+                {
+                   if(value) _owner.CurrentState.Add(stateData.Key);
+                   else _owner.CurrentState.Remove(stateData.Key);
+                    animator.SetBool(stateData.HashKey, value);
+                }
+
+                UpdateAnimParam(stateData.Value);
+                stateData.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    stateData.OnChanged -= UpdateAnimParam;
+                };
+            }
+
+            // triggers
+            for (int i = 0; i < Triggers.Length; i++)
+            {
+                int index = i;
+                var data = Triggers[index];
+                if(ExistInExcludes(data)) continue;
+                
+                void UpdateAnimParam(bool value)
+                {
+                    if (value)
+                        animator.SetTrigger(data.HashKey);
+                }
+
+                UpdateAnimParam(data.Value);
+                data.OnChanged += UpdateAnimParam;
+                _onDispose += () =>
+                {
+                    data.OnChanged -= UpdateAnimParam;
+                };
+            } 
+        }
+        
+        [Button, GUIColor(179 / 255f, 66 / 255f, 245 / 255f)]
+        void InitParamsForAnimator()
+        {
+        #if !UNITY_EDITOR
+            Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: this method only works in editor mode!");
+        #endif
+
+        #if UNITY_EDITOR
+            if(!ownerObj)
+            {
+                Debug.LogWarning($"[{nameof(InitParamsForAnimator)}]: ownerObj is null, this method only works when ownerObj is not null!");
+                return;
+            }
+            if(_owner == null) _owner = ownerObj.GetComponent<I{EntityName}>();
+            XynokUtility.AnimatorUtils.ClearAllParams(animator);
+            
+            var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
+            
+            for (int i = 0; i < Stats.Length; i++)
+            {
+                  if(ExistInExcludes(Stats[i])) continue;
+                animatorController.AddParameter(Stats[i].Key.ToString(),
+                    AnimatorControllerParameterType.Float);
+            }
+
+            for (int i = 0; i < States.Length; i++)
+            {
+                  if(ExistInExcludes(States[i])) continue;
+                animatorController.AddParameter(States[i].Key.ToString(),
+                    AnimatorControllerParameterType.Bool);
+            }
+
+            for (int i = 0; i < Triggers.Length; i++)
+            {
+                  if(ExistInExcludes(Triggers[i])) continue;
+                animatorController.AddParameter(Triggers[i].Key.ToString(),
+                    AnimatorControllerParameterType.Trigger);
+            }
+        #endif
+        }
+        
+        bool CheckParamIsTheSameAsData()
+        {
+            foreach(var stat in Stats)
+            {   
+                if(ExistInExcludes(stat)) continue;
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, stat.Key.ToString(), AnimatorControllerParameterType.Float);
+                if(!exist) return false;
+            }
+            
+            foreach(var state in States)
+            {
+                if(ExistInExcludes(state)) continue;
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, state.Key.ToString(), AnimatorControllerParameterType.Bool);
+                if(!exist) return false;
+            }
+            
+            foreach(var trigger in Triggers)
+            {
+                if(ExistInExcludes(trigger)) continue;
+                bool exist = XynokUtility.AnimatorUtils.ExistParam(animator, trigger.Key.ToString(), AnimatorControllerParameterType.Trigger);
+                if(!exist) return false;
+            }
+            
+            return true;
+        }
+        
+        bool ExistInExcludes({EntityName}Stat stat)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfStat && exclude.stat == stat.Key) return true;
+            }
+            return false;
+        }
+        
+        bool ExistInExcludes({EntityName}State state)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfState && exclude.state == state.Key) return true;
+            }
+            return false;
+        }
+
+        bool ExistInExcludes({EntityName}Trigger trigger)
+        {
+            foreach(var exclude in excludes)
+            {
+                if(exclude.dataType == EntityDataType.SelfTrigger && exclude.trigger == trigger.Key) return true;
+            }
+            return false;
+        }
+    }
+    {Body}
+}
+

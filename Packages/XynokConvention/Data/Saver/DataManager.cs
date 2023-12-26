@@ -42,7 +42,7 @@ namespace XynokConvention.Data.Saver
             onSave?.Invoke();
             foreach (var saver in savers)
             {
-                saver.Save();
+                saver?.Save();
             }
         }
 
@@ -53,7 +53,7 @@ namespace XynokConvention.Data.Saver
             onLoad?.Invoke();
             foreach (var saver in savers)
             {
-                saver.Load();
+                saver?.Load();
             }
         }
 
