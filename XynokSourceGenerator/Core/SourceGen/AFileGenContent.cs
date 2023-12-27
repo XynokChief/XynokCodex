@@ -11,7 +11,7 @@ namespace XynokSourceGenerator.Core.SourceGen
         protected abstract string FileName { get; }
         protected abstract string TemplatePath { get; }
         protected abstract void OnInit();
-        public string HintName(bool hasHash = true) => GetHintName(hasHash);
+        public virtual string HintName(bool hasHash = true) => GetHintName(hasHash);
 
         private bool _isInited;
 

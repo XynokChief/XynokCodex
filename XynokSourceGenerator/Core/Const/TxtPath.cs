@@ -35,5 +35,11 @@
        public const string ENTITY_DATA_CHANGED_DETECTOR = Prefix + ".Entity.Ability.DataTracker.EntityDataChangedDetector" + Suffix; // emit event callback khi có thay đổi của 1 số loại data
        public const string ENTITY_DATA_RELATIONSHIP = Prefix + ".Entity.Ability.DataTracker.EntityDataRelationship" + Suffix;
        public const string ENTITY_DATA_RELATIONSHIP_CONTAINER = Prefix + ".Entity.Ability.DataTracker.EntityDataRelationshipContainer" + Suffix;
+       
+       // StateMachine
+       public const string AENTITY_STATE_MACHINE_DATA_BEHAVIOR = Prefix + ".Entity.StateMachine.AEntityStateMachineDataBehavior" + Suffix;
+       public const string ENTITY_STATE_MACHINE_DATA_BEHAVIOR = Prefix + ".Entity.StateMachine.EntityStateMachineDataBehavior" + Suffix;
+       public const string ENTITY_STATE_MACHINE_DATA = Prefix + ".Entity.StateMachine.EntityStateMachineData" + Suffix;
+       public const string ENTITY_ABILITY_INIT_ANIM_STATE_MACHINE = Prefix + ".Entity.StateMachine.EntityAbilityInitAnimStateMachine" + Suffix;
     }
 }

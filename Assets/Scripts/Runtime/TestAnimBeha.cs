@@ -1,5 +1,4 @@
 ﻿using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 
 namespace Runtime
@@ -9,9 +8,9 @@ namespace Runtime
         public AnimationClip clip;
 
         [Button]
-        void Test(float time = .5f)
+        void TestAddEventForAnimClip(float time = .5f)
         {
-            AnimationUtility.SetAnimationEvents(clip, new AnimationEvent[1]
+            UnityEditor.AnimationUtility.SetAnimationEvents(clip, new AnimationEvent[1]
             {
                 new AnimationEvent
                 {

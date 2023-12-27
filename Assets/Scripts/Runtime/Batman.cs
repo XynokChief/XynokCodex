@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities;
-using XynokSourceGenerator.Entities.Data;
+using XynokSourceGenerator.Entities.APIs;
+
 
 namespace Runtime
 {
@@ -60,6 +62,16 @@ namespace Runtime
         private void Start()
         {
             SetDependency(Resource);
+            // InitBehaviorsStateMachine();
+        }
+
+        void InitBehaviorsStateMachine()
+        {
+            var behavs = animator.GetBehaviours<StateMachineBehaviour>().OfType<IInjectable<ICharacter>>();
+            foreach (var behav in behavs)
+            {
+                behav.SetDependency(this);
+            }
         }
 
         [Button]

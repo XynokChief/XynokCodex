@@ -53,15 +53,35 @@ namespace XynokSourceGenerator
             this.triggerGroup = triggerGroup;
         }
     }
-
-
+    
     /// <summary>
-    /// sử dụng cho các thực thể nào muốn ability của chúng là dạng Goap
+    /// gen sẵn module state machine cho thực thể
     /// </summary>
     [AttributeUsage(AttributeTargets.Enum)]
-    public class EntityAbilityGoapMakerAttribute : Attribute
+    public class EntityStateMachineBehaviorAttribute : Attribute
     {
+        public Type statGroup;
+        public Type stateGroup;
+        public Type triggerGroup;
+        public string genPath;
+
+        public EntityStateMachineBehaviorAttribute(Type statGroup, Type stateGroup, Type triggerGroup, string genPath)
+        {
+            this.statGroup = statGroup;
+            this.stateGroup = stateGroup;
+            this.triggerGroup = triggerGroup;
+            this.genPath = genPath;
+        }
     }
+
+
+    // /// <summary>
+    // /// sử dụng cho các thực thể nào muốn ability của chúng là dạng Goap
+    // /// </summary>
+    // [AttributeUsage(AttributeTargets.Enum)]
+    // public class EntityAbilityGoapMakerAttribute : Attribute
+    // {
+    // }
 
     #endregion
 }

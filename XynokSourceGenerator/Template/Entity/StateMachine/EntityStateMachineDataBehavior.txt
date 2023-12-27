@@ -1,0 +1,16 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.StateMachine
+{
+ 
+    public class {EntityName}StateMachine : AStateMachine<{EntityName}StateMachineData>
+    {
+        protected override void OnStateEnter({EntityName}StateMachineData data){}
+        protected override void OnStateExit({EntityName}StateMachineData data){}
+    }
+{Body}
+}
+

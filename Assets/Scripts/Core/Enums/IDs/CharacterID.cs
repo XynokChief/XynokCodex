@@ -10,6 +10,7 @@ namespace Core.Enums.IDs
 
      */
     
+    [EntityStateMachineBehavior(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType),"Assets/Scripts/Core/Generated/")]
     [EntityAbilityMaker(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType))]
     [EntityMaker(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType))]
     public enum CharacterID

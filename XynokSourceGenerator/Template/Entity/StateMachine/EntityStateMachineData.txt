@@ -1,0 +1,23 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.StateMachine
+{
+    [Serializable]
+    public class {EntityName}StateMachineData: I{EntityName}StateMachineData
+    {
+        public void SetDependency(I{EntityName} dependency)
+        {
+        
+        }
+
+        public void Dispose()
+        {
+        
+        }
+    }
+{Body}
+}
+

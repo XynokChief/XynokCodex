@@ -1,0 +1,59 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokConvention.APIs;
+using XynokEntity.APIs;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.StateMachine
+{
+    public interface I{EntityName}StateMachineData : IInjectable<I{EntityName}>
+    {
+         
+    }
+ 
+    public abstract class A{EntityName}StateMachine<T> : StateMachineBehaviour, IInjectable<I{EntityName}>
+    where T: I{EntityName}StateMachineData
+    {
+        private I{EntityName} _owner;
+        [SerializeReference] protected T stateMachineData;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if (dependency == null)
+            {
+                Debug.LogError($"{GetType().Name}: Dependency is null");
+                return;
+            }
+            _owner = dependency;
+            
+            if (stateMachineData == null)
+            {
+                Debug.LogError($"{GetType().Name}: StateMachineData is null");
+                return;
+            }
+            stateMachineData.SetDependency(_owner);
+        }
+        
+        public void Dispose()
+        {
+            stateMachineData?.Dispose();
+        }
+        
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            OnStateEnter();
+        }
+        
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            OnStateExit();
+        }
+        
+        protected abstract void OnStateEnter();
+        protected abstract void OnStateExit();
+    }
+{Body}
+}
+
