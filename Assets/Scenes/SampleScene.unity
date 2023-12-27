@@ -671,6 +671,44 @@ MonoBehaviour:
         asm: Core}
       data:
         animator: {fileID: 642668382}
+--- !u!1 &1680142872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3808408843002341742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1680142873 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5027870278852476329, guid: 4d7a057ec6056d746b9db94efcb806a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 3808408843002341742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1680142875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680142872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe307c669c9f401485453cf9a6d28a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1680142873}
+  clipsData:
+  - clip: {fileID: 4057375184749903609, guid: 37e54c8e79ea60d4e91c277aa1448661, type: 3}
+    frameCount: 49
+    frameRanges:
+    - rangeType: 0
+      range: {x: 1, y: 15}
+      clipFrameCount: 49
+    - rangeType: 1
+      range: {x: 15, y: 28}
+      clipFrameCount: 49
+    - rangeType: 2
+      range: {x: 28, y: 49}
+      clipFrameCount: 49
 --- !u!1 &1789635359
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +898,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1680142875}
   m_SourcePrefab: {fileID: 100100000, guid: 4d7a057ec6056d746b9db94efcb806a9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
