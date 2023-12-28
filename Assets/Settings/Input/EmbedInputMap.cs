@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using XynokUtils;
@@ -26,7 +25,7 @@ namespace XynokInput.Settings.Input
             inputMaps = GetAllInputMaps();
             inputActions = GetAllInputActions();
             InitAllInputMapsData();
-            AssetDatabase.ImportAsset(AssetDatabase.GetAssetPath(t4Generator));
+            UnityEditor.AssetDatabase.ImportAsset(UnityEditor.AssetDatabase.GetAssetPath(t4Generator));
         }
 #endif
 

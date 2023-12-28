@@ -503,7 +503,7 @@ MonoBehaviour:
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 1, y: 21}
       onEnter:
         rid: 6700482782571528216
@@ -512,7 +512,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 1
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 29, y: 47}
       onEnter:
         rid: 6700482782571528218
@@ -521,7 +521,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 2
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 9, y: 46}
       onEnter:
         rid: 6700482782571528220
@@ -529,10 +529,8 @@ MonoBehaviour:
         rid: 6700482782571528221
       clipFrameCount: 60
     - rangeType: 4
-      maxInterruptConcurrency: 3
-      interrupters:
-      - name: Move
-        handler: 0
+      maxInterruptConcurrency: 1
+      overriders: []
       range: {x: 23, y: 59}
       onEnter:
         rid: 6700482782571528222
@@ -540,8 +538,8 @@ MonoBehaviour:
         rid: 6700482782571528223
       clipFrameCount: 60
     - rangeType: 4
-      maxInterruptConcurrency: 3
-      interrupters: []
+      maxInterruptConcurrency: 1
+      overriders: []
       range: {x: 25, y: 58}
       onEnter:
         rid: 6700482782571528251
@@ -553,7 +551,7 @@ MonoBehaviour:
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 1, y: 21}
       onEnter:
         rid: 6700482782571528253
@@ -562,7 +560,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 1
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 29, y: 47}
       onEnter:
         rid: 6700482782571528255
@@ -571,7 +569,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 2
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 9, y: 46}
       onEnter:
         rid: 6700482782571528257
@@ -580,9 +578,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 4
       maxInterruptConcurrency: 1
-      interrupters:
-      - name: Move
-        handler: 0
+      overriders: []
       range: {x: 23, y: 59}
       onEnter:
         rid: 6700482782571528259
@@ -591,7 +587,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 4
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 25, y: 58}
       onEnter:
         rid: 6700482782571528261
@@ -603,7 +599,7 @@ MonoBehaviour:
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 1, y: 19}
       onEnter:
         rid: 6700482782571528232
@@ -612,7 +608,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 1
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 20, y: 50}
       onEnter:
         rid: 6700482782571528234
@@ -621,7 +617,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 2
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 13, y: 43}
       onEnter:
         rid: 6700482782571528236
@@ -630,7 +626,7 @@ MonoBehaviour:
       clipFrameCount: 60
     - rangeType: 3
       maxInterruptConcurrency: 1
-      interrupters: []
+      overriders: []
       range: {x: 18, y: 40}
       onEnter:
         rid: 6700482782571528238
