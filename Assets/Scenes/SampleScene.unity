@@ -502,108 +502,312 @@ MonoBehaviour:
     frameCount: 60
     frameRanges:
     - rangeType: 0
-      range: {x: 1, y: 9}
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 1, y: 21}
       onEnter:
-        rid: 6700482782571528192
+        rid: 6700482782571528216
       onExit:
-        rid: 6700482782571528193
+        rid: 6700482782571528217
       clipFrameCount: 60
     - rangeType: 1
-      range: {x: 13, y: 20}
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 29, y: 47}
       onEnter:
-        rid: 6700482782571528194
+        rid: 6700482782571528218
       onExit:
-        rid: 6700482782571528195
+        rid: 6700482782571528219
       clipFrameCount: 60
     - rangeType: 2
-      range: {x: 19, y: 34}
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 9, y: 46}
       onEnter:
-        rid: 6700482782571528196
+        rid: 6700482782571528220
       onExit:
-        rid: 6700482782571528197
+        rid: 6700482782571528221
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 3
+      interrupters:
+      - name: Move
+        handler: 0
+      range: {x: 23, y: 59}
+      onEnter:
+        rid: 6700482782571528222
+      onExit:
+        rid: 6700482782571528223
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 3
+      interrupters: []
+      range: {x: 25, y: 58}
+      onEnter:
+        rid: 6700482782571528251
+      onExit:
+        rid: 6700482782571528252
+      clipFrameCount: 60
+  - clip: {fileID: 7400000, guid: c338c2a57215f8643ac8cf1bf10aef2d, type: 2}
+    frameCount: 60
+    frameRanges:
+    - rangeType: 0
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 1, y: 21}
+      onEnter:
+        rid: 6700482782571528253
+      onExit:
+        rid: 6700482782571528254
+      clipFrameCount: 60
+    - rangeType: 1
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 29, y: 47}
+      onEnter:
+        rid: 6700482782571528255
+      onExit:
+        rid: 6700482782571528256
+      clipFrameCount: 60
+    - rangeType: 2
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 9, y: 46}
+      onEnter:
+        rid: 6700482782571528257
+      onExit:
+        rid: 6700482782571528258
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 1
+      interrupters:
+      - name: Move
+        handler: 0
+      range: {x: 23, y: 59}
+      onEnter:
+        rid: 6700482782571528259
+      onExit:
+        rid: 6700482782571528260
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 25, y: 58}
+      onEnter:
+        rid: 6700482782571528261
+      onExit:
+        rid: 6700482782571528262
+      clipFrameCount: 60
+  - clip: {fileID: 7400000, guid: 2707c4c9f04cb704b8f514d826c33733, type: 2}
+    frameCount: 60
+    frameRanges:
+    - rangeType: 0
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 1, y: 19}
+      onEnter:
+        rid: 6700482782571528232
+      onExit:
+        rid: 6700482782571528233
+      clipFrameCount: 60
+    - rangeType: 1
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 20, y: 50}
+      onEnter:
+        rid: 6700482782571528234
+      onExit:
+        rid: 6700482782571528235
+      clipFrameCount: 60
+    - rangeType: 2
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 13, y: 43}
+      onEnter:
+        rid: 6700482782571528236
+      onExit:
+        rid: 6700482782571528237
       clipFrameCount: 60
     - rangeType: 3
-      range: {x: 44, y: 60}
+      maxInterruptConcurrency: 1
+      interrupters: []
+      range: {x: 18, y: 40}
       onEnter:
-        rid: 6700482782571528198
+        rid: 6700482782571528238
       onExit:
-        rid: 6700482782571528199
+        rid: 6700482782571528239
       clipFrameCount: 60
   references:
     version: 2
     RefIds:
-    - rid: 6700482782571528192
+    - rid: 6700482782571528216
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528193
+    - rid: 6700482782571528217
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528194
+    - rid: 6700482782571528218
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528195
-      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
-      data:
-        unityEvent:
-          m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 1327104455}
-              m_TargetAssemblyTypeName: Runtime.Batman, Core
-              m_MethodName: LogTest
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: exit cast idle invoke
-                m_BoolArgument: 0
-              m_CallState: 2
-    - rid: 6700482782571528196
+    - rid: 6700482782571528219
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528197
+    - rid: 6700482782571528220
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528198
+    - rid: 6700482782571528221
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482782571528199
+    - rid: 6700482782571528222
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
-            m_Calls:
-            - m_Target: {fileID: 1327104455}
-              m_TargetAssemblyTypeName: Runtime.Batman, Core
-              m_MethodName: LogTest
-              m_Mode: 5
-              m_Arguments:
-                m_ObjectArgument: {fileID: 0}
-                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-                m_IntArgument: 0
-                m_FloatArgument: 0
-                m_StringArgument: exit final idle invoke
-                m_BoolArgument: 0
-              m_CallState: 2
+            m_Calls: []
+    - rid: 6700482782571528223
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528232
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528233
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528234
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528235
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528236
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528237
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528238
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528239
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528251
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528252
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528253
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528254
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528255
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528256
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528257
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528258
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528259
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528260
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528261
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 6700482782571528262
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +981,7 @@ MonoBehaviour:
         asm: Core}
       data:
         animator: {fileID: 642668382}
-        frameDataContainer: {fileID: 0}
+        frameDataContainer: {fileID: 642668383}
 --- !u!1 &1680142872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,

@@ -16,6 +16,24 @@ MonoBehaviour:
     type: 3}
   t4Generator: {fileID: 2811297602134710623, guid: 42f5f61dc1df44a6a1379f46f367b911,
     type: 3}
+  inputMapsData:
+  - mapName: Player
+    actionNames:
+    - Move
+    - Look
+    - Fire
+  - mapName: UI
+    actionNames:
+    - Navigate
+    - Submit
+    - Cancel
+    - Point
+    - Click
+    - ScrollWheel
+    - MiddleClick
+    - RightClick
+    - TrackedDevicePosition
+    - TrackedDeviceOrientation
   inputMaps:
   - Player
   - UI

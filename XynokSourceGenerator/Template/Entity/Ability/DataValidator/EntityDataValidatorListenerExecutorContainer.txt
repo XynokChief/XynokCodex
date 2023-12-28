@@ -11,6 +11,7 @@ namespace XynokSourceGenerator.Entities.Data
     /// Một tập hợp các invoker được tạo ra từ các <see cref="{EntityName}DataValidatorListenerExecutor"/>.
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-DataValidatorListenerExecutorContainer: Sau khi lắng nghe, check 1 lần nữa thông qua validator, nếu hợp lệ thì thực thi executor")]
     public class {EntityName}DataValidatorListenerExecutorContainer: I{EntityName}Ability
     {
         private I{EntityName} _owner;

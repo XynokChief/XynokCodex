@@ -11,9 +11,10 @@ namespace XynokSourceGenerator.Entities
 {
     
     /// <summary>
-    /// Animator binder for {EntityName}. Tự động Execute khi {EntityName} được khởi tạo.
+    /// Animator binder for {EntityName}. Tự động Execute khi {EntityName} được khởi tạo. Bind các data của {EntityName} với animator
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-AnimatorBinder: Bind các data của {EntityName} với animator")]
     public class {EntityName}AnimatorBinder: I{EntityName}Ability
     {
         private I{EntityName} _owner;

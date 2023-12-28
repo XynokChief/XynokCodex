@@ -211,58 +211,79 @@ AnimationClip:
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
   m_Events:
+  - time: 0
+    functionName: StartEvent
+    data: batman_idle
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.016666668
     functionName: AnimEvent
-    data: Start:batman_idle:Enter
+    data: Start:batman_idle:Enter:1:21
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.15
     functionName: AnimEvent
-    data: End:batman_idle:Enter
+    data: Start:batman_idle:Perform:9:46
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.21666667
+  - time: 0.35
     functionName: AnimEvent
-    data: Start:batman_idle:Cast
+    data: End:batman_idle:Enter:1:21
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.31666666
+  - time: 0.38333333
     functionName: AnimEvent
-    data: Start:batman_idle:Perform
+    data: Start:batman_idle:CancelAble:23:59
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.41666666
     functionName: AnimEvent
-    data: End:batman_idle:Cast
+    data: Start:batman_idle:CancelAble:25:58
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.56666666
+  - time: 0.48333332
     functionName: AnimEvent
-    data: End:batman_idle:Perform
+    data: Start:batman_idle:Cast:29:47
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.73333335
+  - time: 0.76666665
     functionName: AnimEvent
-    data: Start:batman_idle:Exit
+    data: End:batman_idle:Perform:9:46
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 0.78333336
     functionName: AnimEvent
-    data: End:batman_idle:Exit
+    data: End:batman_idle:Cast:29:47
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.96666664
+    functionName: AnimEvent
+    data: End:batman_idle:CancelAble:25:58
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.98333335
+    functionName: AnimEvent
+    data: End:batman_idle:CancelAble:23:59
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

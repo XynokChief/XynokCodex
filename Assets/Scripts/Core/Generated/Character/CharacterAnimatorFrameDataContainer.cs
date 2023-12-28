@@ -29,7 +29,7 @@ namespace XynokSourceGenerator.Entities.StateMachine
             var behaviors = controller.GetBehaviours<CharacterAnimatorStateMachine>();
             foreach (var behavior in behaviors)
             {
-                DestroyImmediate(behavior);
+                DestroyImmediate(behavior, true);
             }
 
             var result = controller.layers[0].stateMachine.AddStateMachineBehaviour<CharacterAnimatorStateMachine>();

@@ -9,7 +9,9 @@ using XynokEntity.APIs;
 namespace XynokEntity.AnimPhasing
 {
     /// <summary>
-    /// animator of unity is so confusing, so i create this class to make it easier to understand. <inheritdoc cref="https://forum.unity.com/threads/problem-with-statemachinebehaviour-onstateexit.359418/"/>
+    /// animator of unity is so confusing, so i create this class to make it easier to understand.
+    /// <inheritdoc cref="https://forum.unity.com/threads/problem-with-statemachinebehaviour-onstateexit.359418/"/>
+    /// TODO: bổ sung thêm SG cho case generic events
     /// </summary>
     public class EntityAnimatorFrameDataContainer<T> : MonoBehaviour, IInjectable<T>
         where T : IEntity
@@ -19,6 +21,12 @@ namespace XynokEntity.AnimPhasing
         [FoldoutGroup(ConventionKey.Settings)] [TableList]
         public EntityAnimClipData<T>[] clipsData;
 
+        [Tooltip("state hiện tại của animator (ignored transition)")]
+        [ShowInInspector]
+        public string CurrentAnimState => _currentAnimState;
+
+
+        private string _currentAnimState;
         private T _owner;
         private Action _onDispose;
 
@@ -83,9 +91,6 @@ namespace XynokEntity.AnimPhasing
             }
         }
 
-
-        
-
         #endregion
 
         #region Runtime
@@ -106,27 +111,6 @@ namespace XynokEntity.AnimPhasing
             }
         }
 
-        void AnimEvent(string message)
-        {
-            // translate message to data
-            var data = message.Split(ConventionKey.Separator);
-
-            var rangeMilestone = Enum.Parse<RangeMilestone>(data[0]);
-            var clipName = data[1];
-            var rangeType = Enum.Parse<FrameRangeType>(data[2]);
-
-            // fetch clip data
-            var clipData = GetClipData(clipName);
-            if (clipData == null) return;
-
-            // fetch frame range data
-            var frameRangeData = clipData.GetFrameRangeData(rangeType);
-            if (frameRangeData == null) return;
-
-            // invoke frame range data
-            frameRangeData.Invoke(rangeMilestone);
-        }
-
         EntityAnimClipData<T> GetClipData(string clipName)
         {
             foreach (var clipData in clipsData)
@@ -137,6 +121,40 @@ namespace XynokEntity.AnimPhasing
             Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
             return null;
         }
+
+        #region Anim Events
+
+        void AnimEvent(string message)
+        {
+            // translate message to data
+            var data = message.Split(ConventionKey.Separator);
+
+            var rangeMilestone = Enum.Parse<RangeMilestone>(data[0]);
+            var clipName = data[1];
+            var rangeType = Enum.Parse<FrameRangeType>(data[2]);
+            var range = new Vector2Int(int.Parse(data[3]), int.Parse(data[4]));
+
+            // fetch clip data
+            var clipData = GetClipData(clipName);
+            if (clipData == null) return;
+
+            // fetch frame range data
+            var frameRangeData = clipData.GetFrameRangeData(rangeType, range);
+            if (frameRangeData == null) return;
+
+            // invoke frame range data
+            frameRangeData.Invoke(rangeMilestone);
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="XynokConvention.ConventionKey.AnimStartEvent"/>
+        /// </summary>
+        void StartEvent(string clipName)
+        {
+            _currentAnimState = clipName;
+        }
+
+        #endregion
 
         #endregion
     }

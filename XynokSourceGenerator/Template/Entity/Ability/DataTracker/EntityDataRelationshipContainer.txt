@@ -15,6 +15,7 @@ namespace XynokSourceGenerator.Entities.Data
     /// Một tập hợp các data impactors của {EntityName}
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-DataRelationshipContainer:  gọi hàm Execute() > bắt đầu check các validator >thỏa mãn thì các setter sẽ được thực thi.")]
     public class {EntityName}DataRelationshipContainer: A{EntityName}Ability
     {
         

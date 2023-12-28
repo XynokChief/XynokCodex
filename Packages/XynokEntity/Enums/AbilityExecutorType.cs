@@ -2,8 +2,9 @@
 {
     public enum AbilityExecutorType
     {
-        OnUpdate = 0,
-        OnOwnerDataChanged = 1,
-        Custom = 2,
+        None = 0,
+        OnUpdate = 1,
+        OnOwnerDataChanged = 2,
+        Custom = 3,
     }
 }

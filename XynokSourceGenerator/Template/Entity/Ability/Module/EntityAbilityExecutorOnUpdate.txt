@@ -4,7 +4,7 @@ using UnityEngine;
 using XynokConvention.Procedural;
 using XynokConvention.Enums;
 using XynokSourceGenerator.Entities.APIs;
-
+using Sirenix.OdinInspector;
 namespace XynokSourceGenerator.Entities
 {
     
@@ -12,6 +12,7 @@ namespace XynokSourceGenerator.Entities
     /// Execute ability trong mode Update tương ứng
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName} - AbilityExecutorOnUpdate: Execute ability trong mode Update tương ứng")]
     public class {EntityName}AbilityExecutorOnUpdate: I{EntityName}AbilityExecutor
     {
         private I{EntityName}Ability _owner;

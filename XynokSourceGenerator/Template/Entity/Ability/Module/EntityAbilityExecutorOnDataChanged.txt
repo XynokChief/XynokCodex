@@ -15,6 +15,7 @@ namespace XynokSourceGenerator.Entities
     /// Executor của một ability khi có sự thay đổi dữ liệu
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-AbilityExecutorOnDataChanged: Executor của một ability khi có sự thay đổi dữ liệu")]
     public class {EntityName}AbilityExecutorOnDataChanged: I{EntityName}AbilityExecutor
     {
         private I{EntityName}Ability _owner;

@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities.APIs;
-
+using Sirenix.OdinInspector;
 namespace XynokSourceGenerator.Entities.StateMachine
 {
     
@@ -12,6 +12,7 @@ namespace XynokSourceGenerator.Entities.StateMachine
     /// init the state machine of the animator bind them to the {EntityName} entity
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-AbilityInitAnimStateMachine: init frames data and state machine behavior")]
     public class {EntityName}AbilityInitAnimStateMachine: I{EntityName}Ability
     {
         private I{EntityName} _owner;

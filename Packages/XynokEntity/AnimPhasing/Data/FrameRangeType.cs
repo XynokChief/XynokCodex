@@ -5,6 +5,7 @@ namespace XynokEntity.AnimPhasing.Data
         Start = 0,
         End = 1,
     }
+
     public enum FrameRangeType
     {
         /// <summary>
@@ -13,12 +14,12 @@ namespace XynokEntity.AnimPhasing.Data
         Enter = 0,
 
         /// <summary>
-        /// Active something like hitbox, etc
+        /// Active hitbox, etc
         /// </summary>
         Cast = 1,
 
         /// <summary>
-        /// cast anim skill, attack, etc
+        /// cast vfx of skill, attack, etc
         /// </summary>
         Perform = 2,
 
@@ -26,5 +27,10 @@ namespace XynokEntity.AnimPhasing.Data
         /// recovery, end animation
         /// </summary>
         Exit = 3,
+
+        /// <summary>
+        /// can be interrupted at this range
+        /// </summary>
+        Overridable = 4,
     }
 }

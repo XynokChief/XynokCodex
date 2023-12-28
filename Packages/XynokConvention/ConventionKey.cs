@@ -2,6 +2,7 @@
 {
     public class ConventionKey
     {
+        public const string PlayerInputMap = "Player";
         public const string Settings = "settings";
         public const string Events = "events";
         public const string CurrentState = "current state";
@@ -12,7 +13,9 @@
         public const string Conditions = "Conditions";
         public const string Value = "value";
         public const string Validator = "Validator";
-        public const string AnimEvent = "AnimEvent";
+        public const string AnimStartEvent = "StartEvent"; // start anim at frame 0
+        public const string AnimEndEvent = "EndEvent"; // end anim at last frame
+        public const string AnimEvent = "AnimEvent"; // event at frame range
         public const string AnimClipData = "clip data";
         public const string SetDataValue = "set value for";
         public const string Erasers = "Erasers";

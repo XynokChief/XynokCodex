@@ -16,6 +16,7 @@ namespace XynokSourceGenerator.Entities.Data
     /// Một tập hợp validate dữ liệu trước khi set giá trị cho {EntityName}
     /// </summary>
     [Serializable]
+    [TypeInfoBox("{EntityName}-DataValueSetterValidatorContainer:  Tự động đăng ký vào quá trình validate dữ liệu trước khi set giá trị cho data của {EntityName}")]
     public class {EntityName}DataValueSetterValidatorContainer : I{EntityName}Ability
     {   
         

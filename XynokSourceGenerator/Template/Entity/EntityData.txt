@@ -34,7 +34,7 @@ namespace XynokSourceGenerator.Entities.Data
            [TableList] public {EntityName}State[] States;
            [TableList] public {EntityName}Trigger[] Triggers;
            
-           [SerializeReference] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
+           [SerializeReference] [HideReferenceObjectPicker] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
             
             
             public {EntityName}Stat GetStat({StatName} statType) => Stats.FirstOrDefault(s => s.Key == statType);

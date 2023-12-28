@@ -88,6 +88,9 @@ namespace XynokSourceGenerator.Entities
                     }
                     break;
                     
+                  case AbilityExecutorType.None:
+                    break;
+                    
                 default:
                     throw new ($"[{GetType().Name}]: executor type is not supported !");
             }
