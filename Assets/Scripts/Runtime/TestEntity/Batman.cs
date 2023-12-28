@@ -18,7 +18,7 @@ namespace Runtime
         }
     }
 
-    [Title("Run","",TitleAlignments.Centered)]
+    [TypeInfoBox("Run Ability")]
     [Serializable]
     public class Run : ACharacterAbility, IAction
     {
@@ -59,13 +59,15 @@ namespace Runtime
 
     public class Batman : ACharacterMono
     {
-        protected virtual string title => "Batman";
-
-        protected virtual string subTitle => "Batman entity";
 
         private void Start()
         {
             SetDependency(Resource);
+        }
+
+        public void LogTest(string message)
+        {
+            Debug.Log(message);
         }
     }
 }

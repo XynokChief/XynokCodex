@@ -218,7 +218,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.2
+  - time: 0.15
     functionName: AnimEvent
     data: End:batman_idle:Enter
     objectReferenceParameter: {fileID: 0}
@@ -232,28 +232,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.43333334
-    functionName: AnimEvent
-    data: End:batman_idle:Cast
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.45
+  - time: 0.31666666
     functionName: AnimEvent
     data: Start:batman_idle:Perform
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.76666665
+  - time: 0.33333334
+    functionName: AnimEvent
+    data: End:batman_idle:Cast
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.56666666
     functionName: AnimEvent
     data: End:batman_idle:Perform
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.78333336
+  - time: 0.73333335
     functionName: AnimEvent
     data: Start:batman_idle:Exit
     objectReferenceParameter: {fileID: 0}

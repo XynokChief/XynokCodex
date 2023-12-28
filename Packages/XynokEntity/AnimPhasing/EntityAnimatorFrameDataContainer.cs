@@ -8,6 +8,9 @@ using XynokEntity.APIs;
 
 namespace XynokEntity.AnimPhasing
 {
+    /// <summary>
+    /// animator of unity is so confusing, so i create this class to make it easier to understand. <inheritdoc cref="https://forum.unity.com/threads/problem-with-statemachinebehaviour-onstateexit.359418/"/>
+    /// </summary>
     public class EntityAnimatorFrameDataContainer<T> : MonoBehaviour, IInjectable<T>
         where T : IEntity
     {
@@ -18,6 +21,9 @@ namespace XynokEntity.AnimPhasing
 
         private T _owner;
         private Action _onDispose;
+
+
+        #region Denpendency Injection
 
         public virtual void SetDependency(T dependency)
         {
@@ -53,10 +59,13 @@ namespace XynokEntity.AnimPhasing
             Dispose();
         }
 
+        #endregion
+
+        #region Editors
 
         [FoldoutGroup(ConventionKey.Settings)]
-        [Button, GUIColor(Colors.Blue)]
-        void InitClipData()
+        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
+        void InitClipsData()
         {
             var clips = animator.runtimeAnimatorController.animationClips;
 
@@ -74,20 +83,28 @@ namespace XynokEntity.AnimPhasing
             }
         }
 
-        // [Button]
-        // void GetCurrentAnim()
-        // {
-        //     string result = "";
-        //     var currentAnimatorStateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        //
-        //     var currentAnimatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        //
-        //     var currentClip = currentAnimatorClipInfo[0].clip;
-        //     var currentFrame = (currentAnimatorStateInfo.normalizedTime % 1) * currentClip.frameRate;
-        //     result += $"[{currentClip.name}]: {currentFrame} ";
-        //     Debug.Log($"{result}");
-        // }
 
+        
+
+        #endregion
+
+        #region Runtime
+
+        /// <summary>
+        /// call this to catch state exit events if an anim did not run to the end
+        /// </summary>
+        /// <param name="stateName">name of state on animator, at this context of XynokCodex, state's name is the same as anim clip's name</param>
+        public void ResolveStateOnExit(string stateName)
+        {
+            var clip = GetClipData(stateName);
+            if (clip == null) return;
+
+            foreach (var frameRange in clip.frameRanges)
+            {
+                if (!frameRange.IsPerforming) continue;
+                frameRange.ForceExit();
+            }
+        }
 
         void AnimEvent(string message)
         {
@@ -120,5 +137,7 @@ namespace XynokEntity.AnimPhasing
             Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
             return null;
         }
+
+        #endregion
     }
 }

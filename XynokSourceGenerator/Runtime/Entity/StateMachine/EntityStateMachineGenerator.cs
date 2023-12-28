@@ -20,9 +20,9 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                 if (symbol == null) continue;
 
                 var attributeData = symbol.GetAttribute(nameof(EntityStateMachineBehaviorAttribute));
-                
+
                 var argumentTypes = attributeData.GetAttributeArgumentTypes();
-                
+
                 if (argumentTypes.Length < 1) continue;
 
                 // get args from attribute
@@ -31,7 +31,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                 var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
                 var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
                 var genPath = attributeData.ConstructorArguments[3].Value.ToString();
-                
+
                 var aStateMachineDataBehaviorFileGen = new AEntityStateMachineDataBehaviorFileGen
                 {
                     EntitySymbol = entitySymbol,
@@ -45,7 +45,6 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
-                    
                 };
 
                 var entityAbilityInitAnimStateMachineFileGen = new EntityAbilityInitAnimStateMachineFileGen
@@ -54,30 +53,29 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
-                    
                 };
-                var stateMachineDataBehaviorFileGen = new EntityStateMachineDataBehaviorFileGen
-                {
-                    EntitySymbol = entitySymbol,
-                    StatSymbol = statSymbol,
-                    StateSymbol = stateSymbol,
-                    TriggerSymbol = triggerSymbol,
-                    
-                };
-                
+
+
                 var entityAnimatorFrameDataContainerFileGen = new EntityAnimatorFrameDataContainerFileGen
                 {
                     EntitySymbol = entitySymbol,
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
-                    
+                };
+                var entityAnimatorStateMachineFileGen = new EntityAnimatorStateMachineFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
                 };
 
                 GenCode(context, aStateMachineDataBehaviorFileGen);
                 GenCode(context, stateMachineDataFileGen);
                 GenCode(context, entityAbilityInitAnimStateMachineFileGen);
-                WriteFile( genPath, entityAnimatorFrameDataContainerFileGen);
+                WriteFile(genPath, entityAnimatorFrameDataContainerFileGen);
+                WriteFile(genPath, entityAnimatorStateMachineFileGen);
                 // GenCode(context, stateMachineDataBehaviorFileGen);
             }
         }

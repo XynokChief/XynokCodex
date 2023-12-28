@@ -8,6 +8,7 @@ using XynokEntity.APIs;
 
 namespace XynokEntity.AnimPhasing.Data
 {
+
     [Serializable]
     public class EntityFrameRangeData<T> : IInjectable<T> where T : IEntity
     {

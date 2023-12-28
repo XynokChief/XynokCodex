@@ -390,7 +390,7 @@ GameObject:
   - component: {fileID: 642668380}
   - component: {fileID: 642668379}
   - component: {fileID: 642668382}
-  - component: {fileID: 642668384}
+  - component: {fileID: 642668383}
   m_Layer: 0
   m_Name: animator
   m_TagString: Untagged
@@ -484,7 +484,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &642668384
+--- !u!114 &642668383
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,7 +493,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 642668377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 346029400a1182640a5b6e1caf9d6afa, type: 3}
+  m_Script: {fileID: 11500000, guid: 21e7ea5285837824b8a71722d8d836db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 642668382}
@@ -502,98 +502,108 @@ MonoBehaviour:
     frameCount: 60
     frameRanges:
     - rangeType: 0
-      range: {x: 1, y: 12}
+      range: {x: 1, y: 9}
       onEnter:
-        rid: 6700482774304030761
+        rid: 6700482782571528192
       onExit:
-        rid: 6700482774304030767
+        rid: 6700482782571528193
       clipFrameCount: 60
     - rangeType: 1
-      range: {x: 13, y: 26}
+      range: {x: 13, y: 20}
       onEnter:
-        rid: 6700482774304030739
+        rid: 6700482782571528194
       onExit:
-        rid: 6700482774304030740
+        rid: 6700482782571528195
       clipFrameCount: 60
     - rangeType: 2
-      range: {x: 27, y: 46}
+      range: {x: 19, y: 34}
       onEnter:
-        rid: 6700482774304030741
+        rid: 6700482782571528196
       onExit:
-        rid: 6700482774304030742
+        rid: 6700482782571528197
       clipFrameCount: 60
     - rangeType: 3
-      range: {x: 47, y: 60}
+      range: {x: 44, y: 60}
       onEnter:
-        rid: 6700482774304030743
+        rid: 6700482782571528198
       onExit:
-        rid: 6700482774304030744
+        rid: 6700482782571528199
       clipFrameCount: 60
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 6700482774304030739
+    - rid: 6700482782571528192
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030740
+    - rid: 6700482782571528193
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030741
+    - rid: 6700482782571528194
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030742
+    - rid: 6700482782571528195
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls:
+            - m_Target: {fileID: 1327104455}
+              m_TargetAssemblyTypeName: Runtime.Batman, Core
+              m_MethodName: LogTest
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: exit cast idle invoke
+                m_BoolArgument: 0
+              m_CallState: 2
+    - rid: 6700482782571528196
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030743
+    - rid: 6700482782571528197
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030744
+    - rid: 6700482782571528198
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482774304030761
-      type: {class: Run, ns: Runtime, asm: Core}
-      data:
-        executorType: 2
-        executorOnUpdate:
-          updateMode: 0
-        executorOnDataChanged:
-          dataPieces: []
-        customExecutor:
-          rid: -2
-        validator:
-          rid: 6700482774304030762
-    - rid: 6700482774304030762
-      type: {class: CharacterDataValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
-        asm: Core}
-      data:
-        validatorCheckType: 0
-        validators: []
-    - rid: 6700482774304030767
+    - rid: 6700482782571528199
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
-            m_Calls: []
+            m_Calls:
+            - m_Target: {fileID: 1327104455}
+              m_TargetAssemblyTypeName: Runtime.Batman, Core
+              m_MethodName: LogTest
+              m_Mode: 5
+              m_Arguments:
+                m_ObjectArgument: {fileID: 0}
+                m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+                m_IntArgument: 0
+                m_FloatArgument: 0
+                m_StringArgument: exit final idle invoke
+                m_BoolArgument: 0
+              m_CallState: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +777,7 @@ MonoBehaviour:
         asm: Core}
       data:
         animator: {fileID: 642668382}
-        frameDataContainer: {fileID: 642668384}
+        frameDataContainer: {fileID: 0}
 --- !u!1 &1680142872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,
