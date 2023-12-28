@@ -18,6 +18,7 @@ namespace XynokSourceGenerator.Entities.StateMachine
         public I{EntityName} Owner => _owner;
         
         [SerializeField] private Animator animator;
+        [SerializeField] private {EntityName}AnimatorFrameDataContainer frameDataContainer;
 
         private IInjectable<I{EntityName}>[] _injectableStateMachines;
         private Action _onDispose;
@@ -36,7 +37,20 @@ namespace XynokSourceGenerator.Entities.StateMachine
         
         void Init()
         {
-            _injectableStateMachines= animator.GetBehaviours<StateMachineBehaviour>().OfType<IInjectable<I{EntityName}>>().ToArray();
+            InitFrameData();
+            InitAnimStateBehavior();
+        }
+        
+        void InitFrameData()
+        {
+            if(!frameDataContainer) return;
+            frameDataContainer.SetDependency(_owner);
+            _onDispose += frameDataContainer.Dispose;
+        }
+        
+        void InitAnimStateBehavior()
+        {
+            _injectableStateMachines = animator.GetBehaviours<StateMachineBehaviour>().OfType<IInjectable<I{EntityName}>>().ToArray();
             
             if(_injectableStateMachines == null || _injectableStateMachines.Length < 1) return;
             

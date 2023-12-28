@@ -13,5 +13,16 @@ namespace XynokConvention.Procedural
         {
             unityEvent?.Invoke();
         }
+
+        public void AddListener(Action action)
+        {
+            RemoveListener(action);
+            unityEvent.AddListener(action.Invoke);
+        }
+
+        public void RemoveListener(Action action)
+        {
+            unityEvent.RemoveListener(action.Invoke);
+        }
     }
 }

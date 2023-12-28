@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
 using XynokSourceGenerator.Entities;
-using XynokSourceGenerator.Entities.APIs;
 
 
 namespace Runtime
@@ -20,11 +18,10 @@ namespace Runtime
         }
     }
 
+    [Title("Run","",TitleAlignments.Centered)]
     [Serializable]
     public class Run : ACharacterAbility, IAction
     {
-       
-
         protected override void OnInit()
         {
         }
@@ -36,7 +33,6 @@ namespace Runtime
 
         protected override void OnInterrupted()
         {
-            
         }
 
         protected override void OnDispose()
@@ -51,33 +47,25 @@ namespace Runtime
         {
             Execute();
         }
+
+        public void AddListener(Action action)
+        {
+        }
+
+        public void RemoveListener(Action action)
+        {
+        }
     }
 
     public class Batman : ACharacterMono
     {
-        [Header("Batman")]
-        public Animator animator;
+        protected virtual string title => "Batman";
 
+        protected virtual string subTitle => "Batman entity";
 
         private void Start()
         {
             SetDependency(Resource);
-            // InitBehaviorsStateMachine();
-        }
-
-        void InitBehaviorsStateMachine()
-        {
-            var behavs = animator.GetBehaviours<StateMachineBehaviour>().OfType<IInjectable<ICharacter>>();
-            foreach (var behav in behavs)
-            {
-                behav.SetDependency(this);
-            }
-        }
-
-        [Button]
-        void Test()
-        {
-           
         }
     }
 }

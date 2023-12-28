@@ -64,11 +64,20 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     TriggerSymbol = triggerSymbol,
                     
                 };
+                
+                var entityAnimatorFrameDataContainerFileGen = new EntityAnimatorFrameDataContainerFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                    
+                };
 
                 GenCode(context, aStateMachineDataBehaviorFileGen);
                 GenCode(context, stateMachineDataFileGen);
                 GenCode(context, entityAbilityInitAnimStateMachineFileGen);
-                //WriteFile( genPath, stateMachineDataBehaviorFileGen);
+                WriteFile( genPath, entityAnimatorFrameDataContainerFileGen);
                 // GenCode(context, stateMachineDataBehaviorFileGen);
             }
         }

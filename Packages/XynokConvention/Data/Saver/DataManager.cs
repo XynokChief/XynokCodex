@@ -36,7 +36,7 @@ namespace XynokConvention.Data.Saver
         }
 
         [HorizontalGroup("Split", 0.5f)]
-        [Button(ButtonSizes.Medium), GUIColor(179 / 255f, 66 / 255f, 245 / 255f)]
+        [Button(ButtonSizes.Medium), GUIColor(.7f, .2f, .96f)]
         public void Save()
         {
             onSave?.Invoke();

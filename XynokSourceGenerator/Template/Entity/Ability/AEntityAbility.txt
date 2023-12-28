@@ -16,16 +16,17 @@ namespace XynokSourceGenerator.Entities
     [Serializable]
     public abstract class A{EntityName}Ability: I{EntityName}Ability
     {
+    
         protected I{EntityName} owner;
         public I{EntityName} Owner => owner;
         
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [LabelWidth(130)] [Space(10)] private AbilityExecutorType executorType;
-        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.OnUpdate)] [SerializeField] private {EntityName}AbilityExecutorOnUpdate executorOnUpdate;
-        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.OnOwnerDataChanged)] [SerializeField] private {EntityName}AbilityExecutorOnDataChanged executorOnDataChanged;
-        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [Space(10)] [ShowIf(nameof(executorType), AbilityExecutorType.Custom)] [SerializeReference] private I{EntityName}AbilityExecutor customExecutor;
+        [FoldoutGroup(ConventionKey.Settings)] [SerializeField] [LabelWidth(130)] private AbilityExecutorType executorType;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [ShowIf(nameof(executorType), AbilityExecutorType.OnUpdate)] [SerializeField] private {EntityName}AbilityExecutorOnUpdate executorOnUpdate;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [ShowIf(nameof(executorType), AbilityExecutorType.OnOwnerDataChanged)] [SerializeField] private {EntityName}AbilityExecutorOnDataChanged executorOnDataChanged;
+        [FoldoutGroup(ConventionKey.Settings)] [HideLabel] [HideReferenceObjectPicker] [ShowIf(nameof(executorType), AbilityExecutorType.Custom)] [SerializeReference] private I{EntityName}AbilityExecutor customExecutor;
         
         [Tooltip("điều kiện để thực thi ability")]
-        [FoldoutGroup(ConventionKey.Settings)] [SerializeReference] [Space(20)] private I{EntityName}DataValidator validator = new {EntityName}DataValidatorContainer();
+        [FoldoutGroup(ConventionKey.Settings)] [HideReferenceObjectPicker] [SerializeReference] [Space(20)] private I{EntityName}DataValidator validator = new {EntityName}DataValidatorContainer();
         
         private bool _canExecute;
         private Action _onDispose;

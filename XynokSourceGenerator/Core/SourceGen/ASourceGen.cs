@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.CodeAnalysis;
+using XynokSourceGenerator.Core.Const;
 using XynokSourceGenerator.Utils;
 
 namespace XynokSourceGenerator.Core.SourceGen
@@ -31,7 +32,7 @@ namespace XynokSourceGenerator.Core.SourceGen
             string workingDirectory = $"{currentDirectory}/{savePath}/";
 
 
-            FileHelper.WriteFile(workingDirectory, fileGen.Generate(fileGen), $"{fileGen.HintName()}.cs");
+            FileHelper.WriteFile(workingDirectory, fileGen.Generate(fileGen), $"{fileGen.HintName()}{Keyword.CsFile}");
 
         }
 

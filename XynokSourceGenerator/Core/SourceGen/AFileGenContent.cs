@@ -29,7 +29,7 @@ namespace XynokSourceGenerator.Core.SourceGen
 
         protected  string FilterName(string name)
         {
-            foreach (var suffix in Keyword.groupSuffixs)
+            foreach (var suffix in Keyword.GroupSuffixs)
             {
                 name = name.Replace(suffix, "");
             }
@@ -47,7 +47,7 @@ namespace XynokSourceGenerator.Core.SourceGen
         {
             Init();
 
-            var suffix = ".g";
+            var suffix = Keyword.SuffixGen;
             var source = $"{FileName.Replace(".", "_")}";
 
             if (!hasHash) return $"{source}{suffix}";

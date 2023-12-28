@@ -1,0 +1,25 @@
+{Scope}
+using System;
+using XynokEntity.AnimPhasing;
+using XynokEntity.AnimPhasing.Data;
+using XynokSourceGenerator.Entities.APIs;
+
+namespace XynokSourceGenerator.Entities.StateMachine
+{
+    [Serializable]
+    public class {EntityName}AnimClipData: EntityAnimClipData<I{EntityName}>
+    {
+    }
+    
+    [Serializable]
+    public class {EntityName}EntityFrameRangeData: EntityFrameRangeData<I{EntityName}>
+    {
+    }
+
+    public class {EntityName}AnimatorFrameDataContainer: EntityAnimatorFrameDataContainer<I{EntityName}>
+    {
+    }
+   
+{Body}
+}
+
