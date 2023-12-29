@@ -1,4 +1,1 @@
-# XynokCodex
-Code base of Xynok Studio.
-[Static Badge | Shields.io](https://img.shields.io/badges/static-badge)
-https://img.shields.io/badge/any_text-you_like-blue](https://img.shields.io/badge/any_text-you_like-blue)
+![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D) ![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&logoColor=FFFFFF&label=Discord)
