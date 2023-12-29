@@ -17,6 +17,7 @@
 ---
 Tập hợp codebase, tools,... của Xynok Studio. Mục đích hiện tại, sử dụng cho dự án UJ.
 Để gia tăng hiệu quả sử dụng, bảo trì, nâng cấp bộ codebase này, sau đây là danh sách các tool, đối tượng,... phù hợp:
+
 - Game Genre Target: Action - RPG
 - Platform: Window, MacOS
 - Store: Steam
@@ -24,6 +25,7 @@ Tập hợp codebase, tools,... của Xynok Studio. Mục đích hiện tại, s
 - External Tools: Google Sheet, Github, Draw.io
 - IDE: Jetbrain Rider, Pycharm
 - Language: C#, Python, Markdown
+
 Hiện tại có tổng cộng 10 packages.
 
 
@@ -46,11 +48,13 @@ Bao gồm các qui ước chung về:
 # Xynok Source Generator
 ---
 Chứa .Dll của Roslyn. Có nhiệm vụ triển khai các qui ước phức tạp của Xynok Codex.
+
 Nhằm gia tăng hiệu quả công việc, tiết kiệm thời gian và đảm bảo chất lượng `code convention` của các dự án trong nội bộ Xynok Studio.
 
 # Xynok Entity
 ---
 Là *Source Guide* cho  **Xynok Source Generator**. Cụ thể:
+
 - định nghĩa data flow của một entity
 - định nghĩa các kiểu quan hệ giữa:
 	- data & data
@@ -86,16 +90,12 @@ public enum CharacterID
 }
 ```
 
-**Step 2:**
-Add Component `{EntityName}AnimatorFrameDataContainer` for animator gameobject.
+
+**Step 2:** Add Component `{EntityName}AnimatorFrameDataContainer` for animator gameobject.
 
 **Step 3:** Kế thừa  `XynokEntity.APIs.IActionAnimOverrider` để trở thành 1 overrider.
 
 **Step 4:** Add `{EntityName}AbilityInitAnimActionOverrider` vào Ability của entity.
-
-
-
-
 
 
 
@@ -124,6 +124,7 @@ Gồm rất nhiều các phương thức tiện ích, extensions dành cho nhi�
 # Xynok Plugin
 ---
 Bao gồm những plugin cơ bản phục vụ cho việc quản lý code và tool creation. Cụ thể gồm:
+
 - Odin Inspector and Serializer v3.2.1.0 (cracked) // todo: mua khi có thể
 - DOTween (HOTween v2) Version 1.2.745
 
@@ -135,8 +136,10 @@ Một thư viện xử lý việc gen code của các file .tt. Hỗ trợ mappi
 # Xynok 3d Prototype Asset
 ---
 Tập hợp các asset như:
+
 - 3d model + basic animation
 - Vfx
 - Sound
 - Font
+
 Nhằm tối giản quá trình setup một dự án mới.
