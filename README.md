@@ -24,6 +24,7 @@ Tập hợp codebase, tools,... của Xynok Studio. Mục đích hiện tại, s
 - External Tools: Google Sheet, Github, Draw.io
 - IDE: Jetbrain Rider, Pycharm
 - Language: C#, Python, Markdown
+Hiện tại có tổng cộng 10 packages.
 
 
 # Xynok Convention

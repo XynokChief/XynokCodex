@@ -4,8 +4,8 @@
   "displayName": "Xynok Entity",
   "description": "Bao gồm những qui ước cho việc triển khai một đối tượng, thực thể.",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Entity-aa0ca56b30bc4475aa6e2f41ac5041b3?pvs=74",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Entity-aa0ca56b30bc4475aa6e2f41ac5041b3?pvs=74",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
   "licensesUrl": "",
   "dependencies": {
     
