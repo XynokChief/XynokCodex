@@ -4,8 +4,8 @@
   "displayName": "Xynok Input",
   "description": "Chịu trách nhiệm quản lý API gọi tới các Input.",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Input-61b8bf8393f24fd5a761e562e6501f8c",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Input-61b8bf8393f24fd5a761e562e6501f8c",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
   "licensesUrl": "",
   "dependencies": {
     "com.unity.inputsystem": "1.6.3"

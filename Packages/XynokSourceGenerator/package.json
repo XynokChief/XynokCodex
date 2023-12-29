@@ -4,8 +4,8 @@
   "displayName": "Xynok Source Generator",
   "description": "chứa .dll code của SG. Sử dụng cho các case bị lặp lại code giúp tiết kiệm thời gian triển khai một tính năng tương tự.",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Source-Generator-9f3bb7ad96a24e64827704e254a9da0c?pvs=74",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Source-Generator-9f3bb7ad96a24e64827704e254a9da0c?pvs=74",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
   "licensesUrl": "",
   "dependencies": {
    

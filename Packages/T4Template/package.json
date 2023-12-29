@@ -4,8 +4,8 @@
   "displayName": "Xynok T4 Template",
   "description": "Một thư viện xử lý việc gen code của các file .tt. Hỗ trợ mapping tới SO của Unity.",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-T4-Template-dd59538503e244a9a5effa9668ab855f",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-T4-Template-dd59538503e244a9a5effa9668ab855f",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
   "licensesUrl": "",
   "dependencies": {
    
