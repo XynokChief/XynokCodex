@@ -1,4 +1,6 @@
+#XynokConvention #XynokEntity  
 # Folder: AnimPhasing
+
 
 Hệ thống xử lý animation cho các game fighting game - Frame Data Management.
 

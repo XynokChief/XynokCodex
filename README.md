@@ -1,1 +1,3 @@
 ![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D) ![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&logoColor=FFFFFF&label=Discord)
+Bao gồm:
+#XynokConvention #XynokEntity 
