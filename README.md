@@ -1,4 +1,10 @@
-![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D) ![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&logoColor=FFFFFF&label=Discord)
+![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
+
+![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
+![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)  ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white) ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)
+
+![PyCharm](https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green)  ![rider](https://img.shields.io/badge/jetbrains_rider-3670A0?style=for-the-badge&logo=rider&logoColor=orange&color=black)  ![Obsidian](https://img.shields.io/badge/Obsidian-%23483699.svg?style=for-the-badge&logo=obsidian&logoColor=white)
 
 
 # Install Guide
@@ -17,6 +23,7 @@
 ---
 Tập hợp codebase, tools,... của Xynok Studio. Mục đích hiện tại, sử dụng cho dự án UJ.
 Để gia tăng hiệu quả sử dụng, bảo trì, nâng cấp bộ codebase này, sau đây là danh sách các tool, đối tượng,... phù hợp:
+
 - Game Genre Target: Action - RPG
 - Platform: Window, MacOS
 - Store: Steam
@@ -24,6 +31,7 @@ Tập hợp codebase, tools,... của Xynok Studio. Mục đích hiện tại, s
 - External Tools: Google Sheet, Github, Draw.io
 - IDE: Jetbrain Rider, Pycharm
 - Language: C#, Python, Markdown
+
 Hiện tại có tổng cộng 10 packages.
 
 
@@ -46,11 +54,13 @@ Bao gồm các qui ước chung về:
 # Xynok Source Generator
 ---
 Chứa .Dll của Roslyn. Có nhiệm vụ triển khai các qui ước phức tạp của Xynok Codex.
+
 Nhằm gia tăng hiệu quả công việc, tiết kiệm thời gian và đảm bảo chất lượng `code convention` của các dự án trong nội bộ Xynok Studio.
 
 # Xynok Entity
 ---
 Là *Source Guide* cho  **Xynok Source Generator**. Cụ thể:
+
 - định nghĩa data flow của một entity
 - định nghĩa các kiểu quan hệ giữa:
 	- data & data
@@ -86,16 +96,12 @@ public enum CharacterID
 }
 ```
 
-**Step 2:**
-Add Component `{EntityName}AnimatorFrameDataContainer` for animator gameobject.
+
+**Step 2:** Add Component `{EntityName}AnimatorFrameDataContainer` for animator gameobject.
 
 **Step 3:** Kế thừa  `XynokEntity.APIs.IActionAnimOverrider` để trở thành 1 overrider.
 
 **Step 4:** Add `{EntityName}AbilityInitAnimActionOverrider` vào Ability của entity.
-
-
-
-
 
 
 
@@ -124,6 +130,7 @@ Gồm rất nhiều các phương thức tiện ích, extensions dành cho nhi�
 # Xynok Plugin
 ---
 Bao gồm những plugin cơ bản phục vụ cho việc quản lý code và tool creation. Cụ thể gồm:
+
 - Odin Inspector and Serializer v3.2.1.0 (cracked) // todo: mua khi có thể
 - DOTween (HOTween v2) Version 1.2.745
 
@@ -135,8 +142,10 @@ Một thư viện xử lý việc gen code của các file .tt. Hỗ trợ mappi
 # Xynok 3d Prototype Asset
 ---
 Tập hợp các asset như:
+
 - 3d model + basic animation
 - Vfx
 - Sound
 - Font
+
 Nhằm tối giản quá trình setup một dự án mới.
