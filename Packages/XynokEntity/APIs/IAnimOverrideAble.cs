@@ -1,4 +1,5 @@
 using System;
+using XynokInput.Settings.Input;
 
 namespace XynokEntity.APIs
 {
@@ -14,7 +15,7 @@ namespace XynokEntity.APIs
     public interface IActionAnimOverrider
     {
         event Action OnRequestAnimOverride;
-        string AnimOverrideActName { get; }
+        InputActionID AnimOverrideActName { get; }
         Action AnimOverrideAct { get; }
     }
 }

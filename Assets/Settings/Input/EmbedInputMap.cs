@@ -29,6 +29,7 @@ namespace XynokInput.Settings.Input
         }
 #endif
 
+
         public string[] GetInputActions(string mapName)
         {
             return inputMapsData.First(e => e.mapName == mapName).actionNames;

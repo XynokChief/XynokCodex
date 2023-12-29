@@ -132,7 +132,7 @@ namespace XynokEntity.AnimPhasing.Data
 
         public void RegisterOverrider(IActionAnimOverrider overrider)
         {
-            var overriderData = overriders.FirstOrDefault(e => e.name == overrider.AnimOverrideActName);
+            var overriderData = overriders.FirstOrDefault(e => e.actionName == overrider.AnimOverrideActName);
 
             // validate before register
             if (overriderData == null) return;

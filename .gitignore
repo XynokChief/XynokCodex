@@ -9,7 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/.idea
+/.[Ii]dea
+/.[Oo]bsidian
 /[Tt]estLab/
 
 # MemoryCaptures can get excessive in size.

@@ -24,7 +24,7 @@ namespace Runtime.TestEntity
     [Serializable]
     public class Run : ACharacterAbility, IAction, IActionAnimOverrider
     {
-        public string AnimOverrideActName => InputActionID.Fire.ToString();
+        public InputActionID AnimOverrideActName => InputActionID.Fire;
 
         public Action AnimOverrideAct => Invoke;
 
