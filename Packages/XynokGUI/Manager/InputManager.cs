@@ -10,6 +10,9 @@ using XynokGUI.Input;
 
 namespace XynokGUI.Manager
 {
+    /// <summary>
+    ///  Quản lý các API của input. Muốn sử dụng action gì thì gọi tới đây.
+    /// </summary>
     [RequireComponent(typeof(PlayerInput))]
     public class InputManager : ASingleton<InputManager>
     {
