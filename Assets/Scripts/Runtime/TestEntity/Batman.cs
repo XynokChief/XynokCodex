@@ -57,9 +57,16 @@ namespace Runtime
         }
     }
 
+ 
+
     public class Batman : ACharacterMono
     {
+        private int numberX;
 
+        internal virtual void Test()
+        {
+            numberX = 10;
+        }
         private void Start()
         {
             SetDependency(Resource);
