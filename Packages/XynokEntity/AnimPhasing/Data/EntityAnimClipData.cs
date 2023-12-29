@@ -111,7 +111,7 @@ namespace XynokEntity.AnimPhasing.Data
                 // start event
                 var startMessageParameters = new string[]
                 {
-                    RangeMilestone.Start.ToString(),
+                    FrameRangeEventType.Start.ToString(),
                     clip.name,
                     frameRangeData.rangeType.ToString(),
                     startRange,
@@ -128,7 +128,7 @@ namespace XynokEntity.AnimPhasing.Data
                 // end event
                 var endMessageParameters = new string[]
                 {
-                    RangeMilestone.End.ToString(),
+                    FrameRangeEventType.End.ToString(),
                     clip.name,
                     frameRangeData.rangeType.ToString(),
                     startRange,

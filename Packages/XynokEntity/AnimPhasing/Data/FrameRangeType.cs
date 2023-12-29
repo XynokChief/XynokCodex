@@ -1,6 +1,6 @@
 namespace XynokEntity.AnimPhasing.Data
 {
-    public enum RangeMilestone
+    public enum FrameRangeEventType
     {
         Start = 0,
         End = 1,

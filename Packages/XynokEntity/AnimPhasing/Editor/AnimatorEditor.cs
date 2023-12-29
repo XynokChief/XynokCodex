@@ -149,7 +149,7 @@ namespace XynokEntity.AnimPhasing.Editor
 
         #region Configs
 
-       
+       // TODO: add more configs
         #endregion
 
         #region Internals

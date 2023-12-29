@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention;
 using XynokConvention.APIs;
+using XynokConvention.Data.Binding;
 using XynokEntity.AnimPhasing.Data;
 using XynokEntity.APIs;
 
@@ -17,11 +18,20 @@ namespace XynokEntity.AnimPhasing
         where T : IEntity
     {
         [FoldoutGroup(ConventionKey.Settings)] public Animator animator;
+        [FoldoutGroup(ConventionKey.Settings)] public bool useBindAbleCurrentState;
+
+        [FoldoutGroup(ConventionKey.Settings)] [ShowIf(nameof(useBindAbleCurrentState))]
+        public bool ignoreLoopState;
+
 
         [FoldoutGroup(ConventionKey.Settings)] [TableList]
         public EntityAnimClipData<T>[] clipsData;
 
+        [Tooltip("state hiện tại của animator (ignored transition)")] [ShowIf(nameof(useBindAbleCurrentState))]
+        public StringData currentAnimStateData;
+
         [Tooltip("state hiện tại của animator (ignored transition)")]
+        [HideIf(nameof(useBindAbleCurrentState))]
         [ShowInInspector]
         public string CurrentAnimState => _currentAnimState;
 
@@ -43,6 +53,7 @@ namespace XynokEntity.AnimPhasing
             }
 
             _owner = dependency;
+            if (useBindAbleCurrentState) currentAnimStateData.SetDuplicateCheck(!ignoreLoopState);
             Init();
         }
 
@@ -110,12 +121,13 @@ namespace XynokEntity.AnimPhasing
                 frameRange.ForceExit();
             }
         }
+
         public void RegisterOverrider(IActionAnimOverrider overrider)
         {
-            var currentClip = GetClipData(_currentAnimState);
+            var currentClip = GetClipData(useBindAbleCurrentState ? currentAnimStateData.Value : _currentAnimState);
             currentClip?.RegisterOverrider(overrider);
         }
-       
+
         EntityAnimClipData<T> GetClipData(string clipName)
         {
             foreach (var clipData in clipsData)
@@ -129,12 +141,15 @@ namespace XynokEntity.AnimPhasing
 
         #region Anim Events
 
+        /// <summary>
+        /// <inheritdoc cref="XynokConvention.ConventionKey.AnimEvent"/>
+        /// </summary>
         void AnimEvent(string message)
         {
             // translate message to data
             var data = message.Split(ConventionKey.Separator);
 
-            var rangeMilestone = Enum.Parse<RangeMilestone>(data[0]);
+            var eventType = Enum.Parse<FrameRangeEventType>(data[0]);
             var clipName = data[1];
             var rangeType = Enum.Parse<FrameRangeType>(data[2]);
             var range = new Vector2Int(int.Parse(data[3]), int.Parse(data[4]));
@@ -148,7 +163,7 @@ namespace XynokEntity.AnimPhasing
             if (frameRangeData == null) return;
 
             // invoke frame range data
-            frameRangeData.Invoke(rangeMilestone);
+            frameRangeData.Invoke(eventType);
         }
 
         /// <summary>
@@ -156,13 +171,12 @@ namespace XynokEntity.AnimPhasing
         /// </summary>
         void StartEvent(string clipName)
         {
-            _currentAnimState = clipName;
+            if (useBindAbleCurrentState) currentAnimStateData.Value = clipName;
+            else _currentAnimState = clipName;
         }
 
         #endregion
 
         #endregion
-
-       
     }
 }

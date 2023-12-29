@@ -101,6 +101,11 @@ namespace XynokConvention.Data.Binding
             if (emmitEvent) EmitEventDeepChanged();
             if (emmitEvent) EmitEventChanged();
         }
+        
+        public void SetDuplicateCheck(bool value)
+        {
+            duplicateCheck = value;
+        }
 
         protected virtual bool CanChangeValueTo(T value)
         {

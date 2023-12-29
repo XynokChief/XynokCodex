@@ -35,15 +35,18 @@ namespace XynokEntity.AnimPhasing.Data
         [ShowIf(nameof(rangeType), FrameRangeType.Overridable)]
         [LabelWidth(160)]
         [ReadOnly]
-        [Tooltip("now only support 1 overrider at a time, if want more, must has a specification design")]
+        [Tooltip("Hiện tại chỉ hỗ trợ 1 overrider vào một thời điểm, nếu muốn nhiều hơn, cần có một thiết kế cụ thể")]
         public int maxInterruptConcurrency = 1;
 
-        [VerticalGroup(ConventionKey.State)] [ShowIf(nameof(rangeType), FrameRangeType.Overridable)] [HideLabel]
+        [VerticalGroup(ConventionKey.State)]
+        [ShowIf(nameof(rangeType), FrameRangeType.Overridable)]
+        [HideLabel]
+        [Tooltip("các overrider có thể override frame range này")]
         public AnimOverriderData[] overriders;
         // ------------------ Overridable ------------------
 
         [MinMaxSlider(1, "@clipFrameCount", showFields: true)]
-        public Vector2Int range = new Vector2Int(1, 1);
+        public Vector2Int range = new Vector2Int(1, 3);
 
         [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
         IAction onEnter = new UnityEventWrapper();
@@ -76,19 +79,19 @@ namespace XynokEntity.AnimPhasing.Data
 
         #region Runtime
 
-        public void Invoke(RangeMilestone milestone)
+        public void Invoke(FrameRangeEventType eventType)
         {
-            switch (milestone)
+            switch (eventType)
             {
-                case RangeMilestone.Start:
+                case FrameRangeEventType.Start:
                     Enter();
                     return;
-                case RangeMilestone.End:
+                case FrameRangeEventType.End:
                     Exit();
                     return;
             }
 
-            Debug.LogError($"{GetType().Name}: Invalid milestone {milestone}");
+            Debug.LogError($"{GetType().Name}: Invalid frame range event - {eventType}");
         }
 
         public void ForceExit()

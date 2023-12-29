@@ -1,27 +1,30 @@
 ﻿namespace XynokConvention
 {
-    public class ConventionKey
+    public static class ConventionKey
     {
+        /*--------------------------------------------- Odin titles ---------------------------------------------*/
         public const string PlayerInputMap = "Player";
         public const string Settings = "settings";
         public const string Events = "events";
-        public const string CurrentState = "current state";
         public const string CurrentValue = "CurrentValue";
         public const string Key = "key";
         public const string State = "state";
-        public const string Stat = "stat";
         public const string Conditions = "Conditions";
-        public const string Value = "value";
-        public const string Validator = "Validator";
-        public const string AnimStartEvent = "StartEvent"; // start anim at frame 0
-        public const string AnimEndEvent = "EndEvent"; // end anim at last frame
-        public const string AnimEvent = "AnimEvent"; // event at frame range
-        public const string AnimClipData = "clip data";
         public const string SetDataValue = "set value for";
         public const string Erasers = "Erasers";
         public const string Creators = "Creators";
+        public const string AnimClipData = "clip data";
+        
+        /*--------------------------------------------- Anim events ---------------------------------------------*/
+        public const string AnimStartEvent = "StartEvent"; // event at frame 0
+        public const string AnimEvent = "AnimEvent"; // event at frame range
+    
+        /*--------------------------------------------- Encode conventions ---------------------------------------------*/
         public const char Separator = ':';
 
+        /// <summary>
+        /// quy ước mã hóa thông tin: {param1}:{param2}:{param3}:{param4}:{param5} ...
+        /// </summary>
         public static string GetStrInterpolatedBySeparator(string[] parameters)
         {
             var result = "";

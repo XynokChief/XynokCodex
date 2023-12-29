@@ -497,6 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 642668382}
+  useBindAbleCurrentState: 0
+  ignoreLoopState: 0
   clipsData:
   - clip: {fileID: 7400000, guid: dabbdca8104955040ad315cc38f4ce28, type: 2}
     frameCount: 60
@@ -548,6 +550,11 @@ MonoBehaviour:
       onExit:
         rid: 6700482807419371530
       clipFrameCount: 60
+  currentAnimStateData:
+    baseValue: 
+    lastValue: 
+    currentValue: 
+    duplicateCheck: 0
   references:
     version: 2
     RefIds:
