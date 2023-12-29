@@ -1,6 +1,9 @@
 ![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
+
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
 ![Unity](https://img.shields.io/badge/unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)  ![Steam](https://img.shields.io/badge/steam-%23000000.svg?style=for-the-badge&logo=steam&logoColor=white) ![Google Drive](https://img.shields.io/badge/Google%20Drive-4285F4?style=for-the-badge&logo=googledrive&logoColor=white)
+
 ![PyCharm](https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green)  ![rider](https://img.shields.io/badge/jetbrains_rider-3670A0?style=for-the-badge&logo=rider&logoColor=orange&color=black)  ![Obsidian](https://img.shields.io/badge/Obsidian-%23483699.svg?style=for-the-badge&logo=obsidian&logoColor=white)
 
 
