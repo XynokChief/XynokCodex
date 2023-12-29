@@ -70,13 +70,23 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
                 };
+                var entityAbilityInitAnimActionOverriderFileGen = new EntityAbilityInitAnimActionOverriderFileGen
+                {
+                    EntitySymbol = entitySymbol,
+                    StatSymbol = statSymbol,
+                    StateSymbol = stateSymbol,
+                    TriggerSymbol = triggerSymbol,
+                };
 
                 GenCode(context, aStateMachineDataBehaviorFileGen);
                 GenCode(context, stateMachineDataFileGen);
                 GenCode(context, entityAbilityInitAnimStateMachineFileGen);
+                
+                
                 WriteFile(genPath, entityAnimatorFrameDataContainerFileGen);
                 WriteFile(genPath, entityAnimatorStateMachineFileGen);
-                // GenCode(context, stateMachineDataBehaviorFileGen);
+                
+                GenCode(context, entityAbilityInitAnimActionOverriderFileGen);
             }
         }
     }

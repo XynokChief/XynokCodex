@@ -2,10 +2,12 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
+using XynokEntity.APIs;
+using XynokInput.Settings.Input;
 using XynokSourceGenerator.Entities;
 
 
-namespace Runtime
+namespace Runtime.TestEntity
 {
     [Serializable]
     public class CanRun : IValidator
@@ -20,19 +22,27 @@ namespace Runtime
 
     [TypeInfoBox("Run Ability")]
     [Serializable]
-    public class Run : ACharacterAbility, IAction
+    public class Run : ACharacterAbility, IAction, IActionAnimOverrider
     {
+        public string AnimOverrideActName => InputActionID.Fire.ToString();
+
+        public Action AnimOverrideAct => Invoke;
+
+        public event Action OnRequestAnimOverride;
+
         protected override void OnInit()
         {
         }
 
+        [Button]
         protected override void OnExecute()
         {
-            Debug.Log($"{owner.Resource.ResourceId} is running");
+            OnRequestAnimOverride?.Invoke();
         }
 
         protected override void OnInterrupted()
         {
+            
         }
 
         protected override void OnDispose()
@@ -45,7 +55,7 @@ namespace Runtime
 
         public void Invoke()
         {
-            Execute();
+            Debug.Log($"{owner.Resource.ResourceId} is running");
         }
 
         public void AddListener(Action action)
@@ -61,12 +71,7 @@ namespace Runtime
 
     public class Batman : ACharacterMono
     {
-        private int numberX;
 
-        internal virtual void Test()
-        {
-            numberX = 10;
-        }
         private void Start()
         {
             SetDependency(Resource);

@@ -13,7 +13,7 @@ namespace XynokEntity.AnimPhasing
     /// <inheritdoc cref="https://forum.unity.com/threads/problem-with-statemachinebehaviour-onstateexit.359418/"/>
     /// TODO: bổ sung thêm SG cho case generic events
     /// </summary>
-    public class EntityAnimatorFrameDataContainer<T> : MonoBehaviour, IInjectable<T>
+    public class EntityAnimatorFrameDataContainer<T> : MonoBehaviour, IAnimOverrideAble, IInjectable<T>
         where T : IEntity
     {
         [FoldoutGroup(ConventionKey.Settings)] public Animator animator;
@@ -110,7 +110,12 @@ namespace XynokEntity.AnimPhasing
                 frameRange.ForceExit();
             }
         }
-
+        public void RegisterOverrider(IActionAnimOverrider overrider)
+        {
+            var currentClip = GetClipData(_currentAnimState);
+            currentClip?.RegisterOverrider(overrider);
+        }
+       
         EntityAnimClipData<T> GetClipData(string clipName)
         {
             foreach (var clipData in clipsData)
@@ -157,5 +162,7 @@ namespace XynokEntity.AnimPhasing
         #endregion
 
         #endregion
+
+       
     }
 }

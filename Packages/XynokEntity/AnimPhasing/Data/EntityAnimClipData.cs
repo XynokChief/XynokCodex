@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention;
@@ -9,7 +10,7 @@ using XynokEntity.APIs;
 namespace XynokEntity.AnimPhasing.Data
 {
     [Serializable]
-    public class EntityAnimClipData<T> : IInjectable<T> where T : IEntity
+    public class EntityAnimClipData<T> : IAnimOverrideAble, IInjectable<T> where T : IEntity
     {
         [VerticalGroup(ConventionKey.AnimClipData)] [HideLabel]
         public AnimationClip clip;
@@ -159,7 +160,7 @@ namespace XynokEntity.AnimPhasing.Data
             UnityEditor.AnimationUtility.SetAnimationEvents(clip, Array.Empty<AnimationEvent>());
 #endif
         }
-        
+
         [VerticalGroup(ConventionKey.AnimClipData)]
         [Button(ButtonSizes.Medium), GUIColor(Colors.Orange)]
         void AddFrameRange(FrameRangeType rangeType)
@@ -172,7 +173,6 @@ namespace XynokEntity.AnimPhasing.Data
             Array.Resize(ref frameRanges, frameRanges.Length + 1);
             frameRanges[^1] = frameRangeData;
         }
-       
 
         #endregion
 
@@ -184,7 +184,7 @@ namespace XynokEntity.AnimPhasing.Data
             {
                 var sameType = frameRangeData.rangeType == rangeType;
                 var sameRange = frameRangeData.range == range;
-                
+
                 if (sameType && sameRange) return frameRangeData;
             }
 
@@ -193,5 +193,14 @@ namespace XynokEntity.AnimPhasing.Data
         }
 
         #endregion
+
+        public void RegisterOverrider(IActionAnimOverrider overrider)
+        {
+            // dù có nhiều range overrideable, nhưng chỉ có 1 range overrideable dc thực hiện
+            var overrideAbleRange =
+                frameRanges.FirstOrDefault(e => e.rangeType == FrameRangeType.Overridable && e.IsPerforming);
+            
+            overrideAbleRange?.RegisterOverrider(overrider);
+        }
     }
 }

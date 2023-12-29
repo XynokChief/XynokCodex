@@ -42,5 +42,6 @@
        public const string ENTITY_ABILITY_INIT_ANIM_STATE_MACHINE = Prefix + ".Entity.StateMachine.EntityAbilityInitAnimStateMachine" + Suffix;
        public const string ENTITY_ANIMATOR_FRAME_DATA_CONTAINER = Prefix + ".Entity.StateMachine.EntityAnimatorFrameDataContainer" + Suffix;
        public const string ENTITY_ANIMATOR_STATE_MACHINE = Prefix + ".Entity.StateMachine.EntityAnimatorStateMachine" + Suffix;
+       public const string ENTITY_ABILITY_INIT_ANIM_ACTION_OVERRIDER = Prefix + ".Entity.StateMachine.EntityAbilityInitAnimActionOverrider" + Suffix;
     }
 }

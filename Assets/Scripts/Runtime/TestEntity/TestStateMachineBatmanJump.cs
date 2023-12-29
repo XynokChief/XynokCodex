@@ -22,7 +22,7 @@ namespace Runtime
     }
 
     public class TestStateMachineBatmanJump : ACharacterStateMachine<StateData>
-    {
+    { 
         protected override void OnStateEnter()
         {
             Debug.Log($"Batman is entering state machine: {stateMachineData.test} - {stateMachineData.hero}");
