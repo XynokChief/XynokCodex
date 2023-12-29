@@ -18,7 +18,7 @@ namespace XynokEntity.AnimPhasing.Data
     [Serializable]
     public class EntityFrameRangeData<T> : IAnimOverrideAble, IInjectable<T> where T : IEntity
     {
-        [VerticalGroup(ConventionKey.State)] [LabelWidth(80)]
+        [VerticalGroup(ConventionKey.State)] [LabelWidth(80)] [TableColumnWidth(300, Resizable = false)]
         public FrameRangeType rangeType;
 
         [Tooltip("if true, that mean anim is playing in this range")]
@@ -43,12 +43,12 @@ namespace XynokEntity.AnimPhasing.Data
         [HideLabel]
         [Tooltip("các overrider có thể override frame range này")]
         public AnimOverriderData[] overriders;
-        // ------------------ Overridable ------------------
+        // ------------------ Overridable - end ------------------
 
-        [MinMaxSlider(1, "@clipFrameCount", showFields: true)]
+        [MinMaxSlider(1, "@clipFrameCount", showFields: true)] [TableColumnWidth(320, Resizable = false)]
         public Vector2Int range = new Vector2Int(1, 3);
 
-        [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
+        [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker] 
         IAction onEnter = new UnityEventWrapper();
 
         [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]

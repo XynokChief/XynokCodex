@@ -12,12 +12,15 @@ namespace XynokEntity.AnimPhasing.Data
     [Serializable]
     public class EntityAnimClipData<T> : IAnimOverrideAble, IInjectable<T> where T : IEntity
     {
-        [VerticalGroup(ConventionKey.AnimClipData)] [HideLabel]
+        [Title("@clip.name", "@frameCount", TitleAlignments.Centered)]
+        [VerticalGroup(ConventionKey.AnimClipData)]
+        [TableColumnWidth(250, Resizable = false)]
+        [HideLabel]
         public AnimationClip clip;
 
         private bool _isPerforming;
 
-        [VerticalGroup(ConventionKey.AnimClipData)] [ReadOnly] [HideLabel] [SuffixLabel("frames", overlay: true)]
+        [VerticalGroup(ConventionKey.AnimClipData)] [ReadOnly] [HideLabel] [SuffixLabel(ConventionKey.Frames, overlay: true)]
         public int frameCount;
 
         [TableList] public EntityFrameRangeData<T>[] frameRanges;
@@ -199,7 +202,7 @@ namespace XynokEntity.AnimPhasing.Data
             // dù có nhiều range overrideable, nhưng chỉ có 1 range overrideable dc thực hiện
             var overrideAbleRange =
                 frameRanges.FirstOrDefault(e => e.rangeType == FrameRangeType.Overridable && e.IsPerforming);
-            
+
             overrideAbleRange?.RegisterOverrider(overrider);
         }
     }

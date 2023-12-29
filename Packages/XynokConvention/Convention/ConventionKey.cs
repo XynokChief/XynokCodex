@@ -14,6 +14,7 @@
         public const string Erasers = "Erasers";
         public const string Creators = "Creators";
         public const string AnimClipData = "clip data";
+        public const string Frames = "frames";
         
         /*--------------------------------------------- Anim events ---------------------------------------------*/
         public const string AnimStartEvent = "StartEvent"; // event at frame 0
