@@ -345,7 +345,6 @@ namespace XynokConvention.Data.BigData
         {
             //figure out which is bigger, shrink the mantissa of the smaller by the difference in exponents, add mantissas, normalize and return
 
-            //TODO: Optimizations and simplification may be possible, see https://github.com/Patashu/break_infinity.js/issues/8
 
             if (IsZero(left.Mantissa))
             {
@@ -686,7 +685,6 @@ namespace XynokConvention.Data.BigData
             var mantissa = Math.Pow(value.Mantissa, power);
             if (double.IsInfinity(mantissa))
             {
-                // TODO: This is rather dumb, but works anyway
                 // Power is too big for our mantissa, so we do multiple Pow with smaller powers.
                 return Pow(Pow(value, 2), (double)power / 2);
             }
@@ -696,7 +694,6 @@ namespace XynokConvention.Data.BigData
 
         public static BigDouble Pow(BigDouble value, double power)
         {
-            // TODO: power can be greater that long.MaxValue, which can bring troubles in fast track
             var powerIsInteger = IsInteger(power);
             if (value < 0 && !powerIsInteger)
             {
@@ -715,7 +712,6 @@ namespace XynokConvention.Data.BigData
         {
             //UN-SAFETY: Accuracy not guaranteed beyond ~9~11 decimal places.
 
-            //TODO: Fast track seems about neutral for performance. It might become faster if an integer pow is implemented, or it might not be worth doing (see https://github.com/Patashu/break_infinity.js/issues/4 )
 
             //Fast track: If (this.exponent*value) is an integer and mantissa^value fits in a Number, we can do a very fast method.
             var temp = value.Exponent * other;
@@ -988,7 +984,6 @@ namespace XynokConvention.Data.BigData
 
                 if (value.Exponent >= MaxSignificantDigits)
                 {
-                    // TODO: StringBuilder-optimizable
                     return value.Mantissa
                                .ToString(CultureInfo.InvariantCulture)
                                .Replace(".", "")

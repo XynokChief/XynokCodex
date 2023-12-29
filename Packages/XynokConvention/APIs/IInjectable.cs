@@ -2,8 +2,16 @@
 
 namespace XynokConvention.APIs
 {
-    public interface IInjectable<in T>: IDisposable
+    public interface IInjectable<in T> : IDisposable
     {
-        void Inject(T dependency);
+        void SetDependency(T dependency);
+    }
+
+    /// <summary>
+    /// in case of generic dependency
+    /// </summary>
+    public interface IInjectableGeneric<in T> : IDisposable
+    {
+        void SetDependency<TD>(TD dependency) where TD : T;
     }
 }

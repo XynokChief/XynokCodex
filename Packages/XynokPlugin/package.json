@@ -4,8 +4,8 @@
   "displayName": "Xynok Plugin",
   "description": "Bao gồm những plugin cơ bản phục vụ cho việc quản lý code và tool creation. Cụ thể gồm: Odin, DOTween (HOTween v2)",
   "unity": "2022.3",
-  "documentationUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
-  "changelogUrl": "https://xynokstudio.notion.site/Xynok-Plugin-22416158a46b4f2ebae7dde4cda0c4c7",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
   "licensesUrl": "",
   "dependencies": {
    

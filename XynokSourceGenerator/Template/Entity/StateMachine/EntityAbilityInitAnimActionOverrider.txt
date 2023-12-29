@@ -1,0 +1,74 @@
+{Scope}
+using System;
+using UnityEngine;
+using XynokEntity.APIs;
+using XynokSourceGenerator.Entities.APIs;
+using Sirenix.OdinInspector;
+
+
+namespace XynokSourceGenerator.Entities.StateMachine
+{
+    
+    /// <summary>
+    /// register các override anim cho animator của {EntityName}
+    /// </summary>
+    [Serializable]
+    [TypeInfoBox("{EntityName}-AbilityInitAnimActionOverrider: register các override anim cho animator của {EntityName}")]
+    public class {EntityName}AbilityInitAnimActionOverrider: I{EntityName}Ability
+    {
+        private I{EntityName} _owner;
+        public I{EntityName} Owner => _owner;
+        [SerializeField] private {EntityName}AnimatorFrameDataContainer frameDataContainer;
+
+        private Action _onDispose;
+        
+        public void SetDependency(I{EntityName} dependency)
+        {
+            Dispose();
+            if(dependency == null)
+            {
+                Debug.LogError($"[{GetType().Name}]: dependency is null");
+                return;
+            }
+            _owner = dependency;
+            Execute();
+        }   
+        
+        void Init()
+        {
+            foreach (var ability in _owner.Resource.Abilities)
+            {
+                if(ability is IActionAnimOverrider overrider)
+                {
+                    overrider.OnRequestAnimOverride+=ExecuteCallback;
+                    _onDispose += () => overrider.OnRequestAnimOverride-=ExecuteCallback;
+                    void ExecuteCallback()
+                    {
+                        frameDataContainer.RegisterOverrider(overrider);
+                    }
+                }
+            }
+        }
+        
+        
+        public void Execute()
+        {
+            Reset();
+            Init();
+        }
+        
+        public void Reset()
+        {
+            if(_onDispose != default) Dispose();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+    }
+    {Body}
+}
+

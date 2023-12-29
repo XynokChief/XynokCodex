@@ -1,0 +1,96 @@
+{Scope}
+using System;
+using UnityEngine;
+using Sirenix.OdinInspector;
+using XynokConvention.Procedural;
+using XynokConvention.Enums;
+using XynokEntity.Enums;
+using XynokSourceGenerator.Entities.APIs;
+using XynokSourceGenerator.Entities.Data;
+
+namespace XynokSourceGenerator.Entities
+{
+    
+    /// <summary>
+    /// Executor của một ability khi có sự thay đổi dữ liệu
+    /// </summary>
+    [Serializable]
+    [TypeInfoBox("{EntityName}-AbilityExecutorOnDataChanged: Executor của một ability khi có sự thay đổi dữ liệu")]
+    public class {EntityName}AbilityExecutorOnDataChanged: I{EntityName}AbilityExecutor
+    {
+        private I{EntityName}Ability _owner;
+        private I{EntityName} _ownerOfAbility => _owner.Owner;
+        
+        [TableList] [SerializeField] [HideLabel] private {EntityName}DataSmallPiece[] dataPieces;
+        
+        private Action _onDispose;
+    
+
+        public void SetDependency(I{EntityName}Ability dependency)
+        {
+            Dispose();
+            
+            if(dependency == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: dependency is null");
+             return;
+            }
+            
+            _owner = dependency;
+            
+            if(_owner.Owner == null)
+            {
+             Debug.LogError($"[{GetType().Name}]: owner of ability is null");
+             return;
+            }
+            
+            Init();
+        }
+        
+        public void Dispose()
+        {
+            _onDispose?.Invoke();
+            _onDispose = default;
+        }
+        
+        void Init()
+        {
+            foreach (var dataPiece in dataPieces)
+            {
+                if(dataPiece.dataType == EntityDataType.SelfStat)
+                {
+                    var stat = _ownerOfAbility.Resource.GetStat(dataPiece.stat);
+                    stat.OnChanged += OnStatHasChanged;
+                    _onDispose += () => stat.OnChanged -= OnStatHasChanged;
+                    return;
+                }
+                
+                if(dataPiece.dataType == EntityDataType.SelfState)
+                {
+                    var state = _ownerOfAbility.Resource.GetState(dataPiece.state);
+                    state.OnChanged += OnStateHasChanged;
+                    _onDispose += () => state.OnChanged -= OnStateHasChanged;
+                    return;
+                }
+                
+                if(dataPiece.dataType == EntityDataType.SelfTrigger)
+                {
+                    var trigger = _ownerOfAbility.Resource.GetTrigger(dataPiece.trigger);
+                    trigger.OnChanged += OnTriggerHasChanged;
+                    _onDispose += () => trigger.OnChanged -= OnTriggerHasChanged;
+                }
+            }
+        }
+        
+        void OnStatHasChanged(float value) => _owner?.Execute();
+        void OnStateHasChanged(bool value) => _owner?.Execute();
+        
+        void OnTriggerHasChanged(bool value)
+        {
+            if(value) _owner?.Execute();
+        }
+      
+    }
+    {Body}
+}
+

@@ -48,6 +48,15 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -160,25 +169,60 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.xynok.3dprototype": {
+      "version": "file:Xynok3dPrototypeAsset",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.xynok.convention": {
       "version": "file:XynokConvention",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "3.2.1",
-        "com.xynok.plugin": "1.0.0"
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
       }
     },
     "com.xynok.entity": {
       "version": "file:XynokEntity",
       "depth": 0,
       "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.generator": {
+      "version": "file:XynokSourceGenerator",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.gui": {
+      "version": "file:XynokGUI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.input": {
+      "version": "file:XynokInput",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
-        "com.xynok.convention": "git+https://x-oauth-basic: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@github.com/XynokChief/XynokCodex?path=Packages/XynokConvention"
+        "com.unity.inputsystem": "1.6.3"
       }
     },
     "com.xynok.plugin": {
       "version": "file:XynokPlugin",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.t4": {
+      "version": "file:T4Template",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "com.xynok.utils": {
+      "version": "file:XynokUtils",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

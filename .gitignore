@@ -9,7 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/.idea
+/.[Ii]dea
+/.[Oo]bsidian
 /[Tt]estLab/
 
 # MemoryCaptures can get excessive in size.
@@ -53,6 +54,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.vsconfig
 
 # Unity3D generated file on crash reports
 sysinfo.txt
@@ -60,7 +62,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.aab
-*.unitypackage
+# *.unitypackage
 *.app
 
 # Crashlytics generated file

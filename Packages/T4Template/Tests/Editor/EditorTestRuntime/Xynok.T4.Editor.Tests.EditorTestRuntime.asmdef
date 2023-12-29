@@ -1,0 +1,16 @@
+{
+    "name": "Xynok.T4.Editor.Tests.EditorTestRuntime",
+    "rootNamespace": "Xynok.T4.Editor.Tests.EditorTestRuntime",
+    "references": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

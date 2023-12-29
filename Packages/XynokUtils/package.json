@@ -1,0 +1,18 @@
+{
+  "name": "com.xynok.utils",
+  "version": "1.0.0",
+  "displayName": "Xynok Utils",
+  "description": "Bao gồm những hàm, phương thức tiện ích.",
+  "unity": "2022.3",
+  "documentationUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "changelogUrl": "https://github.com/XynokChief/XynokCodex/tree/develop",
+  "licensesUrl": "",
+  "dependencies": {
+   
+  },
+  "author": {
+    "name": "HoangCuongZk1",
+    "email": "hoangcuongzk1@xynok.com",
+    "url": ""
+  }
+}

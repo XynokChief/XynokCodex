@@ -1,7 +1,10 @@
 {
     "name": "XynokEntity",
     "rootNamespace": "XynokEntity",
-    "references": [],
+    "references": [
+        "GUID:6651d52749746704993a919cc6a4eaec",
+        "GUID:ab2a0f1fa0acc78439a171391789b449"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

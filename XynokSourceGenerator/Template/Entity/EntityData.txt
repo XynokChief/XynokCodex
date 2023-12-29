@@ -1,0 +1,101 @@
+{Scope}
+using System;
+using Sirenix.OdinInspector;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
+using XynokEntity.Enums;
+using XynokConvention.Data.Binding;
+using XynokSourceGenerator.Entities.APIs;
+
+
+namespace XynokSourceGenerator.Entities.Data
+{
+
+        [Serializable]
+        public class {EntityName}Stat: APairData<{StatName}, float>{}
+        
+        [Serializable]
+        public class {EntityName}State: APairData<{StateName}, bool>{}
+        
+        [Serializable]
+        public class {EntityName}Trigger: ATriggerData<{TriggerName}>{}
+        
+
+        /// <summary>
+        /// {EntityName}Resource is a serializable class that contains all the data of {EntityName}.
+        /// <b>Important Note:</b> Use for Runtime only.
+        /// </summary>
+        [Serializable]
+        public class {EntityName}Resource
+        {
+            public {EntityEnumName} ResourceId;
+           [TableList] public {EntityName}Stat[] Stats;
+           [TableList] public {EntityName}State[] States;
+           [TableList] public {EntityName}Trigger[] Triggers;
+           
+           [SerializeReference] [HideReferenceObjectPicker] public I{EntityName}Ability[] Abilities = Array.Empty<I{EntityName}Ability>();
+            
+            
+            public {EntityName}Stat GetStat({StatName} statType) => Stats.FirstOrDefault(s => s.Key == statType);
+            public {EntityName}State GetState({StateName} stateType) => States.FirstOrDefault(s => s.Key == stateType);
+            public {EntityName}Trigger GetTrigger({TriggerName} triggerType) => Triggers.FirstOrDefault(s => s.Key == triggerType);
+            
+            public T GetAbility<T>() where T: I{EntityName}Ability
+            {
+                foreach (var ability in Abilities)
+                {
+                    if(ability is T t) return t;
+                }
+                Debug.LogError($"[{nameof({EntityName}Resource)}]: Ability {typeof(T).Name} not found");
+                return default;
+            }
+        }
+        
+        
+        [Serializable]
+        public class {EntityName}CurrentState: APrimitiveData<{EntityName}StateFlag>
+        {
+            private Dictionary<{StateName}, {EntityName}StateFlag> _stateCacheDict = new ();
+            
+            
+            public bool Has({EntityName}StateFlag state) => Value.HasFlag(state);
+            
+            public bool Has({StateName} state)
+            {   
+                Cache(state);
+                return Value.HasFlag(_stateCacheDict[state]);
+            }
+            
+            public void Add({StateName} state)
+            {
+                Cache(state);
+                Value |= _stateCacheDict[state];
+            }
+            
+            public void Remove({StateName} state)
+            {
+                Cache(state);
+                Value &= ~_stateCacheDict[state];
+            }
+            
+            
+            void Cache({StateName} state)
+            {
+                if(_stateCacheDict.ContainsKey(state)) return;
+                
+                _stateCacheDict.Add(state, Enum.Parse<{EntityName}StateFlag>(state.ToString()));
+            }
+        }
+        
+        [Serializable]
+        public class {EntityName}DataSmallPiece
+        {
+            [HorizontalGroup("data to track")] [HideLabel] public EntityDataType dataType;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfStat)] public {StatName} stat;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfState)] public {StateName} state;
+            [HorizontalGroup("data to track")] [HideLabel] [ShowIf(nameof(dataType), EntityDataType.SelfTrigger)] public {TriggerName} trigger;
+        }
+}
+
+{Body}

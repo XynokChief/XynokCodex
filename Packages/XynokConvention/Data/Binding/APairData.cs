@@ -5,14 +5,14 @@ using UnityEngine;
 namespace XynokConvention.Data.Binding
 {
     [Serializable]
-    public class APairData<T1, T2> : APrimitiveData<T2> where T1 : Enum
+    public class APairData<T1, T2> : APrimitiveData<T2>
+        where T1 : Enum
     {
-        [SerializeField] [HorizontalGroup] [HideLabel]
+        [SerializeField] [TableColumnWidth(150, Resizable = false)] [HorizontalGroup(ConventionKey.Key)] [HideLabel]
         private T1 key;
 
-        public T1 Key => key;
-
         private int _hashKey;
+        public T1 Key => key;
 
         public int HashKey
         {
