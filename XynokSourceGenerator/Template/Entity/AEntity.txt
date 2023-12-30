@@ -24,10 +24,13 @@ namespace XynokSourceGenerator.Entities
     {
         [SerializeField] private {EntityName}CurrentState currentState;
         [SerializeField] private {EntityName}Resource resource;
+        {HasItem} [SerializeReference] private I{EntityName}Item[] items;
         
         public {EntityName}CurrentState CurrentState => currentState;
         public {EntityName}Resource Resource => resource;
-        private Action _disposeAbilities;
+        {HasItem} public I{EntityName}Item[] Items {get => items; set => items = value;}
+        
+        private Action _onDispose{EntityName};
         
         public void SetDependency({EntityName}Resource dependency)
         {
@@ -45,40 +48,71 @@ namespace XynokSourceGenerator.Entities
         protected virtual void Init()
         {
             InitAbilities();
+            {HasItem} InitItems();
         }
         
         public virtual void Dispose()
         {
-           _disposeAbilities?.Invoke();
-           _disposeAbilities = default;
+           _onDispose{EntityName}?.Invoke();
+           _onDispose{EntityName} = default;
         }
         
-        void InitAbilities()
+        protected void InitAbilities()
         {
             foreach (var ability in resource.Abilities)
             { 
                 if(ability == null) continue;
                 ability.SetDependency(this);
-                _disposeAbilities += ability.Dispose;
+                _onDispose{EntityName} += ability.Dispose;
             }
         }
+
+        {HasItem}protected void InitItems()
+        {HasItem}{
+        {HasItem}    if(Items == null || Items.Length < 1) return;
+        {HasItem}    
+        {HasItem}    foreach (var item in Items)
+        {HasItem}    { 
+        {HasItem}        if(item == null) continue;
+        {HasItem}        
+        {HasItem}        
+        {HasItem}        OnBeUsingChanged(item.BeUsing.Value);
+        {HasItem}        
+        {HasItem}        item.BeUsing.OnChanged += OnBeUsingChanged;
+        {HasItem}        
+        {HasItem}        void OnBeUsingChanged(bool value)
+        {HasItem}        {
+        {HasItem}            if(value)
+        {HasItem}            {
+        {HasItem}                item.SetDependency(this);
+        {HasItem}                _onDispose{EntityName} += item.Dispose;
+        {HasItem}                return;
+        {HasItem}            }
+        {HasItem}            _onDispose{EntityName} -= item.Dispose;
+        {HasItem}            item.Dispose();
+        {HasItem}        };
+        {HasItem}        _onDispose{EntityName} += () => item.BeUsing.OnChanged -= OnBeUsingChanged;                
+        {HasItem}    }
+        {HasItem}}
     }
 
 
 
     /// <summary>
-    /// {EntityName} pure class can serialize and deserialize data
+    /// {EntityName} pure class
     /// </summary>
     [Serializable]
     public abstract class A{EntityName}: I{EntityName}
     {
         [SerializeField] private {EntityName}CurrentState currentState;
         [SerializeField] private {EntityName}Resource resource;
+        {HasItem} [SerializeReference] private I{EntityName}Item[] items;
         
         public {EntityName}CurrentState CurrentState => currentState;
         public {EntityName}Resource Resource => resource;
+        {HasItem} public I{EntityName}Item[] Items {get => items; set => items = value;}
         
-        private Action _disposeAbilities;
+        private Action _onDispose{EntityName};
         
         public void SetDependency({EntityName}Resource dependency)
         {
@@ -95,12 +129,13 @@ namespace XynokSourceGenerator.Entities
         protected virtual void Init()
         {
             InitAbilities();
+            {HasItem} InitItems();
         }
         
         public virtual void Dispose()
         {
-           _disposeAbilities?.Invoke();
-           _disposeAbilities = default;
+           _onDispose{EntityName}?.Invoke();
+           _onDispose{EntityName} = default;
         }
         
         void InitAbilities()
@@ -109,9 +144,37 @@ namespace XynokSourceGenerator.Entities
             { 
                 if(ability == null) continue;
                 ability.SetDependency(this);
-                _disposeAbilities += ability.Dispose;
+                _onDispose{EntityName} += ability.Dispose;
             }
         }
+
+        {HasItem} protected void InitItems()
+        {HasItem} {
+        {HasItem}     if(Items == null || Items.Length < 1) return;
+        {HasItem}     
+        {HasItem}     foreach (var item in Items)
+        {HasItem}     { 
+        {HasItem}         if(item == null) continue;
+        {HasItem}         
+        {HasItem}         
+        {HasItem}         OnBeUsingChanged(item.BeUsing.Value);
+        {HasItem}         
+        {HasItem}         item.BeUsing.OnChanged += OnBeUsingChanged;
+        {HasItem}         
+        {HasItem}         void OnBeUsingChanged(bool value)
+        {HasItem}         {
+        {HasItem}             if(value)
+        {HasItem}             {
+        {HasItem}                 item.SetDependency(this);
+        {HasItem}                 _onDispose{EntityName} += item.Dispose;
+        {HasItem}                 return;
+        {HasItem}             }
+        {HasItem}             _onDispose{EntityName} -= item.Dispose;
+        {HasItem}             item.Dispose();
+        {HasItem}         };
+        {HasItem}         _onDispose{EntityName} += () => item.BeUsing.OnChanged -= OnBeUsingChanged;
+        {HasItem}     }
+        {HasItem} }      
     }
 
 }

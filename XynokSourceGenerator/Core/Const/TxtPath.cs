@@ -9,10 +9,11 @@
        public const string AENTITY = Prefix + ".Entity.AEntity" + Suffix;
        public const string ENTITY_DATA = Prefix + ".Entity.EntityData" + Suffix;
        public const string ENTITY_API = Prefix + ".Entity.EntityAPIs" + Suffix;
+       public const string ENTITY_STATE_FLAG = Prefix + ".Entity.EntityStateFlag" + Suffix;
+       
        
        // Ability
        public const string AENTITY_ABILITY = Prefix + ".Entity.Ability.AEntityAbility" + Suffix;
-       public const string ENTITY_STATE_FLAG = Prefix + ".Entity.Ability.EntityStateFlag" + Suffix;
        
        // Module có sẵn
        public const string ENTITY_ANIMATOR_BINDER = Prefix + ".Entity.Ability.Module.AnimatorBinder" + Suffix;

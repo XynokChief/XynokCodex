@@ -28,7 +28,7 @@ namespace XynokSourceGenerator
         public Type stateGroup;
         public Type triggerGroup;
 
-        public EntityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup)
+        public EntityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup, bool hasItem = false)
         {
             this.statGroup = statGroup;
             this.stateGroup = stateGroup;

@@ -19,6 +19,7 @@ namespace XynokSourceGenerator.Runtime.Entity
         public string StatName = "";
         public string StateName = "";
         public string TriggerName = "";
+        public string HasItem = "//";
 
         // data
         public ISymbol EntitySymbol;

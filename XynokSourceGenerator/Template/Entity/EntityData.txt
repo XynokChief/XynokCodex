@@ -16,7 +16,7 @@ namespace XynokSourceGenerator.Entities.Data
         public class {EntityName}Stat: APairData<{StatName}, float>{}
         
         [Serializable]
-        public class {EntityName}State: APairData<{StateName}, bool>{}
+        public class {EntityName}State: AStateData<{StateName}>{}
         
         [Serializable]
         public class {EntityName}Trigger: ATriggerData<{TriggerName}>{}

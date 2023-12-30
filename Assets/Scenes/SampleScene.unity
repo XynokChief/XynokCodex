@@ -899,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1327104454
 Transform:
   m_ObjectHideFlags: 0
@@ -983,7 +983,8 @@ MonoBehaviour:
     - rid: 6700482757924225026
     - rid: 6700482807419371520
     - rid: 6700482808426004480
-    - rid: 6700482814437490688
+  items:
+  - rid: 6700482833258119168
   references:
     version: 2
     RefIds:
@@ -1036,33 +1037,45 @@ MonoBehaviour:
       data:
         validatorCheckType: 0
         validators: []
-    - rid: 6700482814437490688
-      type: {class: CharacterDataValidatorListenerExecutorContainer, ns: XynokSourceGenerator.Entities.Data,
+    - rid: 6700482833258119168
+      type: {class: Sword, ns: Runtime.TestEntity.Item, asm: Core}
+      data:
+        currentState:
+          baseValue: 0
+          lastValue: 0
+          currentValue: 0
+          duplicateCheck: 1
+        resource:
+          ResourceId: 0
+          Stats: []
+          States:
+          - baseValue: 0
+            lastValue: 0
+            currentValue: 0
+            duplicateCheck: 1
+            key: 3
+          Triggers: []
+          Abilities:
+          - rid: 6700482833258119169
+        IsUsing: 0
+    - rid: 6700482833258119169
+      type: {class: SwordAbi, ns: Runtime.TestEntity.Item, asm: Core}
+      data:
+        executorType: 0
+        executorOnUpdate:
+          updateMode: 0
+        executorOnDataChanged:
+          dataPieces: []
+        customExecutor:
+          rid: -2
+        validator:
+          rid: 6700482833258119170
+    - rid: 6700482833258119170
+      type: {class: ItemDataValidatorContainer, ns: XynokSourceGenerator.Entities.Data,
         asm: Core}
       data:
-        invokers:
-        - listener:
-            dataType: 0
-            stat: 0
-            statComparison: 0
-            statValue: 0
-            state: 0
-            stateValue: 0
-            trigger: 0
-          validator:
-            validatorCheckType: 0
-            validators: []
-          executors:
-          - rid: 6700482814437490690
-    - rid: 6700482814437490690
-      type: {class: CharacterDataSetter, ns: XynokSourceGenerator.Entities.Data, asm: Core}
-      data:
-        dataType: 0
-        stat: 0
-        statValue: 0
-        state: 0
-        stateValue: 0
-        trigger: 0
+        validatorCheckType: 0
+        validators: []
 --- !u!1 &1680142872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,

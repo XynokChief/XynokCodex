@@ -1,8 +1,9 @@
 ﻿using Microsoft.CodeAnalysis;
 using XynokSourceGenerator.Core.Const;
+using XynokSourceGenerator.Runtime.Entity.Ability;
 using XynokSourceGenerator.Utils.Extensions;
 
-namespace XynokSourceGenerator.Runtime.Entity.Ability
+namespace XynokSourceGenerator.Runtime.Entity
 {
     public class EntityStateFlagFileGen : AEntityAbilityFileGen
     {
