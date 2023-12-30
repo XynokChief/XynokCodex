@@ -983,6 +983,7 @@ MonoBehaviour:
     - rid: 6700482757924225026
     - rid: 6700482807419371520
     - rid: 6700482808426004480
+    - rid: 6700482814437490688
   references:
     version: 2
     RefIds:
@@ -1035,6 +1036,33 @@ MonoBehaviour:
       data:
         validatorCheckType: 0
         validators: []
+    - rid: 6700482814437490688
+      type: {class: CharacterDataValidatorListenerExecutorContainer, ns: XynokSourceGenerator.Entities.Data,
+        asm: Core}
+      data:
+        invokers:
+        - listener:
+            dataType: 0
+            stat: 0
+            statComparison: 0
+            statValue: 0
+            state: 0
+            stateValue: 0
+            trigger: 0
+          validator:
+            validatorCheckType: 0
+            validators: []
+          executors:
+          - rid: 6700482814437490690
+    - rid: 6700482814437490690
+      type: {class: CharacterDataSetter, ns: XynokSourceGenerator.Entities.Data, asm: Core}
+      data:
+        dataType: 0
+        stat: 0
+        statValue: 0
+        state: 0
+        stateValue: 0
+        trigger: 0
 --- !u!1 &1680142872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,

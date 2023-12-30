@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
+![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.1-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
 
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 

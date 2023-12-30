@@ -13,7 +13,7 @@ namespace XynokSourceGenerator.Entities.Data
     /// Thay đổi dữ liệu của {EntityName} khi gọi hàm Execute
     /// </summary>
     [Serializable]
-    public class {EntityName}DataSetter: IExecute, IInjectable<I{EntityName}>
+    public class {EntityName}DataSetter: IExecute, IAction, IInjectable<I{EntityName}>
     {
         private I{EntityName} _owner;
         
@@ -31,6 +31,7 @@ namespace XynokSourceGenerator.Entities.Data
         private {EntityName}Stat _stat;
         private {EntityName}State _state;
         private {EntityName}Trigger _trigger;
+        private Action _actionOnInvoke;
         
         public void SetDependency(I{EntityName} dependency)
         {
@@ -45,8 +46,26 @@ namespace XynokSourceGenerator.Entities.Data
         
         public void Dispose()
         {
-            
+            _actionOnInvoke = default;
         }
+        
+        public void Invoke()
+        {
+            Execute();
+            _actionOnInvoke?.Invoke();
+        }
+        
+        public void AddListener(Action action)
+        {
+            _actionOnInvoke -= action;
+            _actionOnInvoke += action;
+        }
+        
+        public void RemoveListener(Action action)
+        {
+            _actionOnInvoke -= action;
+        }
+        
         
         public void Execute()
         {
