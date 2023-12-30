@@ -139,6 +139,11 @@ Bao gồm những plugin cơ bản phục vụ cho việc quản lý code và to
 ---
 Một thư viện xử lý việc gen code của các file .tt. Hỗ trợ mapping tới ScriptableObject của Unity.
 
+
+# Xynok Pynity
+---
+Package hỗ trợ chạy code python trên unity editor.
+
 # Xynok 3d Prototype Asset
 ---
 Tập hợp các asset như:
