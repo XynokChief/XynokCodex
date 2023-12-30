@@ -19,7 +19,7 @@ namespace XynokSourceGenerator.Entities.Data
         [SerializeField] [HideLabel] private {EntityName}DataValidatorListener listener;
         [SerializeField] [HideLabel] private {EntityName}DataValidatorContainer validator;
         
-        [Title("Note","this field can be call as an I{EntityName}Ability", TitleAlignments.Centered)]
+        [Title("Note","this field can be call as an IInjectable<I{EntityName}>", TitleAlignments.Centered)]
         [HideLabel] [SerializeReference] private IAction[] executors = Array.Empty<IAction>();
      
         private Action _onDispose;
@@ -59,7 +59,7 @@ namespace XynokSourceGenerator.Entities.Data
             foreach (var executor in executors)
             {
                 if(executor == null) continue;
-                if(executor is I{EntityName}Ability injectAble)
+                if(executor is IInjectable<I{EntityName}> injectAble)
                 {
                     injectAble.SetDependency(_owner);
                     _onDispose += injectAble.Dispose;
