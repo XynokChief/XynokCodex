@@ -57,6 +57,7 @@ namespace XynokEntity.AnimPhasing.Data
         [HideInInspector] public int clipFrameCount = 3;
 
 
+        public int OverriderLeft => _overriderQueue.Count;
         private bool _isPerforming;
         private Queue<IActionAnimOverrider> _overriderQueue = new();
 

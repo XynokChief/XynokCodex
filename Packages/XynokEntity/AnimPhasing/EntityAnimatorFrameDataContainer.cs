@@ -117,7 +117,7 @@ namespace XynokEntity.AnimPhasing
 
             foreach (var frameRange in clip.frameRanges)
             {
-                if (!frameRange.IsPerforming) continue;
+                if (frameRange.OverriderLeft < 1 && !frameRange.IsPerforming) continue;
                 frameRange.ForceExit();
             }
         }
