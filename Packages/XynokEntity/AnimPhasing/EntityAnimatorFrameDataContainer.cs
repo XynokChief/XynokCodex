@@ -117,9 +117,8 @@ namespace XynokEntity.AnimPhasing
 
             foreach (var frameRange in clip.frameRanges)
             {
-                frameRange.ForceExit();
                 if (!frameRange.IsPerforming) continue;
-                frameRange.Invoke(FrameRangeEventType.End);
+                frameRange.ForceExit();
             }
         }
 
