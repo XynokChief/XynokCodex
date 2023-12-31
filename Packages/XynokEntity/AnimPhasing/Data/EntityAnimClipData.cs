@@ -20,7 +20,10 @@ namespace XynokEntity.AnimPhasing.Data
 
         private bool _isPerforming;
 
-        [VerticalGroup(ConventionKey.AnimClipData)] [ReadOnly] [HideLabel] [SuffixLabel(ConventionKey.Frames, overlay: true)]
+        [VerticalGroup(ConventionKey.AnimClipData)]
+        [ReadOnly]
+        [HideLabel]
+        [SuffixLabel(ConventionKey.Frames, overlay: true)]
         public int frameCount;
 
         [TableList] public EntityFrameRangeData<T>[] frameRanges;
@@ -123,7 +126,7 @@ namespace XynokEntity.AnimPhasing.Data
                 var startEvent = new AnimationEvent
                 {
                     functionName = ConventionKey.AnimEvent,
-                    time = frameRangeData.range.x / (float)frameRangeData.clipFrameCount,
+                    time = (float)frameRangeData.range.x / frameRangeData.clipFrameCount * clip.length,
                     stringParameter = ConventionKey.GetStrInterpolatedBySeparator(startMessageParameters)
                 };
 
@@ -141,7 +144,7 @@ namespace XynokEntity.AnimPhasing.Data
                 var endEvent = new AnimationEvent
                 {
                     functionName = ConventionKey.AnimEvent,
-                    time = frameRangeData.range.y / (float)frameRangeData.clipFrameCount,
+                    time = (float)frameRangeData.range.y / frameRangeData.clipFrameCount * clip.length,
                     stringParameter = ConventionKey.GetStrInterpolatedBySeparator(endMessageParameters)
                 };
 
@@ -153,6 +156,17 @@ namespace XynokEntity.AnimPhasing.Data
 
             UnityEditor.AnimationUtility.SetAnimationEvents(clip, animEvents);
 #endif
+        }
+
+        [VerticalGroup(ConventionKey.AnimClipData)]
+        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
+        void ResetFrameAmount()
+        {
+            frameCount = (int)(clip.frameRate * clip.length);
+            foreach (var frameRangeData in frameRanges)
+            {
+                frameRangeData.clipFrameCount = frameCount;
+            }
         }
 
         [VerticalGroup(ConventionKey.AnimClipData)]
@@ -177,16 +191,6 @@ namespace XynokEntity.AnimPhasing.Data
             frameRanges[^1] = frameRangeData;
         }
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
-        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
-        void ResetFrameAmount()
-        {
-            frameCount = (int)(clip.frameRate * clip.length);
-            foreach (var frameRangeData in frameRanges)
-            {
-                frameRangeData.clipFrameCount = frameCount;
-            }
-        }
         #endregion
 
         #region Runtime

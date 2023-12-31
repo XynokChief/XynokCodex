@@ -501,55 +501,55 @@ MonoBehaviour:
   ignoreLoopState: 0
   clipsData:
   - clip: {fileID: 7400000, guid: dabbdca8104955040ad315cc38f4ce28, type: 2}
-    frameCount: 60
+    frameCount: 104
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 6, y: 104}
       onEnter:
         rid: 6700482808426004482
       onExit:
         rid: 6700482808426004483
-      clipFrameCount: 60
+      clipFrameCount: 104
     - rangeType: 1
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 10, y: 19}
       onEnter:
         rid: 6700482808426004484
       onExit:
         rid: 6700482808426004485
-      clipFrameCount: 60
+      clipFrameCount: 104
     - rangeType: 2
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 18, y: 34}
       onEnter:
         rid: 6700482808426004486
       onExit:
         rid: 6700482808426004487
-      clipFrameCount: 60
+      clipFrameCount: 104
     - rangeType: 3
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 1, y: 88}
       onEnter:
         rid: 6700482808426004488
       onExit:
         rid: 6700482808426004489
-      clipFrameCount: 60
+      clipFrameCount: 104
     - rangeType: 4
       maxInterruptConcurrency: 1
       overriders:
       - actionName: 7
         handler: 0
-      range: {x: 1, y: 3}
+      range: {x: 21, y: 50}
       onEnter:
         rid: 6700482808426004490
       onExit:
         rid: 6700482808426004491
-      clipFrameCount: 60
+      clipFrameCount: 104
   - clip: {fileID: 7400000, guid: c338c2a57215f8643ac8cf1bf10aef2d, type: 2}
     frameCount: 60
     frameRanges:
