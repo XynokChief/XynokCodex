@@ -177,6 +177,16 @@ namespace XynokEntity.AnimPhasing.Data
             frameRanges[^1] = frameRangeData;
         }
 
+        [VerticalGroup(ConventionKey.AnimClipData)]
+        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
+        void ResetFrameAmount()
+        {
+            frameCount = (int)(clip.frameRate * clip.length);
+            foreach (var frameRangeData in frameRanges)
+            {
+                frameRangeData.clipFrameCount = frameCount;
+            }
+        }
         #endregion
 
         #region Runtime
