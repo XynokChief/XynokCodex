@@ -48,11 +48,11 @@ namespace XynokEntity.AnimPhasing.Data
         [MinMaxSlider(1, "@clipFrameCount", showFields: true)] [TableColumnWidth(320, Resizable = false)]
         public Vector2Int range = new Vector2Int(1, 3);
 
-        [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker] 
-        IAction onEnter = new UnityEventWrapper();
+        [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
+        public IAction onEnter = new UnityEventWrapper();
 
         [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
-        IAction onExit = new UnityEventWrapper();
+        public IAction onExit = new UnityEventWrapper();
 
         [HideInInspector] public int clipFrameCount = 3;
 
