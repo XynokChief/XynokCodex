@@ -21,6 +21,7 @@ namespace XynokEntity.AnimPhasing.Data
         [VerticalGroup(ConventionKey.State)] [LabelWidth(80)] [TableColumnWidth(300, Resizable = false)]
         public FrameRangeType rangeType;
 
+
         [Tooltip("if true, that mean anim is playing in this range")]
         [VerticalGroup(ConventionKey.State)]
         [ShowInInspector]
@@ -53,6 +54,9 @@ namespace XynokEntity.AnimPhasing.Data
 
         [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
         public IAction onExit = new UnityEventWrapper();
+
+        [VerticalGroup(ConventionKey.Events)] [SerializeReference] [HideReferenceObjectPicker]
+        public IAction onForceExit = new UnityEventWrapper();
 
         [HideInInspector] public int clipFrameCount = 3;
 
@@ -97,7 +101,8 @@ namespace XynokEntity.AnimPhasing.Data
 
         public void ForceExit()
         {
-            Exit(true);
+            _overriderQueue.Clear();
+            onForceExit?.Invoke();
         }
 
         void Enter()
@@ -106,7 +111,7 @@ namespace XynokEntity.AnimPhasing.Data
             onEnter?.Invoke();
         }
 
-        void Exit(bool isForce = false)
+        void Exit()
         {
             // reset
             _isPerforming = false;
@@ -114,12 +119,6 @@ namespace XynokEntity.AnimPhasing.Data
             // invoke exit
             onExit?.Invoke();
 
-            // nếu là force thì không cần xét overrider
-            if (isForce)
-            {
-                _overriderQueue.Clear();
-                return;
-            }
 
             // invoke overriders
             if (_overriderQueue.Count < 1) return;
