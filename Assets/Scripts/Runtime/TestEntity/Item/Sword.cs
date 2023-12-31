@@ -20,5 +20,7 @@ namespace Runtime.TestEntity.Item
             _owner = dependency;
             SetDependency(Resource);
         }
+
+        public ICharacter ItemOwner { get; }
     }
 }

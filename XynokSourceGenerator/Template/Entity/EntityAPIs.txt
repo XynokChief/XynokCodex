@@ -16,7 +16,7 @@ namespace XynokSourceGenerator.Entities.APIs
 
     public interface I{EntityName}Item: IItemEntity, IInjectable<I{EntityName}>
     {
-        I{EntityName} Owner { get; }
+        I{EntityName} ItemOwner { get; }
     }
     
     public interface I{EntityName}Ability: IControlAble, IInjectable<I{EntityName}>
