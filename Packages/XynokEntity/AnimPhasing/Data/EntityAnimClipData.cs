@@ -12,18 +12,16 @@ namespace XynokEntity.AnimPhasing.Data
     [Serializable]
     public class EntityAnimClipData<T> : IAnimOverrideAble, IInjectable<T> where T : IEntity
     {
-        [Title("@clip.name", "@frameCount", TitleAlignments.Centered)]
-        [VerticalGroup(ConventionKey.AnimClipData)]
+        [FoldoutGroup("$ClipName")]
+        [Title("$ClipName", "@frameCount", TitleAlignments.Centered)]
         [TableColumnWidth(250, Resizable = false)]
         [HideLabel]
         public AnimationClip clip;
 
+        public string ClipName => !clip ? "???" : clip.name;
         private bool _isPerforming;
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
-        [ReadOnly]
-        [HideLabel]
-        [SuffixLabel(ConventionKey.Frames, overlay: true)]
+        [FoldoutGroup("$ClipName")] [ReadOnly] [HideLabel] [SuffixLabel(ConventionKey.Frames, overlay: true)]
         public int frameCount;
 
         [TableList] public EntityFrameRangeData<T>[] frameRanges;
@@ -67,8 +65,8 @@ namespace XynokEntity.AnimPhasing.Data
 
         #region Editor settings
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
-        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
+        [FoldoutGroup("$ClipName")]
+        [Button(ButtonSizes.Medium), GUIColor(Colors.Orange)]
         public void InitFrameRanges()
         {
             frameCount = (int)(clip.frameRate * clip.length);
@@ -84,8 +82,8 @@ namespace XynokEntity.AnimPhasing.Data
             }
         }
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
-        [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
+        [FoldoutGroup("$ClipName")]
+        [Button(ButtonSizes.Medium), GUIColor(Colors.Green)]
         public void InitAnimEvents()
         {
 #if UNITY_EDITOR
@@ -158,7 +156,7 @@ namespace XynokEntity.AnimPhasing.Data
 #endif
         }
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
+        [FoldoutGroup("$ClipName")]
         [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
         void ResetFrameAmount()
         {
@@ -169,7 +167,7 @@ namespace XynokEntity.AnimPhasing.Data
             }
         }
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
+        [FoldoutGroup("$ClipName")]
         [Button(ButtonSizes.Medium), GUIColor(Colors.Red)]
         void ClearAllAnimEvents()
         {
@@ -178,18 +176,18 @@ namespace XynokEntity.AnimPhasing.Data
 #endif
         }
 
-        [VerticalGroup(ConventionKey.AnimClipData)]
-        [Button(ButtonSizes.Medium), GUIColor(Colors.Orange)]
-        void AddFrameRange(FrameRangeType rangeType)
-        {
-            var frameRangeData = new EntityFrameRangeData<T>
-            {
-                rangeType = rangeType,
-                clipFrameCount = frameCount
-            };
-            Array.Resize(ref frameRanges, frameRanges.Length + 1);
-            frameRanges[^1] = frameRangeData;
-        }
+        // 
+        // [Button(ButtonSizes.Medium), GUIColor(Colors.Orange)]
+        // void AddFrameRange(FrameRangeType rangeType)
+        // {
+        //     var frameRangeData = new EntityFrameRangeData<T>
+        //     {
+        //         rangeType = rangeType,
+        //         clipFrameCount = frameCount
+        //     };
+        //     Array.Resize(ref frameRanges, frameRanges.Length + 1);
+        //     frameRanges[^1] = frameRangeData;
+        // }
 
         #endregion
 

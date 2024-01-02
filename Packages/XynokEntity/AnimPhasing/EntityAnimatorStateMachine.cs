@@ -14,9 +14,15 @@ namespace XynokEntity.AnimPhasing
             foreach (var state in stateNames)
             {
                 if (!stateInfo.IsName(state)) continue;
-                frameDataContainer.ResolveStateOnExit(state);
+                // frameDataContainer.ResolveStateOnExit(state);
+                Debug.Log($"ResolveStateOnExit: {stateInfo.fullPathHash}");
                 break;
             }
+        }
+
+        public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+                Debug.Log($"OnStateEnter: {stateInfo.fullPathHash}");
         }
     }
 }
