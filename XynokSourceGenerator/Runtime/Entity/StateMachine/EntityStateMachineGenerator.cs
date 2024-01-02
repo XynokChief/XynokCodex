@@ -31,6 +31,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                 var stateSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[1]).First();
                 var triggerSymbol = context.Compilation.GetSymbolsWithName(argumentTypes[2]).First();
                 var genPath = attributeData.ConstructorArguments[3].Value.ToString();
+                var canOverrideAnimAction = attributeData.ConstructorArguments[4].Value.ToString();
 
                 var aStateMachineDataBehaviorFileGen = new AEntityStateMachineDataBehaviorFileGen
                 {
@@ -38,6 +39,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
                 var stateMachineDataFileGen = new EntityStateMachineDataFileGen
                 {
@@ -45,6 +47,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
 
                 var entityAbilityInitAnimStateMachineFileGen = new EntityAbilityInitAnimStateMachineFileGen
@@ -53,6 +56,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
 
 
@@ -62,6 +66,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
                 var entityAnimatorStateMachineFileGen = new EntityAnimatorStateMachineFileGen
                 {
@@ -69,6 +74,7 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
                 var entityAbilityInitAnimActionOverriderFileGen = new EntityAbilityInitAnimActionOverriderFileGen
                 {
@@ -76,16 +82,17 @@ namespace XynokSourceGenerator.Runtime.Entity.StateMachine
                     StatSymbol = statSymbol,
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol,
+                    ItemCanOverrideAnimAction = canOverrideAnimAction == "True" ? "" : "//"
                 };
 
                 GenCode(context, aStateMachineDataBehaviorFileGen);
                 GenCode(context, stateMachineDataFileGen);
                 GenCode(context, entityAbilityInitAnimStateMachineFileGen);
-                
-                
+
+
                 WriteFile(genPath, entityAnimatorFrameDataContainerFileGen);
                 WriteFile(genPath, entityAnimatorStateMachineFileGen);
-                
+
                 GenCode(context, entityAbilityInitAnimActionOverriderFileGen);
             }
         }

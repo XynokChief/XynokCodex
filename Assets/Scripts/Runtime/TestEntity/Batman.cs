@@ -2,6 +2,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention.APIs;
+using XynokEntity.AnimPhasing.Data;
 using XynokEntity.APIs;
 using XynokInput.Settings.Input;
 using XynokSourceGenerator.Entities;
@@ -71,6 +72,7 @@ namespace Runtime.TestEntity
 
     public class Batman : ACharacterMono
     {
+        public AnimLayer layer;
 
         private void Start()
         {

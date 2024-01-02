@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("XynokSourceGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b456d7eedfe75cf6c71e5bea8bcd264b35d8dcab")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3ba0212d456d452dc1352718b1d7153ce939f289")]
 [assembly: System.Reflection.AssemblyProductAttribute("XynokSourceGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("XynokSourceGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

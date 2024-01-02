@@ -391,6 +391,7 @@ GameObject:
   - component: {fileID: 642668379}
   - component: {fileID: 642668382}
   - component: {fileID: 642668383}
+  - component: {fileID: 642668384}
   m_Layer: 0
   m_Name: animator
   m_TagString: Untagged
@@ -501,55 +502,63 @@ MonoBehaviour:
   ignoreLoopState: 0
   clipsData:
   - clip: {fileID: 7400000, guid: dabbdca8104955040ad315cc38f4ce28, type: 2}
-    frameCount: 60
+    frameCount: 104
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 1, y: 14}
       onEnter:
-        rid: 6700482808426004482
+        rid: 7043965202730320802
       onExit:
-        rid: 6700482808426004483
-      clipFrameCount: 60
+        rid: 7043965202730320803
+      onForceExit:
+        rid: 7043965202730320804
+      clipFrameCount: 104
     - rangeType: 1
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 30, y: 104}
       onEnter:
-        rid: 6700482808426004484
+        rid: 7043965202730320805
       onExit:
-        rid: 6700482808426004485
-      clipFrameCount: 60
+        rid: 7043965202730320806
+      onForceExit:
+        rid: 7043965202730320807
+      clipFrameCount: 104
     - rangeType: 2
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 21, y: 104}
       onEnter:
-        rid: 6700482808426004486
+        rid: 7043965202730320808
       onExit:
-        rid: 6700482808426004487
-      clipFrameCount: 60
+        rid: 7043965202730320809
+      onForceExit:
+        rid: 7043965202730320810
+      clipFrameCount: 104
     - rangeType: 3
       maxInterruptConcurrency: 1
       overriders: []
-      range: {x: 1, y: 3}
+      range: {x: 23, y: 104}
       onEnter:
-        rid: 6700482808426004488
+        rid: 7043965202730320811
       onExit:
-        rid: 6700482808426004489
-      clipFrameCount: 60
+        rid: 7043965202730320812
+      onForceExit:
+        rid: 7043965202730320813
+      clipFrameCount: 104
     - rangeType: 4
       maxInterruptConcurrency: 1
-      overriders:
-      - actionName: 7
-        handler: 0
-      range: {x: 1, y: 3}
+      overriders: []
+      range: {x: 62, y: 104}
       onEnter:
-        rid: 6700482808426004490
+        rid: 7043965202730320814
       onExit:
-        rid: 6700482808426004491
-      clipFrameCount: 60
+        rid: 7043965202730320815
+      onForceExit:
+        rid: 7043965202730320816
+      clipFrameCount: 104
   - clip: {fileID: 7400000, guid: c338c2a57215f8643ac8cf1bf10aef2d, type: 2}
     frameCount: 60
     frameRanges:
@@ -558,45 +567,55 @@ MonoBehaviour:
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004492
+        rid: 7043965202730320817
       onExit:
-        rid: 6700482808426004493
+        rid: 7043965202730320818
+      onForceExit:
+        rid: 7043965202730320819
       clipFrameCount: 60
     - rangeType: 1
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004494
+        rid: 7043965202730320820
       onExit:
-        rid: 6700482808426004495
+        rid: 7043965202730320821
+      onForceExit:
+        rid: 7043965202730320822
       clipFrameCount: 60
     - rangeType: 2
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004496
+        rid: 7043965202730320823
       onExit:
-        rid: 6700482808426004497
+        rid: 7043965202730320824
+      onForceExit:
+        rid: 7043965202730320825
       clipFrameCount: 60
     - rangeType: 3
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004498
+        rid: 7043965202730320826
       onExit:
-        rid: 6700482808426004499
+        rid: 7043965202730320827
+      onForceExit:
+        rid: 7043965202730320828
       clipFrameCount: 60
     - rangeType: 4
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004500
+        rid: 7043965202730320829
       onExit:
-        rid: 6700482808426004501
+        rid: 7043965202730320830
+      onForceExit:
+        rid: 7043965202730320831
       clipFrameCount: 60
   - clip: {fileID: 7400000, guid: 2707c4c9f04cb704b8f514d826c33733, type: 2}
     frameCount: 60
@@ -606,45 +625,171 @@ MonoBehaviour:
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004502
+        rid: 7043965202730320832
       onExit:
-        rid: 6700482808426004503
+        rid: 7043965202730320833
+      onForceExit:
+        rid: 7043965202730320834
       clipFrameCount: 60
     - rangeType: 1
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004504
+        rid: 7043965202730320835
       onExit:
-        rid: 6700482808426004505
+        rid: 7043965202730320836
+      onForceExit:
+        rid: 7043965202730320837
       clipFrameCount: 60
     - rangeType: 2
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004506
+        rid: 7043965202730320838
       onExit:
-        rid: 6700482808426004507
+        rid: 7043965202730320839
+      onForceExit:
+        rid: 7043965202730320840
       clipFrameCount: 60
     - rangeType: 3
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004508
+        rid: 7043965202730320841
       onExit:
-        rid: 6700482808426004509
+        rid: 7043965202730320842
+      onForceExit:
+        rid: 7043965202730320843
       clipFrameCount: 60
     - rangeType: 4
       maxInterruptConcurrency: 1
       overriders: []
       range: {x: 1, y: 3}
       onEnter:
-        rid: 6700482808426004510
+        rid: 7043965202730320844
       onExit:
-        rid: 6700482808426004511
+        rid: 7043965202730320845
+      onForceExit:
+        rid: 7043965202730320846
+      clipFrameCount: 60
+  - clip: {fileID: 7400000, guid: c19c6f2505f2347419e599189de36cc2, type: 2}
+    frameCount: 60
+    frameRanges:
+    - rangeType: 0
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320847
+      onExit:
+        rid: 7043965202730320848
+      onForceExit:
+        rid: 7043965202730320849
+      clipFrameCount: 60
+    - rangeType: 1
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320850
+      onExit:
+        rid: 7043965202730320851
+      onForceExit:
+        rid: 7043965202730320852
+      clipFrameCount: 60
+    - rangeType: 2
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320853
+      onExit:
+        rid: 7043965202730320854
+      onForceExit:
+        rid: 7043965202730320855
+      clipFrameCount: 60
+    - rangeType: 3
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320856
+      onExit:
+        rid: 7043965202730320857
+      onForceExit:
+        rid: 7043965202730320858
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320859
+      onExit:
+        rid: 7043965202730320860
+      onForceExit:
+        rid: 7043965202730320861
+      clipFrameCount: 60
+  - clip: {fileID: 7400000, guid: bee56b2551ab4c949b4cfe01b13b4e65, type: 2}
+    frameCount: 60
+    frameRanges:
+    - rangeType: 0
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320862
+      onExit:
+        rid: 7043965202730320863
+      onForceExit:
+        rid: 7043965202730320864
+      clipFrameCount: 60
+    - rangeType: 1
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320865
+      onExit:
+        rid: 7043965202730320866
+      onForceExit:
+        rid: 7043965202730320867
+      clipFrameCount: 60
+    - rangeType: 2
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320868
+      onExit:
+        rid: 7043965202730320869
+      onForceExit:
+        rid: 7043965202730320870
+      clipFrameCount: 60
+    - rangeType: 3
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320871
+      onExit:
+        rid: 7043965202730320872
+      onForceExit:
+        rid: 7043965202730320873
+      clipFrameCount: 60
+    - rangeType: 4
+      maxInterruptConcurrency: 1
+      overriders: []
+      range: {x: 1, y: 3}
+      onEnter:
+        rid: 7043965202730320874
+      onExit:
+        rid: 7043965202730320875
+      onForceExit:
+        rid: 7043965202730320876
       clipFrameCount: 60
   currentAnimStateData:
     baseValue: 
@@ -654,186 +799,1248 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6700482808426004482
+    - rid: 7043965202730320802
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004483
+    - rid: 7043965202730320803
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004484
+    - rid: 7043965202730320804
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004485
+    - rid: 7043965202730320805
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004486
+    - rid: 7043965202730320806
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004487
+    - rid: 7043965202730320807
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004488
+    - rid: 7043965202730320808
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004489
+    - rid: 7043965202730320809
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004490
+    - rid: 7043965202730320810
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004491
+    - rid: 7043965202730320811
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004492
+    - rid: 7043965202730320812
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004493
+    - rid: 7043965202730320813
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004494
+    - rid: 7043965202730320814
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004495
+    - rid: 7043965202730320815
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004496
+    - rid: 7043965202730320816
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004497
+    - rid: 7043965202730320817
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004498
+    - rid: 7043965202730320818
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004499
+    - rid: 7043965202730320819
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004500
+    - rid: 7043965202730320820
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004501
+    - rid: 7043965202730320821
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004502
+    - rid: 7043965202730320822
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004503
+    - rid: 7043965202730320823
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004504
+    - rid: 7043965202730320824
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004505
+    - rid: 7043965202730320825
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004506
+    - rid: 7043965202730320826
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004507
+    - rid: 7043965202730320827
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004508
+    - rid: 7043965202730320828
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004509
+    - rid: 7043965202730320829
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004510
+    - rid: 7043965202730320830
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
-    - rid: 6700482808426004511
+    - rid: 7043965202730320831
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:
           m_PersistentCalls:
             m_Calls: []
+    - rid: 7043965202730320832
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320833
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320834
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320835
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320836
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320837
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320838
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320839
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320840
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320841
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320842
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320843
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320844
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320845
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320846
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320847
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320848
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320849
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320850
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320851
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320852
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320853
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320854
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320855
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320856
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320857
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320858
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320859
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320860
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320861
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320862
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320863
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320864
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320865
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320866
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320867
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320868
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320869
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320870
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320871
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320872
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320873
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320874
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320875
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965202730320876
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+--- !u!114 &642668384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642668377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa509d1c714246358c66a8b0ed85eaca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 642668382}
+--- !u!1 &804350054
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804350055}
+  - component: {fileID: 804350057}
+  - component: {fileID: 804350056}
+  m_Layer: 0
+  m_Name: --- test bake anim ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804350055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804350054}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9086323, y: 4.685876, z: -2.3717809}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &804350056
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804350054}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f87ecf2a6da5014186c08611886df49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &804350057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804350054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e8aabc379a44612b948555ff99d8daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 804350056}
+  layers:
+  - layerIndex: 0
+    layerName: Base Layer
+    states:
+    - rid: 7043965202730320495
+    - rid: 7043965202730320496
+    - rid: 7043965202730320497
+    - rid: 7043965202730320498
+    - rid: 7043965202730320499
+    - rid: 7043965202730320500
+    - rid: 7043965202730320501
+  - layerIndex: 1
+    layerName: New Layer
+    states:
+    - rid: 7043965202730320502
+    - rid: 7043965202730320503
+    - rid: 7043965202730320504
+    - rid: 7043965202730320505
+    - rid: 7043965202730320506
+    - rid: 7043965202730320507
+    - rid: 7043965202730320508
+  references:
+    version: 2
+    RefIds:
+    - rid: 7043965202730320495
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320496
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320497
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320498
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320499
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320500
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320509
+        - rid: 7043965202730320510
+        - rid: 7043965202730320511
+        - rid: 7043965202730320512
+        - rid: 7043965202730320513
+        - rid: 7043965202730320514
+    - rid: 7043965202730320501
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine 0
+        states:
+        - rid: 7043965202730320515
+        - rid: 7043965202730320516
+        - rid: 7043965202730320517
+        - rid: 7043965202730320518
+        - rid: 7043965202730320519
+        - rid: 7043965202730320520
+    - rid: 7043965202730320502
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320503
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320504
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320505
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320506
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320507
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine 0
+        states:
+        - rid: 7043965202730320521
+        - rid: 7043965202730320522
+        - rid: 7043965202730320523
+        - rid: 7043965202730320524
+        - rid: 7043965202730320525
+        - rid: 7043965202730320526
+    - rid: 7043965202730320508
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320527
+        - rid: 7043965202730320528
+        - rid: 7043965202730320529
+        - rid: 7043965202730320530
+        - rid: 7043965202730320531
+        - rid: 7043965202730320532
+    - rid: 7043965202730320509
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320510
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320511
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320512
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320513
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320514
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320533
+        - rid: 7043965202730320534
+        - rid: 7043965202730320535
+        - rid: 7043965202730320536
+        - rid: 7043965202730320537
+        - rid: 7043965202730320538
+    - rid: 7043965202730320515
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320516
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320517
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320518
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320519
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320520
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320539
+        - rid: 7043965202730320540
+        - rid: 7043965202730320541
+        - rid: 7043965202730320542
+        - rid: 7043965202730320543
+        - rid: 7043965202730320544
+    - rid: 7043965202730320521
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320522
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320523
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320524
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320525
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320526
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320545
+        - rid: 7043965202730320546
+        - rid: 7043965202730320547
+        - rid: 7043965202730320548
+        - rid: 7043965202730320549
+        - rid: 7043965202730320550
+    - rid: 7043965202730320527
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320528
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320529
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320530
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320531
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320532
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320551
+        - rid: 7043965202730320552
+        - rid: 7043965202730320553
+        - rid: 7043965202730320554
+        - rid: 7043965202730320555
+        - rid: 7043965202730320556
+    - rid: 7043965202730320533
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320534
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320535
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320536
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320537
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320538
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320557
+        - rid: 7043965202730320558
+        - rid: 7043965202730320559
+        - rid: 7043965202730320560
+        - rid: 7043965202730320561
+    - rid: 7043965202730320539
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320540
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320541
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320542
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320543
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320544
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320562
+        - rid: 7043965202730320563
+        - rid: 7043965202730320564
+        - rid: 7043965202730320565
+        - rid: 7043965202730320566
+    - rid: 7043965202730320545
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320546
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320547
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320548
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320549
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320550
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320567
+        - rid: 7043965202730320568
+        - rid: 7043965202730320569
+        - rid: 7043965202730320570
+        - rid: 7043965202730320571
+    - rid: 7043965202730320551
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320552
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320553
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320554
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320555
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320556
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: New StateMachine
+        states:
+        - rid: 7043965202730320572
+        - rid: 7043965202730320573
+        - rid: 7043965202730320574
+        - rid: 7043965202730320575
+        - rid: 7043965202730320576
+    - rid: 7043965202730320557
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320558
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320559
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320560
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320561
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320562
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320563
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320564
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320565
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320566
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320567
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320568
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320569
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320570
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320571
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320572
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 1
+    - rid: 7043965202730320573
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 2
+    - rid: 7043965202730320574
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: empty 3
+    - rid: 7043965202730320575
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree 0
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
+    - rid: 7043965202730320576
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: Blend Tree
+        motionNames:
+        - empty 4
+        - empty 5
+        - empty 9
+        - empty 10
+        - empty 12
+        - empty 13
+        - empty 6
+        - empty 7
+        - empty 8
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -909,7 +2116,7 @@ Transform:
   m_GameObject: {fileID: 1327104453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -985,6 +2192,13 @@ MonoBehaviour:
     - rid: 6700482808426004480
   items:
   - rid: 6700482833258119168
+  layer:
+    layerIndex: 0
+    layerName: 
+    states:
+    - rid: 7043965202730320277
+    - rid: 7043965202730320278
+    - rid: 7043965202730320279
   references:
     version: 2
     RefIds:
@@ -1076,31 +2290,26 @@ MonoBehaviour:
       data:
         validatorCheckType: 0
         validators: []
---- !u!1 &1680142872 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3808408843002341742}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1680142873 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5027870278852476329, guid: 4d7a057ec6056d746b9db94efcb806a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 3808408843002341742}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1680142876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680142872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa509d1c714246358c66a8b0ed85eaca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1680142873}
+    - rid: 7043965202730320277
+      type: {class: BlendTreeAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: 
+        motionNames:
+        - 23123
+    - rid: 7043965202730320278
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: 13212333
+    - rid: 7043965202730320279
+      type: {class: SubStateMachineAnim, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: 
+        states:
+        - rid: 7043965202730320280
+    - rid: 7043965202730320280
+      type: {class: NormalAnimState, ns: XynokEntity.AnimPhasing.Data, asm: XynokEntity}
+      data:
+        stateName: 
 --- !u!1 &1789635359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,11 +3273,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1184933821765830278, guid: 4d7a057ec6056d746b9db94efcb806a9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1680142876}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d7a057ec6056d746b9db94efcb806a9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2080,3 +3285,4 @@ SceneRoots:
   - {fileID: 1789635361}
   - {fileID: 1327104454}
   - {fileID: 3808408843002341742}
+  - {fileID: 804350055}

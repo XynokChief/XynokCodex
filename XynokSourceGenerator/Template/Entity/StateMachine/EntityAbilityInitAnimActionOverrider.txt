@@ -34,14 +34,14 @@ namespace XynokSourceGenerator.Entities.StateMachine
             Execute();
         }   
         
-        void Init()
+        void InitOverriderOfOwner()
         {
             foreach (var ability in _owner.Resource.Abilities)
             {
                 if(ability is IActionAnimOverrider overrider)
                 {
-                    overrider.OnRequestAnimOverride+=ExecuteCallback;
-                    _onDispose += () => overrider.OnRequestAnimOverride-=ExecuteCallback;
+                    overrider.OnRequestAnimOverride += ExecuteCallback;
+                    _onDispose += () => overrider.OnRequestAnimOverride -= ExecuteCallback;
                     void ExecuteCallback()
                     {
                         frameDataContainer.RegisterOverrider(overrider);
@@ -50,11 +50,31 @@ namespace XynokSourceGenerator.Entities.StateMachine
             }
         }
         
+        {ItemCanOverrideAnimAction} void InitOverriderOfOwnerItems()
+        {ItemCanOverrideAnimAction} {
+        {ItemCanOverrideAnimAction}     foreach (var item in _owner.Items)
+        {ItemCanOverrideAnimAction}     {
+        {ItemCanOverrideAnimAction}         if(item is IActionAnimOverriderContainer overriderContainer)
+        {ItemCanOverrideAnimAction}         {
+        {ItemCanOverrideAnimAction}             foreach (var overrider in overriderContainer.ActionAnimOverriders)
+        {ItemCanOverrideAnimAction}             {
+        {ItemCanOverrideAnimAction}                 overrider.OnRequestAnimOverride += ExecuteCallback;
+        {ItemCanOverrideAnimAction}                 _onDispose += () => overrider.OnRequestAnimOverride -= ExecuteCallback;
+        {ItemCanOverrideAnimAction}                 void ExecuteCallback()
+        {ItemCanOverrideAnimAction}                 {
+        {ItemCanOverrideAnimAction}                     frameDataContainer.RegisterOverrider(overrider);
+        {ItemCanOverrideAnimAction}                 }
+        {ItemCanOverrideAnimAction}             }
+        {ItemCanOverrideAnimAction}         }
+        {ItemCanOverrideAnimAction}     }
+        {ItemCanOverrideAnimAction} }        
+        
         
         public void Execute()
         {
             Reset();
-            Init();
+            InitOverriderOfOwner();
+            {ItemCanOverrideAnimAction} InitOverriderOfOwnerItems();
         }
         
         public void Reset()

@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.CodeAnalysis;
 using XynokSourceGenerator.Core.SourceGen;
-using XynokSourceGenerator.Runtime.Entity.Ability;
 using XynokSourceGenerator.Utils.Extensions;
 
 namespace XynokSourceGenerator.Runtime.Entity

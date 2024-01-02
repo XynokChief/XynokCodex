@@ -31,17 +31,14 @@ namespace XynokSourceGenerator.Entities.StateMachine
             {
                 DestroyImmediate(behavior, true);
             }
-
-            var result = controller.layers[0].stateMachine.AddStateMachineBehaviour<CharacterAnimatorStateMachine>();
-            result.stateNames = new string[clipsData.Length];
-
-            for (int i = 0; i < clipsData.Length; i++)
+            var baker = new XynokEntity.AnimPhasing.Editor.AnimatorStateMachineBaker(animator);
+            var layers = baker.GetLayers();
+            
+            for(int i = 0; i < layers.Length; i++)
             {
-                var clipData = clipsData[i];
-                result.stateNames[i] = clipData.clip.name;
+                var result = controller.layers[i].stateMachine.AddStateMachineBehaviour<CharacterAnimatorStateMachine>();
+                result.layerData = layers[i];
             }
-
-            result.frameDataContainer = this;
 #endif
         }
     }
