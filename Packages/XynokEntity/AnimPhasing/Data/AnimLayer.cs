@@ -17,8 +17,7 @@ namespace XynokEntity.AnimPhasing.Data
         public int layerIndex;
         public string layerName;
 
-        [SerializeReference] [HideDuplicateReferenceBox] [HideReferenceObjectPicker]
-        public IAnimState[] states = Array.Empty<IAnimState>();
+        [SerializeReference] public IAnimState[] states = Array.Empty<IAnimState>();
 
         private Dictionary<int, IAnimState> _cache = new();
 
@@ -29,7 +28,12 @@ namespace XynokEntity.AnimPhasing.Data
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
-                _cache.Add(stateInfo.fullPathHash, state);
+                var hash = stateInfo.fullPathHash;
+                if (state is SubStateMachineAnim subState)
+                {
+                    _cache.Add(hash, subState.GetState(hash));
+                }
+
                 return state;
             }
 
@@ -48,6 +52,11 @@ namespace XynokEntity.AnimPhasing.Data
 
         public string StateName => stateName;
         private Dictionary<int, IAnimState> _cache = new();
+
+        public IAnimState GetState(int hash)
+        {
+            return _cache.GetValueOrDefault(hash);
+        }
 
         public bool IsMatch(AnimatorStateInfo stateInfo)
         {
