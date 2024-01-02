@@ -497,11 +497,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 642668382}
+  logErrorIfNotFoundClip: 0
   useBindAbleCurrentState: 0
   ignoreLoopState: 0
   clipsData:
   - clip: {fileID: 7400000, guid: dabbdca8104955040ad315cc38f4ce28, type: 2}
     frameCount: 104
+    onStartAnim:
+      rid: 7043965226394583040
+    onEndAnim:
+      rid: 7043965226394583041
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
@@ -560,6 +565,10 @@ MonoBehaviour:
       clipFrameCount: 104
   - clip: {fileID: 7400000, guid: c338c2a57215f8643ac8cf1bf10aef2d, type: 2}
     frameCount: 60
+    onStartAnim:
+      rid: -2
+    onEndAnim:
+      rid: -2
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
@@ -618,6 +627,10 @@ MonoBehaviour:
       clipFrameCount: 60
   - clip: {fileID: 7400000, guid: 2707c4c9f04cb704b8f514d826c33733, type: 2}
     frameCount: 60
+    onStartAnim:
+      rid: -2
+    onEndAnim:
+      rid: -2
     frameRanges:
     - rangeType: 0
       maxInterruptConcurrency: 1
@@ -682,6 +695,8 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
     - rid: 7043965216384876619
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
@@ -947,6 +962,18 @@ MonoBehaviour:
           m_PersistentCalls:
             m_Calls: []
     - rid: 7043965216384876663
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965226394583040
+      type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
+      data:
+        unityEvent:
+          m_PersistentCalls:
+            m_Calls: []
+    - rid: 7043965226394583041
       type: {class: UnityEventWrapper, ns: XynokConvention.Procedural, asm: XynokConvention}
       data:
         unityEvent:

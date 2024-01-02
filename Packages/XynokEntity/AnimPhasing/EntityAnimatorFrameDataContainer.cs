@@ -124,6 +124,8 @@ namespace XynokEntity.AnimPhasing
                 if (!frameRange.IsPerforming) continue;
                 frameRange.ForceExit();
             }
+
+            if (clip.IsPerforming) clip.EndPerforming();
         }
 
         public void RegisterOverrider(IActionAnimOverrider overrider)
@@ -177,6 +179,18 @@ namespace XynokEntity.AnimPhasing
         {
             if (useBindAbleCurrentState) currentAnimStateData.Value = clipName;
             else _currentAnimState = clipName;
+
+            var clipData = GetClipData(clipName);
+            clipData?.StartPerforming();
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="XynokConvention.ConventionKey.AnimEndEvent"/>
+        /// </summary>
+        void EndEvent(string clipName)
+        {
+            var clipData = GetClipData(clipName);
+            if (clipData is { IsPerforming: true }) clipData.EndPerforming();
         }
 
         #endregion

@@ -4,6 +4,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokConvention;
 using XynokConvention.APIs;
+using XynokConvention.Procedural;
 using XynokEntity.APIs;
 
 
@@ -19,10 +20,17 @@ namespace XynokEntity.AnimPhasing.Data
         public AnimationClip clip;
 
         public string ClipName => !clip ? "???" : clip.name;
+        public bool IsPerforming => _isPerforming;
         private bool _isPerforming;
 
         [FoldoutGroup("$ClipName")] [ReadOnly] [HideLabel] [SuffixLabel(ConventionKey.Frames, overlay: true)]
         public int frameCount;
+
+        [FoldoutGroup("$ClipName")] [SerializeReference] [HideReferenceObjectPicker]
+        public IAction onStartAnim = new UnityEventWrapper();
+
+        [FoldoutGroup("$ClipName")] [SerializeReference] [HideReferenceObjectPicker]
+        public IAction onEndAnim = new UnityEventWrapper();
 
         [TableList] public EntityFrameRangeData<T>[] frameRanges;
 
@@ -87,11 +95,12 @@ namespace XynokEntity.AnimPhasing.Data
         public void InitAnimEvents()
         {
 #if UNITY_EDITOR
-            /* 1 is for catching:
+            /* 2 is for catching:
              - start of anim at frame 0
+             - end of anim at anim end
              */
             int rangeEventAmount = frameRanges.Length * 2;
-            var animEvents = new AnimationEvent[rangeEventAmount + 1];
+            var animEvents = new AnimationEvent[rangeEventAmount + 2];
 
             // start anim at frame 0
             animEvents[0] = new AnimationEvent
@@ -101,12 +110,20 @@ namespace XynokEntity.AnimPhasing.Data
                 stringParameter = clip.name
             };
 
+            // end anim at anim end
+            animEvents[^1] = new AnimationEvent
+            {
+                functionName = ConventionKey.AnimEndEvent,
+                time = clip.length,
+                stringParameter = clip.name
+            };
+
 
             // start and end events for each frame range
-            int count = 1;
+            int offset = 1;
             for (int i = 0; i < frameRanges.Length; i++)
             {
-                int indexIn = i + count;
+                int indexIn = i + offset;
                 int indexOut = indexIn + 1;
                 var frameRangeData = frameRanges[i];
                 string startRange = frameRangeData.range.x.ToString();
@@ -149,7 +166,7 @@ namespace XynokEntity.AnimPhasing.Data
                 // assign
                 animEvents[indexIn] = startEvent;
                 animEvents[indexOut] = endEvent;
-                count++;
+                offset++;
             }
 
             UnityEditor.AnimationUtility.SetAnimationEvents(clip, animEvents);
@@ -193,6 +210,18 @@ namespace XynokEntity.AnimPhasing.Data
 
         #region Runtime
 
+        public void StartPerforming()
+        {
+            _isPerforming = true;
+            onStartAnim?.Invoke();
+        }
+
+        public void EndPerforming()
+        {
+            _isPerforming = false;
+            onEndAnim?.Invoke();
+        }
+
         public EntityFrameRangeData<T> GetFrameRangeData(FrameRangeType rangeType, Vector2Int range)
         {
             foreach (var frameRangeData in frameRanges)
@@ -207,7 +236,6 @@ namespace XynokEntity.AnimPhasing.Data
             return null;
         }
 
-        #endregion
 
         public void RegisterOverrider(IActionAnimOverrider overrider)
         {
@@ -217,5 +245,7 @@ namespace XynokEntity.AnimPhasing.Data
 
             overrideAbleRange?.RegisterOverrider(overrider);
         }
+
+        #endregion
     }
 }
