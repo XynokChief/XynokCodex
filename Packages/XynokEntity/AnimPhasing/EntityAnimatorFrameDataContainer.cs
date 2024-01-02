@@ -18,6 +18,7 @@ namespace XynokEntity.AnimPhasing
         where T : IEntity
     {
         [FoldoutGroup(ConventionKey.Settings)] public Animator animator;
+        [FoldoutGroup(ConventionKey.Settings)] public bool logErrorIfNotFoundClip;
         [FoldoutGroup(ConventionKey.Settings)] public bool useBindAbleCurrentState;
 
         [FoldoutGroup(ConventionKey.Settings)] [ShowIf(nameof(useBindAbleCurrentState))]
@@ -122,8 +123,6 @@ namespace XynokEntity.AnimPhasing
             {
                 if (!frameRange.IsPerforming) continue;
                 frameRange.ForceExit();
-                Debug.Log($"{stateName}: force Exit");
-
             }
         }
 
@@ -140,7 +139,7 @@ namespace XynokEntity.AnimPhasing
                 if (clipData.clip.name == clipName) return clipData;
             }
 
-            Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
+            if (logErrorIfNotFoundClip) Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
             return null;
         }
 
