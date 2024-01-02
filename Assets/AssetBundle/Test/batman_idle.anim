@@ -37,7 +37,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1
+        time: 1.7333333
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.7333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -113,7 +113,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.7333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -152,7 +152,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.7333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -191,7 +191,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 1.7333333
         value: 0
         inSlope: 0
         outSlope: 0
@@ -220,70 +220,70 @@ AnimationClip:
     messageOptions: 0
   - time: 0.016666668
     functionName: AnimEvent
-    data: Start:batman_idle:Enter:1:9
+    data: Start:batman_idle:Enter:1:15
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.15
+  - time: 0.13333334
     functionName: AnimEvent
-    data: End:batman_idle:Enter:1:9
+    data: Start:batman_idle:Overridable:8:96
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.21666667
+  - time: 0.25
     functionName: AnimEvent
-    data: Start:batman_idle:Overridable:13:45
+    data: End:batman_idle:Enter:1:15
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.31666666
+  - time: 0.3
     functionName: AnimEvent
-    data: Start:batman_idle:Perform:19:56
+    data: Start:batman_idle:Perform:18:72
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.53333336
+  - time: 0.45000002
     functionName: AnimEvent
-    data: Start:batman_idle:Cast:32:41
+    data: Start:batman_idle:Cast:27:50
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.68333334
+  - time: 0.8333333
     functionName: AnimEvent
-    data: End:batman_idle:Cast:32:41
+    data: End:batman_idle:Cast:27:50
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.75
+  - time: 1.2
     functionName: AnimEvent
-    data: End:batman_idle:Overridable:13:45
+    data: End:batman_idle:Perform:18:72
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.9
+  - time: 1.4166666
     functionName: AnimEvent
-    data: Start:batman_idle:Exit:54:60
+    data: Start:batman_idle:Exit:85:104
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.93333334
+  - time: 1.6
     functionName: AnimEvent
-    data: End:batman_idle:Perform:19:56
+    data: End:batman_idle:Overridable:8:96
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1
+  - time: 1.7333333
     functionName: AnimEvent
-    data: End:batman_idle:Exit:54:60
+    data: End:batman_idle:Exit:85:104
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

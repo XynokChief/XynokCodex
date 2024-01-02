@@ -1,4 +1,4 @@
-![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.0-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
+![Static Badge](https://img.shields.io/badge/ynok_Codex-009ECE?logo=x)  ![Static Badge](https://img.shields.io/badge/version_-v0.3.2-00CE2D)  [![Discord](https://img.shields.io/discord/1088559270456459314?logo=discord&label=discord&labelColor=B6BBC4)](https://discord.gg/4nMcX9pXDq)
 
 ![C#](https://img.shields.io/badge/c%23-%23239120.svg?style=for-the-badge&logo=csharp&logoColor=white)  ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
@@ -71,16 +71,12 @@ Là *Source Guide* cho  **Xynok Source Generator**. Cụ thể:
 ### Overview
 Hệ thống xử lý animation cho các game fighting game - Frame Data Management.
 
-Nguồn tham khảo:
-- Elden Ring
-- SkullGirls
-- StreetFighter 3rd Strike
+- Với mỗi layer của animator, sẽ có 1 **`stateMachine`. `stateMachine`** này sẽ catch mỗi khi một state(*bao gồm normal state và cả blendtree state trong các sub-state*) bị ***exit.***
+- **`FrameDataContainer`**: nơi để config frame data của mỗi animation clip.
 
-**Note:** Hiện tại chỉ đang
-- hỗ trợ 1 layer của animator.
-- override anim MaxQueue = 1.
-- Các detect event và reset event đều ignored transition của animation.
-- Chỉ hỗ trợ 1 overrider cho các ability của entity. (build-in, auto included)
+**Note:**
+
+- quá trình bake data cho `stateMachine` của mỗi animator layer chỉ được gọi khi đang trên Editor.
 
 ### How to use
 
@@ -138,6 +134,11 @@ Bao gồm những plugin cơ bản phục vụ cho việc quản lý code và to
 # Xynok T4 Template
 ---
 Một thư viện xử lý việc gen code của các file .tt. Hỗ trợ mapping tới ScriptableObject của Unity.
+
+
+# Xynok Pynity
+---
+Package hỗ trợ chạy code python trên unity editor.
 
 # Xynok 3d Prototype Asset
 ---

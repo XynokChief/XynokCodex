@@ -28,7 +28,7 @@ namespace XynokSourceGenerator
         public Type stateGroup;
         public Type triggerGroup;
 
-        public EntityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup)
+        public EntityMakerAttribute(Type statGroup, Type stateGroup, Type triggerGroup, bool hasItem = false)
         {
             this.statGroup = statGroup;
             this.stateGroup = stateGroup;
@@ -65,7 +65,7 @@ namespace XynokSourceGenerator
         public Type triggerGroup;
         public string genPath;
 
-        public EntityStateMachineBehaviorAttribute(Type statGroup, Type stateGroup, Type triggerGroup, string genPath)
+        public EntityStateMachineBehaviorAttribute(Type statGroup, Type stateGroup, Type triggerGroup, string genPath, bool itemCanOverrideAnimOfOwner = false)
         {
             this.statGroup = statGroup;
             this.stateGroup = stateGroup;

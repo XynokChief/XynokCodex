@@ -72,13 +72,25 @@ namespace XynokEntity.AnimPhasing.Editor
         #endregion
 
         #region Creators
-
+        [FoldoutGroup(ConventionKey.Creators)]
+        [Button, GUIColor(Colors.Green)]
+        public void GetAllStateIncludeBlendTree()
+        {
+            var states= Controller.layers[0].stateMachine.states;
+            var result = "";
+            foreach (var state in states)
+            {
+                result += state.state.name + ", ";
+            }
+            Debug.Log(result);
+        }
         [FoldoutGroup(ConventionKey.Creators)]
         [Button, GUIColor(Colors.Green)]
         public void AddLayer(string layerName)
         {
             Controller.AddLayer(layerName);
         }
+      
 
         [FoldoutGroup(ConventionKey.Creators)]
         [Button, GUIColor(Colors.Green)]

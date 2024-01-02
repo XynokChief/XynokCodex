@@ -40,6 +40,7 @@ namespace XynokSourceGenerator.Entities.StateMachine
         {
             InitFrameData();
             InitAnimStateBehavior();
+            InitAnimStateBehaviorExitCatcher();
         }
         
         void InitFrameData()
@@ -59,6 +60,19 @@ namespace XynokSourceGenerator.Entities.StateMachine
             {
                 injectable.SetDependency(_owner);
                 _onDispose += injectable.Dispose;
+            }
+        }
+        
+        
+        void InitAnimStateBehaviorExitCatcher()
+        {
+           var stateMachines = animator.GetBehaviours<{EntityName}AnimatorStateMachine>();
+            
+            if(stateMachines == null || stateMachines.Length < 1) return;
+            
+            foreach (var injectable in stateMachines)
+            {
+                injectable.frameDataContainer = frameDataContainer;
             }
         }
         

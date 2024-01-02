@@ -1,5 +1,4 @@
-﻿using Core.Enums.Data;
-using XynokSourceGenerator;
+﻿using XynokSourceGenerator;
 
 namespace Core.Enums.IDs
 {
@@ -10,20 +9,27 @@ namespace Core.Enums.IDs
 
      */
     
-    [EntityStateMachineBehavior(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType),"Assets/Scripts/Core/Generated/Character")]
+    [EntityStateMachineBehavior(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType),"Assets/Scripts/Core/Generated/Character",true)]
     [EntityAbilityMaker(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType))]
-    [EntityMaker(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType))]
+    [EntityMaker(typeof(CharacterStatType), typeof(CharacterStateType), typeof(CharacterTriggerType),true)]
     public enum CharacterID
     {
         None = 0,
     }
-
+    public enum CharacterStatType
+    {
+        None = 0,
+        Hp,
+        MaxHp,
+        Mana
+    }
 
     public enum CharacterStateType
     {
         Idling,
         Attacking,
         Running,
+        Equipped,
     }
 
     public enum CharacterTriggerType

@@ -82,6 +82,9 @@ namespace XynokEntity.AnimPhasing
 
         #region Editors
 
+        /// <summary>
+        /// find all clips in animator and init data for them. Include in sub states and blend trees
+        /// </summary>
         [FoldoutGroup(ConventionKey.Settings)]
         [Button(ButtonSizes.Medium), GUIColor(Colors.Blue)]
         void InitClipsData()
@@ -119,6 +122,8 @@ namespace XynokEntity.AnimPhasing
             {
                 if (!frameRange.IsPerforming) continue;
                 frameRange.ForceExit();
+                Debug.Log($"{stateName}: force Exit");
+
             }
         }
 

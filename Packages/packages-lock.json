@@ -215,6 +215,12 @@
       "source": "embedded",
       "dependencies": {}
     },
+    "com.xynok.pynity": {
+      "version": "file:XynokPynity",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.xynok.t4": {
       "version": "file:T4Template",
       "depth": 0,

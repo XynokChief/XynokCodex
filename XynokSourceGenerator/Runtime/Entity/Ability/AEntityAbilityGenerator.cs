@@ -38,13 +38,7 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                     StateSymbol = stateSymbol,
                     TriggerSymbol = triggerSymbol
                 };
-                var stateFileGen = new EntityStateFlagFileGen
-                {
-                    EntitySymbol = entitySymbol,
-                    StatSymbol = statSymbol,
-                    StateSymbol = stateSymbol,
-                    TriggerSymbol = triggerSymbol
-                };
+               
                 
                 var animatorBinderFileGen = new EntityAnimatorBinderFileGen
                 {
@@ -159,7 +153,6 @@ namespace XynokSourceGenerator.Runtime.Entity.Ability
                 };
             
                 GenCode(context, abilityFileGen);
-                GenCode(context, stateFileGen);
                 GenCode(context, animatorBinderFileGen);
                 GenCode(context, dataValidatorFileGen);
                 GenCode(context, dataRelationshipFileGen);

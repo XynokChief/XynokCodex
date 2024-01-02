@@ -18,4 +18,9 @@ namespace XynokEntity.APIs
         InputActionID AnimOverrideActName { get; }
         Action AnimOverrideAct { get; }
     }
+
+    public interface IActionAnimOverriderContainer
+    {
+        IActionAnimOverrider[] ActionAnimOverriders { get; }
+    }
 }
