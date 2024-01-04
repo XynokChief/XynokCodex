@@ -29,6 +29,7 @@ namespace XynokEntity.AnimPhasing.Data
         [LabelWidth(80)]
         public bool IsPerforming => _isPerforming;
 
+        [VerticalGroup(ConventionKey.State)] public bool clearAllOverrideOnForceExit = true;
 
         // ------------------ Overridable ------------------
 
@@ -101,7 +102,7 @@ namespace XynokEntity.AnimPhasing.Data
 
         public void ForceExit()
         {
-            _overriderQueue?.Clear();
+            if (clearAllOverrideOnForceExit) _overriderQueue?.Clear();
             Exit();
             onForceExit?.Invoke();
         }
