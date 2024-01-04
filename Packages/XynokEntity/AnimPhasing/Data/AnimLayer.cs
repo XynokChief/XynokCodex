@@ -24,20 +24,19 @@ namespace XynokEntity.AnimPhasing.Data
 
         public IAnimState GetState(AnimatorStateInfo stateInfo)
         {
-            if (_cache.TryGetValue(stateInfo.fullPathHash, out var state1)) return state1;
+            var hash = stateInfo.fullPathHash;
+            if (_cache.TryGetValue(hash, out var state1)) return state1;
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
-                var hash = stateInfo.fullPathHash;
                 if (state is SubStateMachineAnim subState)
                 {
-                    if (subState.IsMatch(stateInfo))
-                    {
-                        _cache.Add(hash, subState.GetState(hash));
-                        return _cache[hash];
-                    }
+                    var targetState = subState.GetState(hash);
+                    _cache.Add(hash, targetState);
+                    return targetState;
                 }
 
+                _cache.Add(hash, state);
                 return state;
             }
 
