@@ -29,6 +29,7 @@ namespace XynokEntity.AnimPhasing.Data
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
+                
                 if (state is SubStateMachineAnim subState)
                 {
                     var targetState = subState.GetState(hash);
@@ -63,9 +64,20 @@ namespace XynokEntity.AnimPhasing.Data
 
         public bool IsMatch(AnimatorStateInfo stateInfo)
         {
+            var hash = stateInfo.fullPathHash;
+            if (_cache.ContainsKey(hash)) return true;
+            
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
+                
+                if (state is SubStateMachineAnim subState)
+                {
+                    var targetState = subState.GetState(hash);
+                    _cache.Add(hash, targetState);
+                    return true;
+                }
+
                 _cache.Add(stateInfo.fullPathHash, state);
                 return true;
             }
