@@ -102,9 +102,9 @@ namespace XynokEntity.AnimPhasing.Data
 
         public void ForceExit()
         {
+            onForceExit?.Invoke();
             if (clearAllOverrideOnForceExit) _overriderQueue?.Clear();
             Exit();
-            onForceExit?.Invoke();
         }
 
         void Enter()
