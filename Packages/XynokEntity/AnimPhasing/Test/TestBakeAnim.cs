@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using Sirenix.OdinInspector;
 using UnityEngine;
 using XynokEntity.AnimPhasing.Data;
@@ -20,3 +22,4 @@ namespace XynokEntity.AnimPhasing.Test
         }
     }
 }
+#endif
