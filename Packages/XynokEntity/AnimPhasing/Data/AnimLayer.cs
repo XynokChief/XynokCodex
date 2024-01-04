@@ -31,7 +31,11 @@ namespace XynokEntity.AnimPhasing.Data
                 var hash = stateInfo.fullPathHash;
                 if (state is SubStateMachineAnim subState)
                 {
-                    _cache.Add(hash, subState.GetState(hash));
+                    if (subState.IsMatch(stateInfo))
+                    {
+                        _cache.Add(hash, subState.GetState(hash));
+                        return _cache[hash];
+                    }
                 }
 
                 return state;

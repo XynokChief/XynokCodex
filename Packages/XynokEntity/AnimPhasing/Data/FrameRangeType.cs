@@ -32,5 +32,10 @@ namespace XynokEntity.AnimPhasing.Data
         /// can be interrupted at this range
         /// </summary>
         Overridable = 4,
+        
+        /// <summary>
+        /// Reset something
+        /// </summary>
+        Reset = 5,
     }
 }
