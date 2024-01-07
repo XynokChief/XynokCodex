@@ -17,19 +17,27 @@ namespace XynokEntity.AnimPhasing.Data
         public int layerIndex;
         public string layerName;
 
-        [SerializeReference] [HideDuplicateReferenceBox] [HideReferenceObjectPicker]
-        public IAnimState[] states = Array.Empty<IAnimState>();
+        [SerializeReference] public IAnimState[] states = Array.Empty<IAnimState>();
 
         private Dictionary<int, IAnimState> _cache = new();
 
 
         public IAnimState GetState(AnimatorStateInfo stateInfo)
         {
-            if (_cache.TryGetValue(stateInfo.fullPathHash, out var state1)) return state1;
+            var hash = stateInfo.fullPathHash;
+            if (_cache.TryGetValue(hash, out var state1)) return state1;
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
-                _cache.Add(stateInfo.fullPathHash, state);
+                
+                if (state is SubStateMachineAnim subState)
+                {
+                    var targetState = subState.GetState(hash);
+                    _cache.Add(hash, targetState);
+                    return targetState;
+                }
+
+                _cache.Add(hash, state);
                 return state;
             }
 
@@ -49,11 +57,27 @@ namespace XynokEntity.AnimPhasing.Data
         public string StateName => stateName;
         private Dictionary<int, IAnimState> _cache = new();
 
+        public IAnimState GetState(int hash)
+        {
+            return _cache.GetValueOrDefault(hash);
+        }
+
         public bool IsMatch(AnimatorStateInfo stateInfo)
         {
+            var hash = stateInfo.fullPathHash;
+            if (_cache.ContainsKey(hash)) return true;
+            
             foreach (var state in states)
             {
                 if (!state.IsMatch(stateInfo)) continue;
+                
+                if (state is SubStateMachineAnim subState)
+                {
+                    var targetState = subState.GetState(hash);
+                    _cache.Add(hash, targetState);
+                    return true;
+                }
+
                 _cache.Add(stateInfo.fullPathHash, state);
                 return true;
             }

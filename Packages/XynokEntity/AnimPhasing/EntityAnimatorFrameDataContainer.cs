@@ -18,6 +18,7 @@ namespace XynokEntity.AnimPhasing
         where T : IEntity
     {
         [FoldoutGroup(ConventionKey.Settings)] public Animator animator;
+        [FoldoutGroup(ConventionKey.Settings)] public bool logErrorIfNotFoundClip;
         [FoldoutGroup(ConventionKey.Settings)] public bool useBindAbleCurrentState;
 
         [FoldoutGroup(ConventionKey.Settings)] [ShowIf(nameof(useBindAbleCurrentState))]
@@ -122,9 +123,9 @@ namespace XynokEntity.AnimPhasing
             {
                 if (!frameRange.IsPerforming) continue;
                 frameRange.ForceExit();
-                Debug.Log($"{stateName}: force Exit");
-
             }
+
+            if (clip.IsPerforming) clip.EndPerforming();
         }
 
         public void RegisterOverrider(IActionAnimOverrider overrider)
@@ -140,7 +141,7 @@ namespace XynokEntity.AnimPhasing
                 if (clipData.clip.name == clipName) return clipData;
             }
 
-            Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
+            if (logErrorIfNotFoundClip) Debug.LogError($"[{GetType().Name}]: clip {clipName} not found !");
             return null;
         }
 
@@ -178,6 +179,18 @@ namespace XynokEntity.AnimPhasing
         {
             if (useBindAbleCurrentState) currentAnimStateData.Value = clipName;
             else _currentAnimState = clipName;
+
+            var clipData = GetClipData(clipName);
+            clipData?.StartPerforming();
+        }
+
+        /// <summary>
+        /// <inheritdoc cref="XynokConvention.ConventionKey.AnimEndEvent"/>
+        /// </summary>
+        void EndEvent(string clipName)
+        {
+            var clipData = GetClipData(clipName);
+            if (clipData is { IsPerforming: true }) clipData.EndPerforming();
         }
 
         #endregion

@@ -18,6 +18,7 @@
         
         /*--------------------------------------------- Anim events ---------------------------------------------*/
         public const string AnimStartEvent = "StartEvent"; // event at frame 0
+        public const string AnimEndEvent = "EndEvent"; // event at anim end
         public const string AnimEvent = "AnimEvent"; // event at frame range
     
         /*--------------------------------------------- Encode conventions ---------------------------------------------*/
